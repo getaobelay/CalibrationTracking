@@ -2,6 +2,10 @@
 {
     public abstract class BaseEntity : IBaseEntity
     {
-        public Guid Id { get; set; }
+        public BaseEntity()
+        {
+            Id = new Guid();
+        }
+        public Guid Id { get; }
     }
 }
