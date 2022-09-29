@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalibrationTracking.Shared"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalibrationTracking.Abstractions", "CalibrationTracking.Abstractions\CalibrationTracking.Abstractions.csproj", "{FA26E848-1510-46AB-9ECA-A65568AD5330}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalibrationTracking.DesktopUI", "CalibrationTracking.DesktopUI\CalibrationTracking.DesktopUI.csproj", "{5DE4876E-BCE8-4DB0-A2E1-61BFE08A93CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalibrationTracking.DesktopUI", "CalibrationTracking.DesktopUI\CalibrationTracking.DesktopUI.csproj", "{8C5E680B-9C46-4896-A8D7-65E2DC4ED60E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +51,10 @@ Global
 		{FA26E848-1510-46AB-9ECA-A65568AD5330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA26E848-1510-46AB-9ECA-A65568AD5330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA26E848-1510-46AB-9ECA-A65568AD5330}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DE4876E-BCE8-4DB0-A2E1-61BFE08A93CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DE4876E-BCE8-4DB0-A2E1-61BFE08A93CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DE4876E-BCE8-4DB0-A2E1-61BFE08A93CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DE4876E-BCE8-4DB0-A2E1-61BFE08A93CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C5E680B-9C46-4896-A8D7-65E2DC4ED60E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5E680B-9C46-4896-A8D7-65E2DC4ED60E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5E680B-9C46-4896-A8D7-65E2DC4ED60E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5E680B-9C46-4896-A8D7-65E2DC4ED60E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,7 +63,7 @@ Global
 		{4CC21ADC-7A30-4ADA-9043-12F2D830A72D} = {41373B20-59D6-4268-9AFF-C5A7178EA518}
 		{8EC1596F-217A-4A65-8613-8E020B6CE450} = {D7CBCB8F-36B2-439B-97ED-D312A5E91F47}
 		{FA26E848-1510-46AB-9ECA-A65568AD5330} = {D7CBCB8F-36B2-439B-97ED-D312A5E91F47}
-		{5DE4876E-BCE8-4DB0-A2E1-61BFE08A93CA} = {41373B20-59D6-4268-9AFF-C5A7178EA518}
+		{8C5E680B-9C46-4896-A8D7-65E2DC4ED60E} = {41373B20-59D6-4268-9AFF-C5A7178EA518}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96172E3E-DA85-4462-A896-24AFD2BFA8DF}
