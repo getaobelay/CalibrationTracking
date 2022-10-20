@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using CalibrationTracking.Abstractions.Interfaces;
 
 namespace CalibrationTracking.Abstractions.Base
 {

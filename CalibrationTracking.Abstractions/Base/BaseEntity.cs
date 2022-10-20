@@ -6,6 +6,7 @@
         {
             Id = new Guid();
         }
+
         public Guid Id { get; }
     }
 }

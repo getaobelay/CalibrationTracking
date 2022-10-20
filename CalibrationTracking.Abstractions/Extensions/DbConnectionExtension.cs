@@ -1,6 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using CalibrationTracking.Abstractions.Extensions;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CalibrationTracking.Abstractions.Extensions
 {
@@ -19,9 +17,5 @@ namespace CalibrationTracking.Abstractions.Extensions
                 throw new DatabaseConnectionException("לא נמצא חיבור פעיל לממסד הנתונים");
             }
         }
-
-
     }
-
-
 }

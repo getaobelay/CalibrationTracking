@@ -1,17 +1,18 @@
-﻿using CalibrationTracking.Core.Entites;
+﻿using CalibrationTracking.Core.Departments;
+using CalibrationTracking.Core.Employees;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Reflection;
 
 namespace CalibrationTracking.Infrastructure.Context
 {
-    public class CalibrationbContext : DbContext
+    public class CalibrationDbContext : DbContext
     {
-        public CalibrationbContext()
+        public CalibrationDbContext()
         {
         }
 
-        public CalibrationbContext(DbContextOptions<CalibrationbContext> options)
+        public CalibrationDbContext(DbContextOptions<CalibrationDbContext> options)
             : base(options)
         {
         }
@@ -21,10 +22,11 @@ namespace CalibrationTracking.Infrastructure.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Data Source=il-tadi-sql02;Initial Catalog=PRD_HybridTags;Integrated Security=SSPI;MultipleActiveResultSets=True;");
-            }
+            //if (!optionsBuilder.IsConfigured)
+            //{
+            //    optionsBuilder.UseSqlServer("Data Source=il-tadi-sql02;Initial Catalog=CalibrationbContext;Integrated Security=SSPI;MultipleActiveResultSets=True;");
+            //}
+
             base.OnConfiguring(optionsBuilder);
         }
 

@@ -6,5 +6,4 @@ namespace CalibrationTracking.Abstractions.Behaviors
     {
         Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next);
     }
-
 }

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CalibrationTracking.Infrastructure\CalibrationTracking.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

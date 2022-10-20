@@ -1,8 +1,8 @@
-﻿using FluentValidation;
+﻿using CalibrationTracking.Abstractions.Exceptions;
+using CalibrationTracking.Shared;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using CalibrationTracking.Abstractions.Exceptions;
-using CalibrationTracking.Shared;
 
 namespace CalibrationTracking.Abstractions.Behaviors
 {
@@ -12,11 +12,13 @@ namespace CalibrationTracking.Abstractions.Behaviors
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
         private readonly ILogger _logger;
+
         public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, ILogger logger)
         {
             _validators = validators;
             _logger = logger;
         }
+
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
             RequestHandlerDelegate<TResponse> next)
         {
@@ -40,7 +42,6 @@ namespace CalibrationTracking.Abstractions.Behaviors
                 _logger.LogInformation(errorMessage);
 
                 errors.Add(errorMessage);
-
             });
 
             throw new ValidatioFailedException(errors);

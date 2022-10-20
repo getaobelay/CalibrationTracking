@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+﻿using CalibrationTracking.Abstractions.Base;
 using CalibrationTracking.Abstractions.Behaviors;
-using CalibrationTracking.Abstractions.Base;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace CalibrationTracking.Abstractions
 {

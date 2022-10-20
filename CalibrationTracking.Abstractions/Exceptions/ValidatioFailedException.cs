@@ -7,6 +7,7 @@
         {
             Errors = errors;
         }
+
         public List<string> Errors { get; set; } = new List<string>();
     }
 }

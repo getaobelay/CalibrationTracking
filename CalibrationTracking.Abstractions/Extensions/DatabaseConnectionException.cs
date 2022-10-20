@@ -1,15 +1,10 @@
-﻿using System.Runtime.Serialization;
-
-namespace CalibrationTracking.Abstractions.Extensions
+﻿namespace CalibrationTracking.Abstractions.Extensions
 {
     [Serializable]
     public class DatabaseConnectionException : Exception
     {
-
         public DatabaseConnectionException(string? message) : base(message)
         {
         }
-
-
     }
 }

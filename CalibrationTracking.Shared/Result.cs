@@ -16,6 +16,7 @@
         /// The bad request
         /// </summary>
         BadRequest = 400,
+
         AlreadyExists = 501,
     }
 
