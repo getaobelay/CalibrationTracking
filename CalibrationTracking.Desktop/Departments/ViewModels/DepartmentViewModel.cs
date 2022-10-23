@@ -1,13 +1,7 @@
-﻿using CalibrationTracking.Core.Employees;
-using CalibrationTracking.Desktop.Base;
+﻿using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Windows.Input;
 
-namespace CalibrationTracking.Desktop.Login.ViewModels
+namespace CalibrationTracking.Desktop.Departments.ViewModels
 {
     internal class DepartmentViewModel : BaseViewModel
     {
@@ -17,7 +11,6 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
         {
             _authenticationService = authenticationService;
         }
-
 
         private string _name;
 
@@ -30,16 +23,12 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
             set
             {
-
                 if (!string.Equals(_name, value))
                 {
                     _name = value;
                     RaisePropertyChanged();
                 }
-
             }
         }
-
-
     }
 }

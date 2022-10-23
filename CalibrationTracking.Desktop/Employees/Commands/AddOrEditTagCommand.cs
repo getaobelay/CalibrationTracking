@@ -1,18 +1,13 @@
-﻿using CalibrationTracking.Core.Employees;
-using CalibrationTracking.Desktop.Base;
+﻿using CalibrationTracking.Desktop.Base;
+using CalibrationTracking.Desktop.Employees.ViewModels;
 using CalibrationTracking.Desktop.Employees.Windows;
-using CalibrationTracking.Desktop.Login.ViewModels;
-using CalibrationTracking.Shared;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace HybridTagCreator.DesktopUI.HybridTagViews.Commands
+namespace CalibrationTracking.Desktop.Employees.Commands
 {
     public class AddOrEditEmployeeCommand : BaseAsyncCommand
     {
-
         private readonly EmployeeAddOrEditWindow _employeeAddOrEditWindow;
 
         public AddOrEditEmployeeCommand(EmployeeAddOrEditWindow employeeAddOrEditWindow)
@@ -25,7 +20,6 @@ namespace HybridTagCreator.DesktopUI.HybridTagViews.Commands
             var viewModel = (EmployeeAddOrEditViewModel)_employeeAddOrEditWindow.DataContext;
 
             return viewModel.Model is not null && viewModel.IsDirty && RunningTasks.Count() == 0;
-         
         }
 
         public override async Task ExecuteAsync()
@@ -34,8 +28,5 @@ namespace HybridTagCreator.DesktopUI.HybridTagViews.Commands
 
             await Task.CompletedTask;
         }
-
-
-
     }
 }

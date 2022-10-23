@@ -5,7 +5,7 @@ using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 
-namespace CalibrationTracking.Desktop.Login.ViewModels
+namespace CalibrationTracking.Desktop.Employees.ViewModels
 {
     internal class EmployeeAddOrEditViewModel : BaseViewModel<Employee>
     {
@@ -13,7 +13,6 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
         public EmployeeAddOrEditViewModel(Employee model) : base(model)
         {
-
             Reload(model);
         }
 
@@ -33,13 +32,11 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
             set
             {
-
                 if (!string.Equals(_firstname, value))
                 {
                     _firstname = value;
                     RaisePropertyChanged();
                 }
-
             }
         }
 
@@ -59,18 +56,13 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
             set
             {
-
                 if (!string.Equals(_lastname, value))
                 {
                     _lastname = value;
                     RaisePropertyChanged();
                 }
-
             }
         }
-
-
-    
 
         private string _email;
 
@@ -88,13 +80,11 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
             set
             {
-
                 if (!string.Equals(_email, value))
                 {
                     _email = value;
                     RaisePropertyChanged();
                 }
-
             }
         }
 
@@ -102,10 +92,9 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
         {
             get
             {
-                return $"{FirstName} {LastName}"; 
+                return $"{FirstName} {LastName}";
             }
         }
-
 
         private Guid _selectedDepartment;
 
@@ -123,39 +112,33 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
             set
             {
-
                 if (!string.Equals(_selectedDepartment, value))
                 {
                     _selectedDepartment = value;
                     RaisePropertyChanged();
                 }
-
             }
         }
 
-
         private ObservableCollection<Department>? _departments;
+
         public ObservableCollection<Department>? Departments
         { get { return _departments; } set { _departments = value; RaisePropertyChanged(); } }
 
         public override void Reload(Employee model)
         {
-           
             _firstname = string.Empty;
             _lastname = string.Empty;
 
             RaisePropertyChanged(nameof(FirstName));
             RaisePropertyChanged(nameof(LastName));
-;
+            ;
 
             base.Reload(null);
-
         }
 
         public override Employee ToModel()
         {
-           
-
             return base.ToModel();
         }
 
@@ -163,8 +146,5 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
         {
             Reload(Model);
         }
-
-
-
     }
 }

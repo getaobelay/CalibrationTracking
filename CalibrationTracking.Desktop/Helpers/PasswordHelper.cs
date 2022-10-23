@@ -1,5 +1,5 @@
-﻿using System.Windows.Controls;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace CalibrationTracking.Desktop.Helpers
 {
@@ -17,7 +17,6 @@ namespace CalibrationTracking.Desktop.Helpers
         private static readonly DependencyProperty IsUpdatingProperty =
             DependencyProperty.RegisterAttached("IsUpdating", typeof(bool),
             typeof(PasswordHelper));
-
 
         public static void SetAttach(DependencyObject dp, bool value)
         {

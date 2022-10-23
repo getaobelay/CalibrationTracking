@@ -1,9 +1,7 @@
 namespace CalibrationTracking.Core.Users
 {
-
     public class User
     {
-
         public int Id { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
@@ -21,7 +19,7 @@ namespace CalibrationTracking.Core.Users
                    Id == user.Id &&
                    UserName == user.UserName &&
                    FirstName == user.FirstName &&
-                   LastName == user.LastName;              
+                   LastName == user.LastName;
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿namespace CalibrationTracking.Core.Users
 {
-
     public class UserRole
     {
-
         public int Id { get; set; }
 
         public Guid UserId { get; set; }

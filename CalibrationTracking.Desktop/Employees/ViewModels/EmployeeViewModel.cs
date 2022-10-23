@@ -2,7 +2,7 @@
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
 
-namespace CalibrationTracking.Desktop.Login.ViewModels
+namespace CalibrationTracking.Desktop.Employees.ViewModels
 {
     internal class EmployeeViewModel : BaseViewModel<Employee>
     {
@@ -10,7 +10,6 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
         public EmployeeViewModel(Employee model) : base(model)
         {
-
             Reload(model);
         }
 
@@ -30,13 +29,11 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
             set
             {
-
                 if (!string.Equals(_firstname, value))
                 {
                     _firstname = value;
                     RaisePropertyChanged();
                 }
-
             }
         }
 
@@ -56,13 +53,11 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
 
             set
             {
-
                 if (!string.Equals(_lastname, value))
                 {
                     _lastname = value;
                     RaisePropertyChanged();
                 }
-
             }
         }
 
@@ -70,29 +65,24 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
         {
             get
             {
-                return $"{FirstName} {LastName}"; 
+                return $"{FirstName} {LastName}";
             }
         }
 
-
         public override void Reload(Employee model)
         {
-           
             _firstname = string.Empty;
             _lastname = string.Empty;
 
             RaisePropertyChanged(nameof(FirstName));
             RaisePropertyChanged(nameof(LastName));
-;
+            ;
 
             base.Reload(null);
-
         }
 
         public override Employee ToModel()
         {
-           
-
             return base.ToModel();
         }
 
@@ -100,8 +90,5 @@ namespace CalibrationTracking.Desktop.Login.ViewModels
         {
             Reload(Model);
         }
-
-
-
     }
 }
