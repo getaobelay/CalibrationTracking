@@ -1,4 +1,6 @@
 ﻿using CalibrationTracking.Application;
+using CalibrationTracking.Desktop.Employees.Windows;
+using CalibrationTracking.Desktop.Login.Windows;
 using CalibrationTracking.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +36,8 @@ namespace CalibrationTracking.Desktop
             services.AddInfrastructure(_configuration);
             services.AddApplication();
             services.AddSingleton<MainWindow>();
+            services.AddSingleton<LoginWindow>();
+            services.AddSingleton<EmployeeAddOrEditWindow>();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
@@ -42,7 +46,7 @@ namespace CalibrationTracking.Desktop
 
             base.OnStartup(e);
 
-            var window = _host.Services.GetRequiredService<MainWindow>();
+            var window = _host.Services.GetRequiredService<EmployeeAddOrEditWindow>();
 
             window.Show();
         }
