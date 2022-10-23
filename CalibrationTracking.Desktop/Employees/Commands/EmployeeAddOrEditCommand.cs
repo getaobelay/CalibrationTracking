@@ -1,5 +1,4 @@
-﻿using CalibrationTracking.Application.Employees.CreateEmployee;
-using CalibrationTracking.Core.Employees;
+﻿using CalibrationTracking.Core.Employees;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Employees.ViewModels;
 using CalibrationTracking.Desktop.Employees.Windows;
@@ -7,6 +6,7 @@ using CalibrationTracking.Infrastructure.Interfaces;
 using MediatR;
 using System.Linq;
 using System.Threading.Tasks;
+using CalibrationTracking.Application.Employees.Commands.CreateEmployee;
 
 namespace CalibrationTracking.Desktop.Employees.Commands
 {

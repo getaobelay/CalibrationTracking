@@ -30,6 +30,7 @@ namespace CalibrationTracking.Infrastructure
 
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
 
             services.AddRepositories(Assembly.GetExecutingAssembly());
 

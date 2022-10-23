@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalibrationTracking.Shared"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalibrationTracking.Abstractions", "CalibrationTracking.Abstractions\CalibrationTracking.Abstractions.csproj", "{FA26E848-1510-46AB-9ECA-A65568AD5330}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalibrationTracking.Desktop", "CalibrationTracking.Desktop\CalibrationTracking.Desktop.csproj", "{D6FFB19F-9D13-4F96-A303-12AAC27CF9C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalibrationTracking.Desktop", "CalibrationTracking.Desktop\CalibrationTracking.Desktop.csproj", "{D6FFB19F-9D13-4F96-A303-12AAC27CF9C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalibrationTracking.CustomeControls", "CalibrationTracking.CustomeControls\CalibrationTracking.CustomeControls.csproj", "{01087DCD-081C-4D2B-8FC3-D2F735E931EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalibrationTracking.CustomeControls", "CalibrationTracking.CustomeControls\CalibrationTracking.CustomeControls.csproj", "{01087DCD-081C-4D2B-8FC3-D2F735E931EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

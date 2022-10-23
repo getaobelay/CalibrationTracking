@@ -2,6 +2,7 @@
 using CalibrationTracking.Desktop.Employees.Windows;
 using CalibrationTracking.Desktop.Login.Windows;
 using CalibrationTracking.Infrastructure;
+using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -38,14 +39,23 @@ namespace CalibrationTracking.Desktop
             services.AddSingleton<MainWindow>();
             services.AddSingleton<LoginWindow>();
             services.AddSingleton<EmployeeAddOrEditWindow>();
+
         }
 
+        private async Task InitiliazeDataBase()
+        {
+            var initializer = _host.Services.GetRequiredService<IDatabaseInitializer>();
+            await initializer.InitialiseAsync();
+            await initializer.SeedAsync();
+        }
         protected override async void OnStartup(StartupEventArgs e)
         {
             await _host.StartAsync();
 
             base.OnStartup(e);
 
+
+            await InitiliazeDataBase();
             var window = _host.Services.GetRequiredService<EmployeeAddOrEditWindow>();
 
             window.Show();

@@ -1,4 +1,5 @@
-﻿using CalibrationTracking.Core.Departments;
+﻿using CalibrationTracking.Application.Employees.Queries.GetAllDepartments;
+using CalibrationTracking.Core.Departments;
 using CalibrationTracking.Core.Employees;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Employees.Commands;
@@ -8,6 +9,8 @@ using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
 using MediatR;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace CalibrationTracking.Desktop.Employees.ViewModels
 {
@@ -17,10 +20,17 @@ namespace CalibrationTracking.Desktop.Employees.ViewModels
         public EmployeeAddOrEditViewModel(Employee model,EmployeeAddOrEditWindow employeeAddOrEditWindow, IMediator mediator) : base(model)
         {
 
+            _mediator = mediator;
             EmployeeAddOrEditCommand = new EmployeeAddOrEditCommand(employeeAddOrEditWindow, mediator);
 
-            Reload(model);
+            LoadData();
 
+            Reload(model);
+        }
+
+        private async void LoadData()
+        {
+            await GetAllDepartments();
         }
 
         private string _firstname;
@@ -155,6 +165,8 @@ namespace CalibrationTracking.Desktop.Employees.ViewModels
         public EmployeeAddOrEditCommand EmployeeAddOrEditCommand { get; protected set; }
 
         private ObservableCollection<Department>? _departments;
+        private readonly IMediator mediator;
+        private readonly IMediator _mediator;
 
         public ObservableCollection<Department>? Departments
         { get { return _departments; } set { _departments = value; RaisePropertyChanged(); } }
@@ -180,6 +192,18 @@ namespace CalibrationTracking.Desktop.Employees.ViewModels
         public void Undo()
         {
             Reload(Model);
+        }
+
+
+        private async Task GetAllDepartments()
+        {
+            var query = new GetAllDepartmentsQuery();
+
+            var departments = await _mediator.Send(query);
+
+            _departments = new(departments);
+
+            RaisePropertyChanged(nameof(Departments));
         }
     }
 }

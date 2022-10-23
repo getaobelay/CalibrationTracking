@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalibrationTracking.Application.Employees.EmployeeCreate
+namespace CalibrationTracking.Application.Employees
 {
     public class EmployeeCreateProfile : Profile
     {

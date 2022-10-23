@@ -73,17 +73,15 @@
             </Grid>
 
 
-
-            
-
-
             <StackPanel Grid.Row="3" Grid.Column="1">
 
                 <Label HorizontalAlignment="Left"  Content="מחלקה:" />
 
                 <customeControls:FilterableComboBox Margin="2" Padding="5" x:Name="departmentComboBox" Grid.Column="2"
                                 ItemsSource="{Binding Departments,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                SelectedValue="{Binding SelectedDepartment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Name"
+                                EffectivelySelectedItem="{Binding SelectedDepartment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedValue="Id"
                                 IsEditable="True"
                                 IsTextSearchEnabled="False"
                                 StaysOpenOnEdit="True">

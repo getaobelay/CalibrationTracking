@@ -7,8 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CalibrationTracking.Infrastructure.Context;
 using CalibrationTracking.Core.Employees;
+using CalibrationTracking.Application.Employees.Commands.CreateEmployee;
 
-namespace CalibrationTracking.Application.Employees.CreateEmployee
+namespace CalibrationTracking.Application.Employees.Commands.CreateEmployee
 {
     public class CreateEmployeeCommand : IRequest<Employee>
     {
