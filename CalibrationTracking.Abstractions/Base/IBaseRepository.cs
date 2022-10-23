@@ -48,5 +48,7 @@ namespace CalibrationTracking.Abstractions.Base
         Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate);
 
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+
+        Task SaveChangesAsync();
     }
 }

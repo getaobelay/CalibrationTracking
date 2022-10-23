@@ -1,9 +1,11 @@
-﻿using CalibrationTracking.Infrastructure.Context;
+﻿using CalibrationTracking.Abstractions;
+using CalibrationTracking.Infrastructure.Context;
 using CalibrationTracking.Infrastructure.UserRepostories;
 using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace CalibrationTracking.Infrastructure
 {
@@ -28,6 +30,8 @@ namespace CalibrationTracking.Infrastructure
 
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
+
+            services.AddRepositories(Assembly.GetExecutingAssembly());
 
             return services;
         }

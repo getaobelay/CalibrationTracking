@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\CalibrationTracking.Application\CalibrationTracking.Application.csproj" />
+		<ProjectReference Include="..\CalibrationTracking.CustomeControls\CalibrationTracking.CustomeControls.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

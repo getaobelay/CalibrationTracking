@@ -7,7 +7,7 @@ namespace CalibrationTracking.Desktop.Base
     /// <summary>
     /// Defines a command that executes an asynchronous method.
     /// </summary>
-    public interface IBaseAsyncCommand : ICommand
+    public interface IAsyncCommand : ICommand
     {
         /// <summary>
         /// Gets a value indicating whether a task executed by this command is still running.

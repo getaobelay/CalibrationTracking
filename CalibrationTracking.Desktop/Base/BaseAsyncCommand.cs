@@ -8,14 +8,14 @@ using System.Windows.Input;
 namespace CalibrationTracking.Desktop.Base
 {
     /// <inheritdoc cref="IAsyncCommand" />
-    public abstract class BaseAsyncCommand : IBaseAsyncCommand
+    public abstract class AsyncCommand : IAsyncCommand
     {
         private readonly ObservableCollection<Task> runningTasks;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseAsyncCommand"/> class.
+        /// Initializes a new instance of the <see cref="AsyncCommand"/> class.
         /// </summary>
-        protected BaseAsyncCommand()
+        protected AsyncCommand()
         {
             runningTasks = new ObservableCollection<Task>();
             runningTasks.CollectionChanged += OnRunningTasksChanged;

@@ -150,5 +150,10 @@ namespace CalibrationTracking.Abstractions.Base
 
             return await Task.FromResult(entity);
         }
+
+        public async Task SaveChangesAsync()
+        {
+            await SaveChangesAsync();
+        }
     }
 }
