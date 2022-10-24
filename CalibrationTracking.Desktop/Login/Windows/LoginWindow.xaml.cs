@@ -14,6 +14,8 @@ namespace CalibrationTracking.Desktop.Login.Windows
             InitializeComponent();
 
             DataContext = new LoginViewModel(new AuthenticationService());
+
         }
     }
+
 }
