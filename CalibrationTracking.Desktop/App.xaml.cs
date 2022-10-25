@@ -1,4 +1,5 @@
 ﻿using CalibrationTracking.Application;
+using CalibrationTracking.Desktop.Departments.Windows;
 using CalibrationTracking.Desktop.Employees.Windows;
 using CalibrationTracking.Desktop.Login.Windows;
 using CalibrationTracking.Infrastructure;
@@ -38,6 +39,7 @@ namespace CalibrationTracking.Desktop
             services.AddApplication();
             services.AddSingleton<MainWindow>();
             services.AddSingleton<LoginWindow>();
+            services.AddSingleton<DepartmentAddOrEditWindow>();
             services.AddSingleton<EmployeeAddOrEditWindow>();
 
         }
@@ -56,7 +58,7 @@ namespace CalibrationTracking.Desktop
 
 
             await InitiliazeDataBase();
-            var window = _host.Services.GetRequiredService<LoginWindow>();
+            var window = _host.Services.GetRequiredService<DepartmentAddOrEditWindow>();
 
             window.Show();
         }

@@ -4,18 +4,16 @@ using CalibrationTracking.Core.Employees;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Employees.Commands;
 using CalibrationTracking.Desktop.Employees.Windows;
-using CalibrationTracking.Infrastructure.Interfaces;
-using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
 using MediatR;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace CalibrationTracking.Desktop.Employees.ViewModels
 {
     internal class EmployeeAddOrEditViewModel : BaseViewModel<Employee>
     {
+        private readonly IMediator _mediator;
 
         public EmployeeAddOrEditViewModel(Employee model,EmployeeAddOrEditWindow employeeAddOrEditWindow, IMediator mediator) : base(model)
         {
@@ -165,8 +163,6 @@ namespace CalibrationTracking.Desktop.Employees.ViewModels
         public EmployeeAddOrEditCommand EmployeeAddOrEditCommand { get; protected set; }
 
         private ObservableCollection<Department>? _departments;
-        private readonly IMediator mediator;
-        private readonly IMediator _mediator;
 
         public ObservableCollection<Department>? Departments
         { get { return _departments; } set { _departments = value; RaisePropertyChanged(); } }

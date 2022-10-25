@@ -9,7 +9,7 @@
         mc:Ignorable="d" FlowDirection="RightToLeft"
 
         BorderThickness="0" WindowStyle="None" BorderBrush="Black" ResizeMode="NoResize"
-Title="Login" Height="250" Width="370" WindowState="Normal" WindowStartupLocation="CenterScreen" Background="Black">
+Title="Login" Height="250" Width="400" WindowState="Normal" WindowStartupLocation="CenterScreen" Background="Black">
     <StackPanel Orientation="Vertical" Background="#a6d9ef" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Border CornerRadius="25" Margin="20,10,20,10" BorderBrush="Red" Background="White" Width="330">
             <StackPanel Orientation="Vertical">
@@ -39,7 +39,7 @@ Title="Login" Height="250" Width="370" WindowState="Normal" WindowStartupLocatio
                                  Margin="0,5" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
 
                     <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                        <Button Content="LOGIN" x:Name="btnLogin" Margin="2,10" Width="100" Height="30"  Background="#80ff00" Foreground="Black" BorderBrush="White" />
+                        <Button Content="LOGIN" Command="{Binding LoginCommand}" x:Name="btnLogin" Margin="2,10" Width="100" Height="30"  Background="#80ff00" Foreground="Black" BorderBrush="White" />
                         <Button Content="CLOSE" x:Name="btnClose" Margin="2,10" Width="100" Background="#ff2d2d" Foreground="Black" BorderBrush="White" />
                     </StackPanel>
                 </Grid>

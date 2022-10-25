@@ -1,16 +1,25 @@
 ﻿using CalibrationTracking.Desktop.Base;
+using CalibrationTracking.Desktop.Login.Commands;
+using CalibrationTracking.Desktop.Login.Windows;
 using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
+using MediatR;
 
 namespace CalibrationTracking.Desktop.Login.ViewModels
 {
     internal class LoginViewModel : BaseViewModel
     {
         private readonly IAuthenticationService _authenticationService;
-
-        public LoginViewModel(IAuthenticationService authenticationService)
+        private readonly LoginWindow _loginWindow;
+        private readonly MainWindow _mainWindow;
+        public LoginViewModel(IAuthenticationService authenticationService, MainWindow mainWindow, IMediator mediator, LoginWindow loginWindow)
         {
             _authenticationService = authenticationService;
+
+            LoginCommand = new LoginCommand(loginWindow, mainWindow, authenticationService);
+            _loginWindow = loginWindow;
         }
+
+        public IAsyncCommand LoginCommand { get; protected set; }
 
         private string _username;
 
