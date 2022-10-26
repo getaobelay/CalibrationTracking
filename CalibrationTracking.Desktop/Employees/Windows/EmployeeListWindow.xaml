@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CalibrationTracking.Desktop.Employees.Windows"
         FlowDirection="RightToLeft"
         xmlns:models="clr-namespace:CalibrationTracking.Core.Employees;assembly=CalibrationTracking.Core"
-        xmlns:control="clr-namespace:CalibrationTracking.CustomeControls.TableControl;assembly=CalibrationTracking.CustomeControls"
+        xmlns:control="clr-namespace:CalibrationTracking.CustomeControls.TableControl;assembly=CalibrationTracking.CustomeControls" xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Employees.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:EmployeeListViewModel}"
         mc:Ignorable="d"
         Title="EmployeeListWindow" Height="450" Width="800">
     <Grid>
@@ -24,7 +24,7 @@
             FilterLanguage="Hebrew"
             HorizontalGridLinesBrush="LightGray"
             IsReadOnly="True"
-            ItemsSource="{Binding FilteredHybridTags, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding Employees, UpdateSourceTrigger=PropertyChanged}"
             LoadingRow="DataGrid_LoadingRow"
             RowHeaderWidth="40"
             ShowElapsedTime="False"

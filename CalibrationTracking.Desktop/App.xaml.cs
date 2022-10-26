@@ -41,6 +41,9 @@ namespace CalibrationTracking.Desktop
             services.AddSingleton<LoginWindow>();
             services.AddSingleton<DepartmentAddOrEditWindow>();
             services.AddSingleton<EmployeeAddOrEditWindow>();
+            services.AddSingleton<EmployeeListWindow>();
+            services.AddSingleton<EmployeesWindow>();
+
 
         }
 
@@ -58,7 +61,7 @@ namespace CalibrationTracking.Desktop
 
 
             await InitiliazeDataBase();
-            var window = _host.Services.GetRequiredService<DepartmentAddOrEditWindow>();
+            var window = _host.Services.GetRequiredService<EmployeeAddOrEditWindow>();
 
             window.Show();
         }

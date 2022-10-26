@@ -12,7 +12,7 @@ namespace CalibrationTracking.Desktop.Departments.Commands
     {
         private readonly IMediator _mediator;
         private readonly DepartmentAddOrEditWindow _departmentAddOrEditWindow;
-
+      
         public DepartmentAddOrEditCommand(DepartmentAddOrEditWindow departmentAddOrEditWindow, IMediator mediator)
         {
             _mediator = mediator;

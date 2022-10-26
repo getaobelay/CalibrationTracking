@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CalibrationTracking.Desktop.Employees.ViewModels;
+using MediatR;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +26,7 @@ namespace CalibrationTracking.Desktop.Employees.Windows
     {
         #region Public Constructors
 
-        public EmployeeListWindow()
+        public EmployeeListWindow(IMediator mediator)
         {
             InitializeComponent();
 
@@ -34,6 +36,8 @@ namespace CalibrationTracking.Desktop.Employees.Windows
                     AppDomain.CurrentDomain.FriendlyName, e.Exception.Message);
             };
 
+
+            DataContext = new EmployeeListViewModel(mediator);
         }
 
 

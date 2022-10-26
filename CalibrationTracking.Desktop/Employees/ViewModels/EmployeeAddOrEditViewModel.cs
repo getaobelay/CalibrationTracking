@@ -111,15 +111,15 @@ namespace CalibrationTracking.Desktop.Employees.ViewModels
             }
         }
 
-        private Guid _selectedDepartment;
+        private Department _selectedDepartment;
 
-        public Guid SelectedDepartment
+        public Department SelectedDepartment
         {
             get
             {
-                if (_selectedDepartment == null && Model.DepartmentId != null)
+                if (_selectedDepartment is null && Model is not null  && Model.Department is not null)
                 {
-                    _selectedDepartment = Model.DepartmentId;
+                    _selectedDepartment = Model.Department;
                 }
 
                 return _selectedDepartment;

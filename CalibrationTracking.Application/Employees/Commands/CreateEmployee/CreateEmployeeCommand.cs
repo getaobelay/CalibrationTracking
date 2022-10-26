@@ -17,6 +17,7 @@ namespace CalibrationTracking.Application.Employees.Commands.CreateEmployee
         public string LastName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
+        public Guid DepartmentId { get; set; }
 
         public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeCommand, Employee>
         {
@@ -34,7 +35,9 @@ namespace CalibrationTracking.Application.Employees.Commands.CreateEmployee
                     FirstName = request.FirstName,
                     LastName = request.LastName,
                     Email = request.Email,
-                    PhoneNumber = request.PhoneNumber
+                    PhoneNumber = request.PhoneNumber,
+                    DepartmentId = request.DepartmentId,
+
                 };
 
 

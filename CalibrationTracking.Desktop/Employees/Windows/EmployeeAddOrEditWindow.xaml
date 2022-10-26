@@ -80,7 +80,7 @@
                 <customeControls:FilterableComboBox Margin="2" Padding="5" x:Name="departmentComboBox" Grid.Column="2"
                                 ItemsSource="{Binding Departments,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                 DisplayMemberPath="Name"
-                                EffectivelySelectedItem="{Binding SelectedDepartment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedItem="{Binding SelectedDepartment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 SelectedValue="Id"
                                 IsEditable="True"
                                 IsTextSearchEnabled="False"

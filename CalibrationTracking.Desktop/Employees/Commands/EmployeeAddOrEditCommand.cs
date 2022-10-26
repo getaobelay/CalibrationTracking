@@ -11,11 +11,13 @@ namespace CalibrationTracking.Desktop.Employees.Commands
     {
         private readonly IMediator _mediator;
         private readonly EmployeeAddOrEditWindow _employeeAddOrEditWindow;
+        private readonly EmployeeListWindow _employeeListWindow;
 
         public EmployeeAddOrEditCommand(EmployeeAddOrEditWindow employeeAddOrEditWindow, IMediator mediator)
         {
             _mediator = mediator;
             _employeeAddOrEditWindow = employeeAddOrEditWindow;
+            _employeeListWindow = new(mediator);
         }
 
 
@@ -38,7 +40,8 @@ namespace CalibrationTracking.Desktop.Employees.Commands
                 FirstName = viewModel.FirstName,
                 LastName = viewModel.LastName,
                 Email = viewModel.Email,
-                PhoneNumber = viewModel.PhoneNumber
+                PhoneNumber = viewModel.PhoneNumber,
+                DepartmentId = viewModel.SelectedDepartment.Id,
             };
 
             var result = await _mediator.Send(command);
@@ -46,10 +49,8 @@ namespace CalibrationTracking.Desktop.Employees.Commands
          
             if(result is not null)
             {
-                ((EmployeeAddOrEditViewModel)_employeeAddOrEditWindow.DataContext).Reload(result);
+                _employeeListWindow.Show();
             }
-       
-
             
         }
     }
