@@ -1,25 +1,17 @@
-﻿using CalibrationTracking.Core.Departments;
+﻿using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Base;
-using CalibrationTracking.Desktop.Departments.Windows;
 using MediatR;
-using CalibrationTracking.Desktop.Departments.Commands;
 
-namespace CalibrationTracking.Desktop.Departments.ViewModels
+namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 {
-    internal class DepartmentAddOrEditViewModel : BaseViewModel<Department>
+    internal class CalibrationViewModel : BaseViewModel<Calibration>
     {
         private readonly IMediator _mediator;
 
-        public DepartmentAddOrEditViewModel(IMediator mediator,DepartmentAddOrEditWindow departmentAddOrEditWindow, Department model) : base(model)
+        public CalibrationViewModel(IMediator mediator, Calibration model):base(model)
         {
             _mediator = mediator;
-            DepartmentAddOrEditCommand = new DepartmentAddOrEditCommand(departmentAddOrEditWindow, mediator);
-
-            Reload(model);
-
         }
-
-        public DepartmentAddOrEditCommand DepartmentAddOrEditCommand { get; protected set; }
 
         private string _name;
         public string Name

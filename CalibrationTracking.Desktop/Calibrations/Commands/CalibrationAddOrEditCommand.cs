@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Departments.ViewModels;
 
-namespace CalibrationTracking.Desktop.Departments.Commands
+namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
-    public class DepartmentAddOrEditCommand : AsyncCommand
+    public class CalibrationAddOrEditCommand : AsyncCommand
     {
         private readonly IMediator _mediator;
         private readonly DepartmentAddOrEditWindow _departmentAddOrEditWindow;
       
-        public DepartmentAddOrEditCommand(DepartmentAddOrEditWindow departmentAddOrEditWindow, IMediator mediator)
+        public CalibrationAddOrEditCommand(DepartmentAddOrEditWindow departmentAddOrEditWindow, IMediator mediator)
         {
             _mediator = mediator;
             _departmentAddOrEditWindow = departmentAddOrEditWindow;
@@ -33,7 +33,7 @@ namespace CalibrationTracking.Desktop.Departments.Commands
 
         public override async Task ExecuteAsync()
         {
-            var viewModel = (DepartmentAddOrEditViewModel)_departmentAddOrEditWindow.DataContext;
+            var viewModel = (CalibrationViewModel)_departmentAddOrEditWindow.DataContext;
 
             var command = new CreateDepartmentCommand
             {
@@ -46,7 +46,7 @@ namespace CalibrationTracking.Desktop.Departments.Commands
          
             if(result is not null)
             {
-                ((DepartmentAddOrEditViewModel)_departmentAddOrEditWindow.DataContext).Reload(result);
+                ((CalibrationViewModel)_departmentAddOrEditWindow.DataContext).Reload(result);
 
                 _departmentAddOrEditWindow.Close();
             }

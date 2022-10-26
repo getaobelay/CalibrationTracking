@@ -1,5 +1,4 @@
 ﻿using CalibrationTracking.Core.Devices;
-using CalibrationTracking.Core.Employees;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

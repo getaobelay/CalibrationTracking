@@ -1,0 +1,106 @@
+﻿<Window x:Class="CalibrationTracking.Desktop.Calibrations.Windows.CalibrationAddOrEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalibrationTracking.Desktop.Calibrations.Windows"
+        mc:Ignorable="d"
+        FlowDirection="RightToLeft"
+        Title="CalibrationAddOrEditWindow" Height="450" Width="800">
+
+    <Grid VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Margin="20" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="10*" />
+
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label HorizontalAlignment="Left" Content="שם עובד:" />
+                    <TextBox Margin="2" Padding="5" Text="{Binding FirstName}" />
+
+                </StackPanel>
+
+
+                <StackPanel Grid.Column="1">
+                    <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="מחלקה:" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding LastName}" />
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label HorizontalAlignment="Left" Content="שם הצמד:" />
+                    <TextBox Margin="2" Padding="5" Text="{Binding Email}" />
+
+                </StackPanel>
+
+
+                <StackPanel Grid.Column="1">
+                    <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="דגם:" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding PhoneNumber}" />
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label HorizontalAlignment="Left" Content="שם מקבל המכשיר:" />
+                    <TextBox Margin="2" Padding="5" Text="{Binding Email}" />
+
+                </StackPanel>
+
+
+                <StackPanel Grid.Column="1">
+                    <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="תדירות כיול:" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding PhoneNumber}" />
+                </StackPanel>
+
+            </Grid>
+
+
+
+            <Grid  VerticalAlignment="Center"  Margin="0 20"  Grid.Row="4" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="40*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="שמור"  Command="{Binding EmployeeAddOrEditCommand}" Padding="5" Grid.Column="0" />
+                <Button Content="ביטול" Grid.Column="2" />
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>
