@@ -1,5 +1,4 @@
-﻿using CalibrationTracking.Application.Employees.Queries.GetAllDepartments;
-using CalibrationTracking.Core.Departments;
+﻿using CalibrationTracking.Core.Departments;
 using CalibrationTracking.Core.Employees;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Employees.Commands;
@@ -8,6 +7,7 @@ using MediatR;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using CalibrationTracking.Application.Departments.GetAllDepartments;
 
 namespace CalibrationTracking.Desktop.Employees.ViewModels
 {

@@ -2,8 +2,9 @@
 using CalibrationTracking.Core.Departments;
 using CalibrationTracking.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using CalibrationTracking.Application.Departments.GetAllDepartments;
 
-namespace CalibrationTracking.Application.Employees.Queries.GetAllDepartments
+namespace CalibrationTracking.Application.Departments.GetAllDepartments
 {
     public class GetAllDepartmentsQuery : IRequest<List<Department>>
     {

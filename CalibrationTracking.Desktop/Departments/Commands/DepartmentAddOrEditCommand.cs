@@ -47,8 +47,6 @@ namespace CalibrationTracking.Desktop.Departments.Commands
             {
                 ((DepartmentAddOrEditViewModel)_departmentAddOrEditWindow.DataContext).Reload(result);
             }
-       
-
             
         }
     }
