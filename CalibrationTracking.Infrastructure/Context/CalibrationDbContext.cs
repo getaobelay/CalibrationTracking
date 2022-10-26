@@ -1,4 +1,6 @@
-﻿using CalibrationTracking.Core.Departments;
+﻿using CalibrationTracking.Core.Calibrations;
+using CalibrationTracking.Core.Departments;
+using CalibrationTracking.Core.Devices;
 using CalibrationTracking.Core.Employees;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -19,6 +21,8 @@ namespace CalibrationTracking.Infrastructure.Context
 
         public virtual DbSet<Employee> Employees { get; set; } = null!;
         public virtual DbSet<Department> Departments { get; set; } = null!;
+        public virtual DbSet<Device> Devices { get; set; } = null!;
+        public virtual DbSet<Calibration> Calibrations { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

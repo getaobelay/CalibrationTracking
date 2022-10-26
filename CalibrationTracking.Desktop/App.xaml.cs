@@ -42,7 +42,6 @@ namespace CalibrationTracking.Desktop
             services.AddSingleton<DepartmentAddOrEditWindow>();
             services.AddSingleton<EmployeeAddOrEditWindow>();
             services.AddSingleton<EmployeeListWindow>();
-            services.AddSingleton<EmployeesWindow>();
 
 
         }

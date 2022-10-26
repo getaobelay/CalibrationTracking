@@ -22,6 +22,7 @@ namespace CalibrationTracking.Desktop.Services
             foreach (System.Windows.Window window in System.Windows.Application.Current.Windows)
             {
                 var w_id = window.DataContext as IRequireViewIdentification;
+
                 if (w_id != null && w_id.ViewId.Equals(id))
                 {
                     window.Hide();
