@@ -46,6 +46,8 @@ namespace CalibrationTracking.Desktop.Departments.Commands
             if(result is not null)
             {
                 ((DepartmentAddOrEditViewModel)_departmentAddOrEditWindow.DataContext).Reload(result);
+
+                _departmentAddOrEditWindow.Close();
             }
             
         }

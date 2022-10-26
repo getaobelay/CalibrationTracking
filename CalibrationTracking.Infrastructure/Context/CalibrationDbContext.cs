@@ -22,10 +22,10 @@ namespace CalibrationTracking.Infrastructure.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //if (!optionsBuilder.IsConfigured)
-            //{
-            //    optionsBuilder.UseSqlServer("Data Source=il-tadi-sql02;Initial Catalog=CalibrationbContext;Integrated Security=SSPI;MultipleActiveResultSets=True;");
-            //}
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=DevelopmentCalibrationDb;Trusted_Connection=true;MultipleActiveResultSets=true;Min Pool Size=1;Max Pool Size=100");
+            }
 
             base.OnConfiguring(optionsBuilder);
         }

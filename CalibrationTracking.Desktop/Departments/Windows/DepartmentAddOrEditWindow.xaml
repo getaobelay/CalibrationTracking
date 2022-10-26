@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CalibrationTracking.Desktop.Departments.Windows" xmlns:customeControls="clr-namespace:CalibrationTracking.CustomeControls;assembly=CalibrationTracking.CustomeControls" xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Departments.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DepartmentAddOrEditViewModel}"
         mc:Ignorable="d"
         FlowDirection="RightToLeft"
-        Title="DepartmentAddOrEditWindow" Height="250" Width="600">
+        Title="עריכה" Height="250" Width="600">
 
     <Grid>
         <Grid.RowDefinitions>
