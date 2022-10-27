@@ -1,8 +1,11 @@
-﻿using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
+﻿using CalibrationTracking.Application.Calibrations.Commands.CreateCalibration;
+using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
 using CalibrationTracking.Application.Employees.Queries.GetAllEmployees;
 using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Core.Employees;
 using CalibrationTracking.Desktop.Base;
+using CalibrationTracking.Desktop.Calibrations.Commands;
+using CalibrationTracking.Desktop.Calibrations.Windows;
 using MediatR;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -13,11 +16,13 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
     {
         private readonly IMediator _mediator;
 
-        public CalibrationListViewModel(IMediator mediator)
+        public CalibrationListViewModel(CalibrationAddOrEditWindow calibrationAddOrEditWindow, CalibrationListWindow calibrationListWindow, IMediator mediator)
         {
 
             _mediator = mediator;
 
+            OpenCreateCalibrationWindowCommand = new OpenCreateCalibrationWindowCommand(calibrationListWindow, calibrationAddOrEditWindow, mediator);
+            PrintCalibrationCommand = new PrintCalibrationCommand(calibrationListWindow, mediator);
             LoadData();
 
         }
@@ -27,6 +32,9 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             await GetAllCalibration();
         }
 
+
+        public OpenCreateCalibrationWindowCommand OpenCreateCalibrationWindowCommand { get; protected set; }
+        public PrintCalibrationCommand PrintCalibrationCommand { get; protected set; }
 
         private ObservableCollection<Calibration>? _calibrations;
 

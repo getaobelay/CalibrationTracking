@@ -18,7 +18,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     {
   
 
-        public CalibrationListWindow(IMediator mediator)
+        public CalibrationListWindow(CalibrationAddOrEditWindow calibrationAddOrEditWindow, IMediator mediator)
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
             };
 
 
-            DataContext = new CalibrationListViewModel(mediator);
+            DataContext = new CalibrationListViewModel(calibrationAddOrEditWindow, this,mediator);
         }
 
 

@@ -63,7 +63,7 @@ namespace CalibrationTracking.Desktop
 
 
             await InitiliazeDataBase();
-            var window = _host.Services.GetRequiredService<CalibrationAddOrEditWindow>();
+            var window = _host.Services.GetRequiredService<CalibrationListWindow>();
 
             window.Show();
         }

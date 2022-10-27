@@ -6,13 +6,78 @@
         xmlns:local="clr-namespace:CalibrationTracking.Desktop.Calibrations.Windows"
         xmlns:control="clr-namespace:CalibrationTracking.CustomeControls.TableControl;assembly=CalibrationTracking.CustomeControls"
         xmlns:models="clr-namespace:CalibrationTracking.Core.Calibrations;assembly=CalibrationTracking.Core" 
-        xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Calibrations.ViewModels" 
+        xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Calibrations.ViewModels" xmlns:controls="clr-namespace:CalibrationTracking.CustomeControls;assembly=CalibrationTracking.CustomeControls"
         d:DataContext="{d:DesignInstance Type=viewmodels:CalibrationListViewModel}"
         FlowDirection="RightToLeft"
         mc:Ignorable="d"
-        Title="CalibrationListWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="CalibrationListWindow" Height="700" Width="1200">
     <Grid>
-        <control:FilterDataGrid Margin="5"
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        
+        <GroupBox  Grid.Row="0" Grid.ColumnSpan="5" Background="#FFEDF3F8"
+                                      BorderThickness="1" Margin="5 5">
+
+            <GroupBox.Effect>
+                <DropShadowEffect Color="#a9a9a9" Direction="320" ShadowDepth="8" BlurRadius="10" Opacity="0.5" />
+            </GroupBox.Effect>
+            <Grid Grid.Row="1" VerticalAlignment="Center" Margin="0 0 0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="45*" />
+                    <ColumnDefinition Width="35*" />
+                </Grid.ColumnDefinitions>
+   
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="20*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <controls:IconButton VerticalAlignment="Bottom"
+                                      Grid.Column="4"
+                                     Width="60"
+                                         Height="36"
+                                      FontSize="25"
+                                         FontWeight="SemiBold"
+                                     Command="{Binding OpenCreateCalibrationWindowCommand, Mode=OneWay}"
+                                      Text="הוסף"
+                                        Focusable="False"
+                                        IsEnabled="True"
+                                        BorderThickness="1"
+                                         Foreground="{DynamicResource SuccessColor}"
+                                         PathData="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z">
+                    </controls:IconButton>
+
+                    <controls:IconButton VerticalAlignment="Bottom"
+                                      Grid.Column="0"
+                                     Width="60"
+                                         Height="36"
+                                      FontSize="25"
+                                         FontWeight="SemiBold"
+                                     Command="{Binding PrintCalibrationCommand, Mode=OneWay}"
+                                      Text="הוסף"
+                                        Focusable="False"
+                                        IsEnabled="True"
+                                        BorderThickness="1"
+                                         Foreground="{DynamicResource SuccessColor}"
+                                         PathData="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z">
+                    </controls:IconButton>
+
+                </Grid>
+            </Grid>
+        </GroupBox>
+
+        <control:FilterDataGrid Margin="5" Grid.Row="2"
             x:Name="FilterDataGrid"
             BorderThickness="0"
              AlternatingRowBackground="WhiteSmoke"

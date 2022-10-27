@@ -14,12 +14,12 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
         private readonly IMediator _mediator;
 
-        public CalibrationAddOrEditViewModel(Windows.CalibrationAddOrEditWindow calibrationAddOrEditWindow, CalibrationListWindow calibrationListWindow, IMediator mediator, Calibration model) : base(model)
+        public CalibrationAddOrEditViewModel(Windows.CalibrationAddOrEditWindow calibrationAddOrEditWindow, IMediator mediator, Calibration model) : base(model)
         {
             _mediator = mediator;
 
             _calibrationAddOrEditWindow = calibrationAddOrEditWindow;
-            CalibrationAddOrEditCommand = new CalibrationAddOrEditCommand(calibrationAddOrEditWindow,calibrationListWindow, mediator);
+            CalibrationAddOrEditCommand = new CalibrationAddOrEditCommand(calibrationAddOrEditWindow, mediator);
 
             Reload(model);
         }
