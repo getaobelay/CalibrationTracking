@@ -9,12 +9,14 @@ namespace CalibrationTracking.Core.Calibrations
     {
 
         public string CalibrationSKU { get; set; } = null!;
-        public Employee? Employee { get; set; }
-        public Device? Device { get; set; }
+        public string? Employee { get; set; }
+        public string? Department { get; set; }
+        public string? Description { get; set; }
+        public string? Device { get; set; }
         public string? Remarks { get; set; }
         public string? Frequency { get; set; }
         public DateTime CreatedAt { get; set; }
-      
+
 
     }
 }

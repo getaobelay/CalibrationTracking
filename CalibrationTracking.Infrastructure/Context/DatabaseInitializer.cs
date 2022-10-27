@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Core.Departments;
 using CalibrationTracking.Infrastructure.Context;
 using CalibrationTracking.Infrastructure.Properties;
@@ -101,11 +102,23 @@ namespace CalibrationTracking.Infrastructure.Context
         {
             if (!_context.Departments.Any())
             {
-                var departments = JsonHelpers.GetJsonResourceAsObject<List<Department>>(Resources.departments);
+                var departments = JsonHelpers.GetJsonResourceAsObject<List<Department>>(Resources.Departments);
 
                 departments = departments.DistinctBy(x => x.Name).ToList();
 
                 await _context.AddRangeAsync(departments);
+            }
+
+
+
+
+            if (!_context.Calibrations.Any())
+            {
+                var calibrations = JsonHelpers.GetJsonResourceAsObject<List<Calibration>>(Resources.Calibrations);
+
+                calibrations = calibrations.DistinctBy(x => x.CalibrationSKU).ToList();
+
+                await _context.AddRangeAsync(calibrations);
             }
 
 

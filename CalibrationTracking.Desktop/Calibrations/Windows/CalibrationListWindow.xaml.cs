@@ -1,33 +1,24 @@
-﻿using CalibrationTracking.Desktop.Employees.ViewModels;
+﻿using CalibrationTracking.Desktop.Calibrations.ViewModels;
+using CalibrationTracking.Desktop.Employees.ViewModels;
 using MediatR;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using CalibrationTracking.Desktop.Calibrations.ViewModels;
+using System.Diagnostics;
+using System.Collections;
 
-namespace CalibrationTracking.Desktop.Employees.Windows
+namespace CalibrationTracking.Desktop.Calibrations.Windows
 {
     /// <summary>
-    /// Interaction logic for EmployeeListWindow.xaml
+    /// Interaction logic for CalibrationListWindow.xaml
     /// </summary>
-    public partial class EmployeeListWindow : Window
+    public partial class CalibrationListWindow : Window
     {
-        #region Public Constructors
+  
 
-        public EmployeeListWindow(IMediator mediator)
+        public CalibrationListWindow(IMediator mediator)
         {
             InitializeComponent();
 
@@ -38,11 +29,10 @@ namespace CalibrationTracking.Desktop.Employees.Windows
             };
 
 
-            DataContext = new EmployeeListViewModel(mediator);
+            DataContext = new CalibrationListViewModel(mediator);
         }
 
 
-        #endregion Public Constructors
 
 
 
@@ -77,6 +67,5 @@ namespace CalibrationTracking.Desktop.Employees.Windows
                 if (null != row) yield return row;
             }
         }
-
     }
 }

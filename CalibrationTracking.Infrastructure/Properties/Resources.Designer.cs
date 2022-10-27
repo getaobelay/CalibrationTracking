@@ -63,9 +63,19 @@ namespace CalibrationTracking.Infrastructure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] departments {
+        internal static byte[] Calibrations {
             get {
-                object obj = ResourceManager.GetObject("departments", resourceCulture);
+                object obj = ResourceManager.GetObject("Calibrations", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Departments {
+            get {
+                object obj = ResourceManager.GetObject("Departments", resourceCulture);
                 return ((byte[])(obj));
             }
         }

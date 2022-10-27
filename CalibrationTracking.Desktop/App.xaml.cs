@@ -1,4 +1,5 @@
 ﻿using CalibrationTracking.Application;
+using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.Departments.Windows;
 using CalibrationTracking.Desktop.Employees.Windows;
 using CalibrationTracking.Desktop.Login.Windows;
@@ -30,10 +31,10 @@ namespace CalibrationTracking.Desktop
               .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .Build();
 
-            _host = Host.CreateDefaultBuilder().ConfigureServices((context, services) => ConfigureServicesAsync(services)).Build();
+            _host = Host.CreateDefaultBuilder().ConfigureServices((context, services) => ConfigureServices(services)).Build();
         }
 
-        private async Task ConfigureServicesAsync(IServiceCollection services)
+        private void ConfigureServices(IServiceCollection services)
         {
             services.AddInfrastructure(_configuration);
             services.AddApplication();
@@ -42,6 +43,7 @@ namespace CalibrationTracking.Desktop
             services.AddSingleton<DepartmentAddOrEditWindow>();
             services.AddSingleton<EmployeeAddOrEditWindow>();
             services.AddSingleton<EmployeeListWindow>();
+            services.AddSingleton<CalibrationListWindow>();
 
 
         }
@@ -60,7 +62,7 @@ namespace CalibrationTracking.Desktop
 
 
             await InitiliazeDataBase();
-            var window = _host.Services.GetRequiredService<EmployeeAddOrEditWindow>();
+            var window = _host.Services.GetRequiredService<CalibrationListWindow>();
 
             window.Show();
         }

@@ -13,48 +13,45 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CalibrationTracking.Application.Calibrations.Commands.CreateCalibration
 {
-	public class CreateCalibrationCommand : IRequest<Calibration>
-	{
-		public string CalibrationSKU { get; set; } = null!;
-		public Guid? EmployeeId { get; set; }
-		public Guid? DeviceId { get; set; }
-		public string? Remarks { get; set; }
-		public string? Frequency { get; set; }
+    public class CreateCalibrationCommand : IRequest<Calibration>
+    {
+        public string CalibrationSKU { get; set; } = null!;
+        public string? Employee { get; set; }
+        public string? Device { get; set; }
+        public string? Remarks { get; set; }
+        public string? Frequency { get; set; }
+        public string? Department { get; set; }
+        public string? Description { get; set; }
 
-		public class CreateCalibrationCommandHandler : IRequestHandler<CreateCalibrationCommand, Calibration>
-		{
-			private readonly CalibrationDbContext _context;
+        public DateTime CreatedAt { get; set; }
+        public class CreateCalibrationCommandHandler : IRequestHandler<CreateCalibrationCommand, Calibration>
+        {
+            private readonly CalibrationDbContext _context;
 
-			public CreateCalibrationCommandHandler(CalibrationDbContext context)
-			{
-				_context = context;
-			}
+            public CreateCalibrationCommandHandler(CalibrationDbContext context)
+            {
+                _context = context;
+            }
 
-			public async Task<Calibration> Handle(CreateCalibrationCommand request, CancellationToken cancellationToken)
-			{
-				var device = await _context.Devices.SingleOrDefaultAsync(x => x.Id == request.DeviceId);
+            public async Task<Calibration> Handle(CreateCalibrationCommand request, CancellationToken cancellationToken)
+            {
+                var calibration = new Calibration
+                {
+                    CalibrationSKU = request.CalibrationSKU,
+                    Device = request.Device,
+                    Employee = request.Employee,
+                    Frequency = request.Frequency,
+                    Remarks = request.Remarks,
+                    Department = request.Department,
+                    Description = request.Description,
+                    CreatedAt = DateTime.Now,
+                };
 
-				if (device == null) throw new ArgumentNullException(nameof(Device));
+                await _context.AddAsync(calibration);
+                await _context.SaveChangesAsync(cancellationToken);
 
-				var employee = await _context.Employees.SingleOrDefaultAsync(x => x.Id == request.EmployeeId);
-
-				if (employee == null) throw new ArgumentNullException(nameof(Employee));
-
-
-				var calibration = new Calibration
-				{
-					CalibrationSKU = request.CalibrationSKU,
-					Device = device,
-					Employee = employee,
-					Frequency = request.Frequency,
-					Remarks = request.Remarks,
-				};
-
-				await _context.AddAsync(calibration);
-				await _context.SaveChangesAsync(cancellationToken);
-
-				return calibration;
-			}
-		}
-	}
+                return calibration;
+            }
+        }
+    }
 }

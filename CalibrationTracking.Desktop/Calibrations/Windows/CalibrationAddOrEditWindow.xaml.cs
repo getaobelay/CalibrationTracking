@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalibrationTracking.Desktop.Calibrations.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     /// </summary>
     public partial class CalibrationAddOrEditWindow : Window
     {
-        public CalibrationAddOrEditWindow()
+        public CalibrationAddOrEditWindow(MediatR.IMediator mediator)
         {
             InitializeComponent();
+
+            DataContext = new CalibrationAddOrEditViewModel(this,mediator, null);
         }
     }
 }
