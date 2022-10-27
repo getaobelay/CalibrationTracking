@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalibrationTracking.Desktop.Calibrations.Windows"
         xmlns:control="clr-namespace:CalibrationTracking.CustomeControls.TableControl;assembly=CalibrationTracking.CustomeControls"
-        xmlns:models="clr-namespace:CalibrationTracking.Core.Calibrations;assembly=CalibrationTracking.Core" xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Calibrations.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CalibrationListViewModel}"
+        xmlns:models="clr-namespace:CalibrationTracking.Core.Calibrations;assembly=CalibrationTracking.Core" 
+        xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Calibrations.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:CalibrationListViewModel}"
         FlowDirection="RightToLeft"
         mc:Ignorable="d"
         Title="CalibrationListWindow" Height="450" Width="800">

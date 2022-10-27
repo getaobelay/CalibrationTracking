@@ -22,7 +22,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
         }
 
-        private async void LoadData()
+        public async void LoadData()
         {
             await GetAllCalibration();
         }
@@ -38,6 +38,8 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
         private async Task GetAllCalibration()
         {
+            _calibrations = null;
+
             var query = new GetAllCalibrationsQuery();
 
             var calibrations = await _mediator.Send(query);
@@ -46,5 +48,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
             RaisePropertyChanged(nameof(Calibrations));
         }
+
+
     }
 }

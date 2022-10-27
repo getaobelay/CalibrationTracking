@@ -14,16 +14,18 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
         private readonly IMediator _mediator;
 
-        public CalibrationAddOrEditViewModel(Windows.CalibrationAddOrEditWindow calibrationAddOrEditWindow, IMediator mediator, Calibration model) : base(model)
+        public CalibrationAddOrEditViewModel(Windows.CalibrationAddOrEditWindow calibrationAddOrEditWindow, CalibrationListWindow calibrationListWindow, IMediator mediator, Calibration model) : base(model)
         {
             _mediator = mediator;
 
             _calibrationAddOrEditWindow = calibrationAddOrEditWindow;
-            CalibrationAddOrEditCommand = new CalibrationAddOrEditCommand(calibrationAddOrEditWindow, mediator);
+            CalibrationAddOrEditCommand = new CalibrationAddOrEditCommand(calibrationAddOrEditWindow,calibrationListWindow, mediator);
+
+            Reload(model);
         }
 
-        private string _remarks;
-        public string Remarks
+        private string? _remarks;
+        public string? Remarks
         {
             get
             {
@@ -40,8 +42,8 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             }
         }
 
-        private string _frequency;
-        public string Frequency
+        private string? _frequency;
+        public string? Frequency
         {
             get
             {
@@ -58,10 +60,10 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             }
         }
 
-        private string _calibrationSKU;
+        private string? _calibrationSKU;
 
 
-        public string CalibrationSKU
+        public string? CalibrationSKU
         {
             get
             {
@@ -80,9 +82,9 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
 
 
-        private string _selectedDevice;
+        private string? _selectedDevice;
 
-        public string SelectedDevice
+        public string? SelectedDevice
         {
             get
             {
@@ -100,9 +102,9 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         }
 
 
-        private string _selectedEmployee;
+        private string? _selectedEmployee;
 
-        public string SelectedEmployee
+        public string? SelectedEmployee
         {
             get
             {
@@ -121,8 +123,8 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
 
 
-        private string _selectedDepartment;
-        public string SelectedDepartment
+        private string? _selectedDepartment;
+        public string? SelectedDepartment
         {
             get
             {
@@ -131,7 +133,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
             set
             {
-                if (!_selectedDepartment.Equals(value))
+                if (!value.Equals(_selectedDepartment))
                 {
                     _selectedDepartment = value;
                     RaisePropertyChanged();
@@ -139,9 +141,9 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             }
         }
 
-        private string _description;
+        private string? _description;
 
-        public string Description
+        public string? Description
         {
             get
             {
@@ -156,6 +158,38 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                     RaisePropertyChanged();
                 }
             }
+        }
+
+
+        public override void Reload(Calibration model)
+        {
+            _selectedDevice = string.Empty;
+            _selectedEmployee = string.Empty;
+            _remarks = string.Empty;
+            _frequency = string.Empty;
+            _description = string.Empty;
+            _calibrationSKU = string.Empty;
+            _description = string.Empty;
+
+            RaisePropertyChanged(nameof(Remarks));
+            RaisePropertyChanged(nameof(Frequency));
+            RaisePropertyChanged(nameof(SelectedDevice));
+            RaisePropertyChanged(nameof(SelectedEmployee));
+            RaisePropertyChanged(nameof(SelectedDepartment));
+            RaisePropertyChanged(nameof(Description));
+            ;
+
+            base.Reload(null);
+        }
+
+        public override Calibration ToModel()
+        {
+            return base.ToModel();
+        }
+
+        public void Undo()
+        {
+            Reload(Model);
         }
 
 

@@ -20,11 +20,11 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     /// </summary>
     public partial class CalibrationAddOrEditWindow : Window
     {
-        public CalibrationAddOrEditWindow(MediatR.IMediator mediator)
+        public CalibrationAddOrEditWindow(CalibrationListWindow calibrationListWindow, MediatR.IMediator mediator)
         {
             InitializeComponent();
 
-            DataContext = new CalibrationAddOrEditViewModel(this,mediator, null);
+            DataContext = new CalibrationAddOrEditViewModel(this,calibrationListWindow,mediator, null);
         }
     }
 }

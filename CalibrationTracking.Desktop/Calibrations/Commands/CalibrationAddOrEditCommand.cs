@@ -15,11 +15,12 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
     {
         private readonly IMediator _mediator;
         private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
-
-        public CalibrationAddOrEditCommand(CalibrationAddOrEditWindow calibrationAddOrEditWindow, IMediator mediator)
+        private readonly CalibrationListWindow _calibrationListWindow;
+        public CalibrationAddOrEditCommand(CalibrationAddOrEditWindow calibrationAddOrEditWindow, CalibrationListWindow calibrationListWindow, IMediator mediator)
         {
             _mediator = mediator;
             _calibrationAddOrEditWindow = calibrationAddOrEditWindow;
+            _calibrationListWindow = calibrationListWindow;
         }
 
 
@@ -47,6 +48,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
                 Description = viewModel.Description,
                 Remarks = viewModel.Remarks,
                 CalibrationSKU = viewModel.CalibrationSKU,
+                Department = viewModel.SelectedDepartment,
             };
 
             var result = await _mediator.Send(command);
@@ -57,6 +59,12 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
                 ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(result);
 
                 _calibrationAddOrEditWindow.Close();
+
+                ((CalibrationListViewModel)_calibrationListWindow.DataContext).LoadData();
+
+                _calibrationListWindow.Show();
+
+
             }
 
         }
