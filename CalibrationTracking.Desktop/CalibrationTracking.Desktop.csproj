@@ -8,12 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Assets\AppBarIcons\Assignments.png" />
-	  <None Remove="Assets\AppBarIcons\Home.png" />
-	  <None Remove="Assets\Logo.scale-100.png" />
-	  <None Remove="Assets\SmallLogo.scale-100.png" />
-	  <None Remove="Assets\SplashScreen.scale-100.png" />
-	  <None Remove="Assets\StoreLogo.scale-100.png" />
 	  <None Remove="Resources\CalibrationPrint-1.jpg" />
 	  <None Remove="Resources\LibreBarcode39Text-Regular.ttf" />
 	</ItemGroup>
@@ -31,32 +25,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="Assets\Logo.scale-100.png">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="Assets\SmallLogo.scale-100.png">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="Assets\SplashScreen.scale-100.png">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="Assets\StoreLogo.scale-100.png">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
 	  <Content Include="Resources\CalibrationPrint-1.jpg">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	  <Content Include="Resources\LibreBarcode39Text-Regular.ttf">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="Assets\AppBarIcons\Assignments.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="Assets\AppBarIcons\Home.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
 
