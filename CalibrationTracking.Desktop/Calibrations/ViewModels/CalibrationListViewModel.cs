@@ -1,28 +1,24 @@
-﻿using CalibrationTracking.Application.Calibrations.Commands.CreateCalibration;
-using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
-using CalibrationTracking.Application.Employees.Queries.GetAllEmployees;
+﻿using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
 using CalibrationTracking.Core.Calibrations;
-using CalibrationTracking.Core.Employees;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Windows;
-using MediatR;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
-namespace CalibrationTracking.Desktop.Calibrations.ViewModels
+namespace CalibrationTracking.Desktop.Calibrations.Views
 {
     internal class CalibrationListViewModel : BaseViewModel
     {
-        private readonly IMediator _mediator;
+        private readonly CalibrationTableView _calibrationTableView;
 
-        public CalibrationListViewModel(CalibrationAddOrEditWindow calibrationAddOrEditWindow, CalibrationListWindow calibrationListWindow, IMediator mediator)
+        public CalibrationListViewModel(CalibrationTableView calibrationTableView)
         {
+            _calibrationTableView  = calibrationTableView;
 
-            _mediator = mediator;
-
-            OpenCreateCalibrationWindowCommand = new OpenCreateCalibrationWindowCommand(calibrationListWindow, calibrationAddOrEditWindow, mediator);
-            PrintCalibrationCommand = new PrintCalibrationCommand(calibrationListWindow, mediator);
+            OpenAddOrEditCommand = new OpenAddOrEditWindowCommand(calibrationTableView, new CalibrationAddOrEditWindow());
+            OpenScanBarcodeCommand = new OpenScanBarocodeWindowCommand(new Main.Windows.ScanBarcodeWindow());
             LoadData();
 
         }
@@ -33,27 +29,33 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         }
 
 
-        public OpenCreateCalibrationWindowCommand OpenCreateCalibrationWindowCommand { get; protected set; }
-        public PrintCalibrationCommand PrintCalibrationCommand { get; protected set; }
+
 
         private ObservableCollection<Calibration>? _calibrations;
+        private Calibration _selectedCalibration;
 
         public ObservableCollection<Calibration>? Calibrations
         { get { return _calibrations; } set { _calibrations = value; RaisePropertyChanged(); } }
 
 
+        public Calibration SelectedCalibration { get { return _selectedCalibration; } set { _selectedCalibration = value; RaisePropertyChanged(); } }
 
+        public AsyncCommand OpenAddOrEditCommand { get; protected set; } 
+        public AsyncCommand OpenScanBarcodeCommand { get; protected set; } 
 
         private async Task GetAllCalibration()
         {
             _calibrations = null;
+            _selectedCalibration = null;
 
             var query = new GetAllCalibrationsQuery();
 
-            var calibrations = await _mediator.Send(query);
+            var calibrations = await UserControlHelper.Mediator.Send(query);
 
             _calibrations = new(calibrations);
 
+
+            RaisePropertyChanged(nameof(SelectedCalibration));
             RaisePropertyChanged(nameof(Calibrations));
         }
 

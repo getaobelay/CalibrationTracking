@@ -3,9 +3,10 @@ using System;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Drawing.Text;
+using System.IO;
 using System.Runtime.InteropServices;
 
-internal sealed class PrintImageHelper
+public sealed class PrintImageHelper
 {
     public static Bitmap? Tag { get; private set; }
 
@@ -20,12 +21,12 @@ internal sealed class PrintImageHelper
         Bitmap tag = Resources.CalibrationPrint;
 
         Brush black = Brushes.Black;
-        float fontSize = 12f;
-        float spacing = 197f;
-        float halfWidth = 43f;
+        float fontSize = 16f;
+        float spacing = 120f;
+        float halfWidth = 150f;
 
-        PointF cellTypePos = new(halfWidth, 600f + spacing);
-        PointF batchPos = new(halfWidth, spacing += 80f);
+        PointF skuPos = new(halfWidth, 600f + spacing);
+        PointF employeePos = new(halfWidth, spacing += 170f);
         PointF cellCountPos = new(halfWidth, spacing += 70f);
         PointF cellAgePos = new(halfWidth, spacing += 65f);
         RectangleF drawRect = new(halfWidth, spacing += 60f, 500f, 400f);
@@ -58,8 +59,8 @@ internal sealed class PrintImageHelper
 
         graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
 
-        graphics.DrawString(sku, arialFont, black, cellTypePos);
-        graphics.DrawString(employee, arialFont, black, batchPos);
+        graphics.DrawString(sku, arialFont, black, skuPos);
+        graphics.DrawString(employee, arialFont, black, employeePos);
         graphics.DrawString(department, arialFont, black, cellCountPos);
         graphics.DrawString(description, arialFont, black, cellAgePos);
         graphics.DrawString(device, new Font("Arial", 18f, FontStyle.Bold), Brushes.White, approvelPos, barcodeFormat);
@@ -120,11 +121,14 @@ internal sealed class PrintImageHelper
     private static void PrintPageEvent(object s, PrintPageEventArgs e)
     {
         float cmToUnits = 100f / 2.54f;
-        float width = 9.6f * cmToUnits;
-        float height = 13.6f * cmToUnits;
-        e.PageSettings.PaperSize = new() { RawKind = (int)PaperKind.A6 };
+        float width = 17.6f * cmToUnits;
+        float height = 40.6f * cmToUnits;
+
+
+        e.PageSettings.PaperSize = new() { RawKind = (int)PaperKind.A4 };
         e.PageSettings.PrinterResolution.Kind = PrinterResolutionKind.High;
         e.PageSettings.PaperSource = new() { RawKind = (int)PaperSourceKind.Manual };
         e.Graphics.DrawImage(Tag, 0, 0, width, height);
     }
+
 }

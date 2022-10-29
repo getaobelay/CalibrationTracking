@@ -1,10 +1,12 @@
-﻿using CalibrationTracking.Application;
+﻿using AutoMapper;
+using CalibrationTracking.Application;
 using CalibrationTracking.Desktop.Calibrations.Windows;
-using CalibrationTracking.Desktop.Departments.Windows;
-using CalibrationTracking.Desktop.Employees.Windows;
-using CalibrationTracking.Desktop.Login.Windows;
+using CalibrationTracking.Desktop.CustomeMessageBox;
+using CalibrationTracking.Desktop.Main.Windows;
+using CalibrationTracking.Desktop.Services.CustomeMessageBox;
 using CalibrationTracking.Infrastructure;
 using CalibrationTracking.Infrastructure.UserRepostories.Interfaces;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +16,17 @@ using System.Windows;
 
 namespace CalibrationTracking.Desktop
 {
+
+    public static class UserControlHelper
+    {
+        public static IMediator Mediator { get; internal set; }
+        public static IMapper Mapper { get; internal set; }
+        public static IDialogService? DialogService { get; internal set; }
+
+
+      
+    }
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -39,12 +52,9 @@ namespace CalibrationTracking.Desktop
             services.AddInfrastructure(_configuration);
             services.AddApplication();
             services.AddSingleton<MainWindow>();
-            services.AddSingleton<LoginWindow>();
-            services.AddSingleton<DepartmentAddOrEditWindow>();
-            services.AddSingleton<EmployeeAddOrEditWindow>();
-            services.AddSingleton<EmployeeListWindow>();
-            services.AddSingleton<CalibrationListWindow>();
             services.AddSingleton<CalibrationAddOrEditWindow>();
+            services.AddSingleton<ScanBarcodeWindow>();
+            services.AddSingleton<IDialogService, DialogService>();
 
 
         }
@@ -61,9 +71,12 @@ namespace CalibrationTracking.Desktop
 
             base.OnStartup(e);
 
+            UserControlHelper.Mediator = (IMediator?)_host.Services.GetRequiredService<IMediator>();
+            UserControlHelper.Mapper = (IMapper?)_host.Services.GetRequiredService<IMapper>();
+            UserControlHelper.DialogService = (IDialogService?)_host.Services.GetRequiredService<IDialogService>();
 
             await InitiliazeDataBase();
-            var window = _host.Services.GetRequiredService<CalibrationListWindow>();
+            var window = _host.Services.GetRequiredService<MainWindow>();
 
             window.Show();
         }

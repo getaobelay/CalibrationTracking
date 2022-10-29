@@ -8,11 +8,41 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Assets\AppBarIcons\Assignments.png" />
+	  <None Remove="Assets\AppBarIcons\Home.png" />
+	  <None Remove="Assets\Logo.scale-100.png" />
+	  <None Remove="Assets\SmallLogo.scale-100.png" />
+	  <None Remove="Assets\SplashScreen.scale-100.png" />
+	  <None Remove="Assets\StoreLogo.scale-100.png" />
 	  <None Remove="Resources\CalibrationPrint-1.jpg" />
 	  <None Remove="Resources\LibreBarcode39Text-Regular.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <COMReference Include="BarTender">
+	    <WrapperTool>tlbimp</WrapperTool>
+	    <VersionMinor>2</VersionMinor>
+	    <VersionMajor>11</VersionMajor>
+	    <Guid>d58562c1-e51b-11cf-8941-00a024a9083f</Guid>
+	    <Lcid>0</Lcid>
+	    <Isolated>false</Isolated>
+	    <EmbedInteropTypes>true</EmbedInteropTypes>
+	  </COMReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Assets\Logo.scale-100.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Assets\SmallLogo.scale-100.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Assets\SplashScreen.scale-100.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Assets\StoreLogo.scale-100.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	  <Content Include="Resources\CalibrationPrint-1.jpg">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
@@ -22,6 +52,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include="Assets\AppBarIcons\Assignments.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Assets\AppBarIcons\Home.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MahApps.Metro" Version="2.4.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -31,7 +71,13 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+		<PackageReference Include="System.IO.Ports" Version="6.0.0" />
+		<PackageReference Include="System.Management" Version="6.0.0" />
+		<PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+		<PackageReference Include="MaterialDesignColors" Version="2.0.6" />
+		<PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -40,6 +86,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Calibrations\Windows\CalibrationPrintWindow.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
 	  <Compile Update="Calibrations\Windows\CalibrationAddOrEditWindow.xaml.cs">
 	    <SubType>Code</SubType>
 	  </Compile>
@@ -64,6 +113,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Page Update="Calibrations\Windows\CalibrationPrintWindow.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
 	  <Page Update="Calibrations\Windows\CalibrationAddOrEditWindow.xaml">
 	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 	    <SubType>Designer</SubType>

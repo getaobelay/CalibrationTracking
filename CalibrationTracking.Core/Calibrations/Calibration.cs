@@ -1,7 +1,4 @@
 ﻿using CalibrationTracking.Abstractions.Base;
-using CalibrationTracking.Core.Departments;
-using CalibrationTracking.Core.Devices;
-using CalibrationTracking.Core.Employees;
 
 namespace CalibrationTracking.Core.Calibrations
 {

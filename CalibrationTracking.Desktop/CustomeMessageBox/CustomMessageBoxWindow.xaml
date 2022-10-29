@@ -1,0 +1,61 @@
+﻿<Window x:Class="CalibrationTracking.Desktop.CustomeMessageBox.CustomMessageBoxWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalibrationTracking.Desktop.CustomeMessageBox"
+        mc:Ignorable="d"
+        FlowDirection="RightToLeft"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         Height="300" Width="800" WindowStyle="None" WindowStartupLocation="CenterOwner" WindowState="Minimized" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent">
+
+    <Grid x:Name="grdMessageBox" Background="#33000B4B">
+        
+        
+        <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Center" Height="250" Margin="0" VerticalAlignment="Center" Width="600" Background="White" CornerRadius="5">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="60*"/>
+                    <RowDefinition Height="29*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="#320b86">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="0.75*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="tbMessageBoxCaption"  TextWrapping="Wrap" Text="-"  FontFamily="Poppins" FontSize="14"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0" FontWeight="Bold" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
+
+                    <Button Grid.Column="4"  Width="50" Height="50" Margin="0"  BorderBrush="Transparent"  BorderThickness="100" Click="Button_Click">
+                        <materialDesign:PackIcon
+                    Width="20"
+                    Height="20"
+                    Foreground="white"
+                    Kind="WindowMinimize" />
+                    </Button>
+                    <Button Grid.Column="5" Width="50" Height="50" Margin="0" BorderBrush="Transparent" BorderThickness="100" Click="Button_Click_1">
+                        <materialDesign:PackIcon Width="20" Height="20" Foreground="white" Kind="Shutdown" />
+                    </Button>
+                </Grid>
+                <Grid  VerticalAlignment="Bottom"  Margin="20"  Grid.Row="4" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="40*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnMessageBoxYes" Grid.Column="0" FontWeight="SemiBold" Content="מחק"  VerticalAlignment="Bottom" Click="btnMessageBoxYes_Click"/>
+                    <Button x:Name="btnMessageBoxNo"  Grid.Column="2" FontWeight="SemiBold" Content="ביטול" VerticalAlignment="Bottom" Click="btnMessageBoxNo_Click"/>
+                </Grid>
+                
+
+                <TextBlock Grid.Row="1" x:Name="tbMessageBoxMessage" Margin="30,80,10,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" FontFamily="Poppins"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -24,6 +24,7 @@ namespace CalibrationTracking.Infrastructure.Context
         public virtual DbSet<Device> Devices { get; set; } = null!;
         public virtual DbSet<Calibration> Calibrations { get; set; } = null!;
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

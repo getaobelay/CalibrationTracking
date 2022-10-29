@@ -70,14 +70,14 @@ namespace CalibrationTracking.Desktop.Base
     }
 
     /// <inheritdoc cref="IAsyncCommand{T}"/>
-    public abstract class BaseAsyncCommand<T> : IAsyncCommand<T>
+    public abstract class AsyncCommand<T> : IAsyncCommand<T>
     {
         private readonly ObservableCollection<Task> runningTasks;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseAsyncCommand{T}"/> class.
         /// </summary>
-        protected BaseAsyncCommand()
+        protected AsyncCommand()
         {
             runningTasks = new ObservableCollection<Task>();
             runningTasks.CollectionChanged += OnRunningTasksChanged;

@@ -1,11 +1,8 @@
-﻿using CalibrationTracking.Application.Departments.CreateDepartment;
-using CalibrationTracking.Desktop.Base;
-using CalibrationTracking.Desktop.Departments.Windows;
+﻿using CalibrationTracking.Desktop.Base;
 using MediatR;
 using System.Linq;
 using System.Threading.Tasks;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
-using CalibrationTracking.Desktop.Departments.ViewModels;
 using CalibrationTracking.Application.Calibrations.Commands.CreateCalibration;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 
@@ -13,12 +10,10 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
     public class CalibrationAddOrEditCommand : AsyncCommand
     {
-        private readonly IMediator _mediator;
         private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
-        public CalibrationAddOrEditCommand(CalibrationAddOrEditWindow calibrationAddOrEditWindow, IMediator mediator)
+        public CalibrationAddOrEditCommand(CalibrationAddOrEditWindow calibrationAddOrEditWindow)
         {
-            _mediator = mediator;
-            _calibrationAddOrEditWindow = calibrationAddOrEditWindow;
+            _calibrationAddOrEditWindow = calibrationAddOrEditWindow ??= new CalibrationAddOrEditWindow();
         }
 
 
@@ -49,7 +44,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
                 Department = viewModel.SelectedDepartment,
             };
 
-            var result = await _mediator.Send(command);
+            var result = await UserControlHelper.Mediator.Send(command);
 
 
             if (result is not null)

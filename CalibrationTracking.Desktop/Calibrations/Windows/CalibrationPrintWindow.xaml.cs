@@ -16,19 +16,19 @@ using System.Windows.Shapes;
 namespace CalibrationTracking.Desktop.Calibrations.Windows
 {
     /// <summary>
-    /// Interaction logic for CalibrationAddOrEditWindow.xaml
+    /// Interaction logic for CalibrationPrintWindow.xaml
     /// </summary>
-    public partial class CalibrationAddOrEditWindow : Window
+    public partial class CalibrationPrintWindow : Window
     {
         private bool isDataSaved;
 
-        public CalibrationAddOrEditWindow()
+        public CalibrationPrintWindow()
         {
             InitializeComponent();
 
             Closing += CalibrationAddOrEditWindow_Closing;
             isDataSaved = true;
-            DataContext = new CalibrationAddOrEditViewModel(this, null);
+            DataContext = new CalibrationPrintViewModel(this, null);
 
         }
 
