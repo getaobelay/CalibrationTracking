@@ -54,7 +54,7 @@
                 </Grid>
                 
 
-                <TextBlock Grid.Row="1" x:Name="tbMessageBoxMessage" Margin="30,80,10,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" FontFamily="Poppins"/>
+                <TextBlock Grid.Row="1" x:Name="tbMessageBoxMessage"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="-" VerticalAlignment="Center" FontSize="25"  FontFamily="Poppins"/>
             </Grid>
         </Border>
     </Grid>

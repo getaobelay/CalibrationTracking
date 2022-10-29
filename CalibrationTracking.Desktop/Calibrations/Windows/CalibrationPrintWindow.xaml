@@ -32,7 +32,7 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="הוסף מכשיר" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
+                <TextBlock x:Name="Title" Text="הוסף מכשיר" Margin="20 0" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
 
                 <Button Grid.Column="4"  Width="50" Height="50" Margin="0"  BorderBrush="Transparent"  BorderThickness="100" Click="Button_Click">
                     <materialDesign:PackIcon

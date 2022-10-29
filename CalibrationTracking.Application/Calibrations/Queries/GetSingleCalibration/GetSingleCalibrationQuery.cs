@@ -2,6 +2,7 @@
 using CalibrationTracking.Infrastructure.Context;
 using CalibrationTracking.Core.Calibrations;
 using Microsoft.EntityFrameworkCore;
+using CalibrationTracking.Application.Calibrations.Queries.Exceptions;
 
 namespace CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations
 {
@@ -22,7 +23,33 @@ namespace CalibrationTracking.Application.Calibrations.Queries.GetAllCalibration
             {
                 var calibration = await _context.Calibrations.SingleOrDefaultAsync(x => x.Id == request.CalibrationId);
 
-                if(calibration == null) throw new ArgumentNullException(nameof(Calibration));
+                if(calibration == null) throw new CalibrationNotFoundException(request.CalibrationId);
+
+                return calibration;
+            }
+        }
+
+
+    }
+
+    public class GetSingleCalibrationBySkuQuery : IRequest<Calibration>
+    {
+        public string CalibrationSKU { get; set; }
+
+        public class GetSingleCalibrationBySkuQueryHandler : IRequestHandler<GetSingleCalibrationBySkuQuery, Calibration>
+        {
+            private readonly CalibrationDbContext _context;
+
+            public GetSingleCalibrationBySkuQueryHandler(CalibrationDbContext context)
+            {
+                _context = context;
+            }
+
+            public async Task<Calibration> Handle(GetSingleCalibrationBySkuQuery request, CancellationToken cancellationToken)
+            {
+                var calibration = await _context.Calibrations.SingleOrDefaultAsync(x => x.CalibrationSKU == request.CalibrationSKU);
+
+                if (calibration == null) throw new CalibrationNotFoundException(request.CalibrationSKU);
 
                 return calibration;
             }

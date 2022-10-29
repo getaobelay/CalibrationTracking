@@ -53,7 +53,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 
 
             }
-
+            _calibrationAddOrEditWindow.Title.Text = "מכשיר חדש";
             _calibrationAddOrEditWindow.Show();
 
         }

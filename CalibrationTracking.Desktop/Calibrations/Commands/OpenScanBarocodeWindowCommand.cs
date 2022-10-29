@@ -6,10 +6,10 @@ using CalibrationTracking.Desktop.Main.ViewModels;
 
 namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
-    public class OpenScanBarocodeWindowCommand : AsyncCommand
+    public class OpenPrintWindowCommand : AsyncCommand
     {
         private readonly ScanBarcodeWindow _scanBarcodeWindow;
-        public OpenScanBarocodeWindowCommand(ScanBarcodeWindow scanBarcodeWindow)
+        public OpenPrintWindowCommand(ScanBarcodeWindow scanBarcodeWindow)
         {
             _scanBarcodeWindow = scanBarcodeWindow ??= new ScanBarcodeWindow();
         }

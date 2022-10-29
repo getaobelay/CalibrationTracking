@@ -23,6 +23,12 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             get
             {
+                if (string.IsNullOrWhiteSpace(_remarks) && Model is not null)
+                {
+                    _remarks = Model.Remarks;
+                }
+
+
                 return _remarks;
             }
 
@@ -41,6 +47,11 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             get
             {
+                if (string.IsNullOrWhiteSpace(_frequency) && Model is not null)
+                {
+                    _frequency = Model.Frequency;
+                }
+
                 return _frequency;
             }
 
@@ -61,6 +72,11 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             get
             {
+                if (string.IsNullOrWhiteSpace(_calibrationSKU) && Model is not null)
+                {
+                    _calibrationSKU = Model.CalibrationSKU;
+                }
+
                 return _calibrationSKU;
             }
 
@@ -82,12 +98,17 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             get
             {
+                if (string.IsNullOrWhiteSpace(_selectedDevice) && Model is not null)
+                {
+                    _selectedDevice = Model.Device;
+                }
+
                 return _selectedDevice;
             }
 
             set
             {
-                if (!_selectedDevice.Equals(value))
+                if (!string.IsNullOrWhiteSpace(value) && value != _selectedDevice)
                 {
                     _selectedDevice = value;
                     RaisePropertyChanged();
@@ -102,12 +123,18 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             get
             {
+
+                if (string.IsNullOrWhiteSpace(_selectedEmployee) && Model is not null)
+                {
+                    _selectedEmployee = Model.Employee;
+                }
+
                 return _selectedEmployee;
             }
 
             set
             {
-                if (!_selectedEmployee.Equals(value))
+                if (!string.IsNullOrWhiteSpace(value) && value != _selectedEmployee)
                 {
                     _selectedEmployee = value;
                     RaisePropertyChanged();
@@ -122,12 +149,18 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             get
             {
+
+                if (string.IsNullOrWhiteSpace(_selectedDepartment) && Model is not null)
+                {
+                    _selectedDepartment = Model.Department;
+                }
+
                 return _selectedDepartment;
             }
 
             set
             {
-                if (!value.Equals(_selectedDepartment))
+                if (!string.IsNullOrWhiteSpace(value) && value != _selectedDepartment)
                 {
                     _selectedDepartment = value;
                     RaisePropertyChanged();
@@ -141,12 +174,18 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             get
             {
+
+                if (string.IsNullOrWhiteSpace(_description) && Model is not null)
+                {
+                    _description = Model.Description;
+                }
+
                 return _description;
             }
 
             set
             {
-                if (!_description.Equals(value))
+                if (!string.IsNullOrWhiteSpace(value) && value != _description)
                 {
                     _description = value;
                     RaisePropertyChanged();
@@ -161,12 +200,18 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             get
             {
+                if (string.IsNullOrWhiteSpace(_reciver) && Model is not null)
+                {
+                    _reciver = Model.Employee;
+                }
+
+
                 return _reciver;
             }
 
             set
             {
-                if (!_reciver.Equals(value))
+                if (!string.IsNullOrWhiteSpace(value) && value != _reciver)
                 {
                     _reciver = value;
                     RaisePropertyChanged();
@@ -183,6 +228,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             _description = string.Empty;
             _calibrationSKU = string.Empty;
             _description = string.Empty;
+            _reciver = string.Empty;
 
             RaisePropertyChanged(nameof(Remarks));
             RaisePropertyChanged(nameof(Frequency));
@@ -190,9 +236,10 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             RaisePropertyChanged(nameof(SelectedEmployee));
             RaisePropertyChanged(nameof(SelectedDepartment));
             RaisePropertyChanged(nameof(Description));
+            RaisePropertyChanged(nameof(Reciver));
             ;
 
-            base.Reload(null);
+            base.Reload(model);
         }
 
         public override Calibration ToModel()

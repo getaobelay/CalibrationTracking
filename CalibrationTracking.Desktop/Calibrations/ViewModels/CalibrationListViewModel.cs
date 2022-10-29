@@ -18,7 +18,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
             _calibrationTableView  = calibrationTableView;
 
             OpenAddOrEditCommand = new OpenAddOrEditWindowCommand(calibrationTableView, new CalibrationAddOrEditWindow());
-            OpenScanBarcodeCommand = new OpenScanBarocodeWindowCommand(new Main.Windows.ScanBarcodeWindow());
+            OpenScanBarcodeCommand = new OpenPrintWindowCommand(new Main.Windows.ScanBarcodeWindow());
             LoadData();
 
         }

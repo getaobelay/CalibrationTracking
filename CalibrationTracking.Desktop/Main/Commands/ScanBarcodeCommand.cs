@@ -1,8 +1,11 @@
-﻿using CalibrationTracking.Desktop.Base;
+﻿using CalibrationTracking.Application.Calibrations.Queries.Exceptions;
+using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
+using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.Main.ViewModels;
 using CalibrationTracking.Desktop.Main.Windows;
+using CalibrationTracking.Desktop.Services.CustomeMessageBox;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -33,24 +36,39 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
             if (!string.IsNullOrWhiteSpace(barcode))
             {
-                OpenWindow("1311245");
+                var query = new GetSingleCalibrationBySkuQuery
+                {
+                    CalibrationSKU = barcode
+                };
+
+
+                await _mainWindow.Dispatcher.Invoke(async () =>
+                {
+                    _mainWindow.Hide();
+                    try
+                    {
+                        var result = await UserControlHelper.Mediator.Send(query);
+
+                        var calibrationPrintWindow = new CalibrationPrintWindow();
+
+                        calibrationPrintWindow.DataContext = new CalibrationPrintViewModel(calibrationPrintWindow, result);
+
+                        calibrationPrintWindow.Title.Text = "ערוך מכשיר";
+                        calibrationPrintWindow.Show();
+                    }
+
+                    catch (CalibrationNotFoundException ex) 
+                    {
+
+                        UserControlHelper.DialogService.ShowMessageBox(ex.Message, "לא ניתן להוסיף מכשיר חדש", MessageBoxButton.OKCancel, MessageBoxIcon.Exclamation);
+                    }
+
+                
+                });
             }
         }
 
-        private void HandleErorr()
-        {
-            ((ScanBarcodeViewModel)_mainWindow.DataContext).Barcode = string.Empty;
-        }
-
-        private void OpenWindow(string? barcode)
-        {
-            ((ScanBarcodeViewModel)_mainWindow.DataContext).Barcode = string.Empty;
-
-            _mainWindow.Close();
-
-            _calibrationAddOrEditWindow.Show();
-
-        }
+    
     }
 
 }
