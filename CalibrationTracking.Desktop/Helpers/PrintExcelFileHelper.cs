@@ -8,22 +8,35 @@ using System.Windows.Controls;
 
 public sealed class PrintExcelFileHelper
 {   
-    public static void  SetExcelFile(string calibrationSKU,string employeeId, string employee, string department, string description, string device, string frequency,string from, DateTime createdAt, string orderSku)
+    public static void  SetExcelFile(string calibrationSKU,
+                                     string employeeId,
+                                     string employee,
+                                     string department,
+                                     string description,
+                                     string device,
+                                     string frequency,
+                                     string from,
+                                     DateTime createdAt,
+                                     string orderSku)
     {
         string filePath = Path.Combine(System.IO.Path.GetFullPath(@"..\..\..\"), "Resources\\Print.xlsx");
 
         using var wbook = new XLWorkbook(filePath);
 
+
         wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(orderSku);
         wbook.Worksheet(1).Range("B4:C4").Merge().SetValue(employee);   
         wbook.Worksheet(1).Range("G4:H4").Merge().SetValue(department);
-        wbook.Worksheet(1).Range("B6:C6").Merge().SetValue(description);
-        wbook.Worksheet(1).Range("G6:H6").Merge().SetValue(device);
-        wbook.Worksheet(1).Range("A8:E8").Merge().SetValue($"*{calibrationSKU}*");
+        wbook.Worksheet(1).Range("B6:C6").Merge().SetValue(device);
+        wbook.Worksheet(1).Range("G6:H6").Merge().SetValue(description);
+        wbook.Worksheet(1).Range("A8:E8").Merge().SetValue($"*{calibrationSKU}*").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); ;
+
+        
+
         wbook.Worksheet(1).Range("A8:E8").Style.Font.FontSize = 30;
 
 
-        wbook.Worksheet(1).Cell("G9").SetValue(frequency);
+        wbook.Worksheet(1).Cell("G9").SetValue(frequency).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
 
         wbook.Worksheet(1).Range("B9:C9").Merge().SetValue(calibrationSKU);
 
@@ -52,10 +65,7 @@ public sealed class PrintExcelFileHelper
     
     }
 
-    internal static void SetExcelFile(string? calibrationSKU, object employeeId)
-    {
-        throw new NotImplementedException();
-    }
+  
 
     private static void CreatePdf(string fileName)
     {
