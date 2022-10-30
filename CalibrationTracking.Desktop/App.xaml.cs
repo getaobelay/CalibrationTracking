@@ -80,7 +80,6 @@ namespace CalibrationTracking.Desktop
             var window = _host.Services.GetRequiredService<MainWindow>();
 
 
-            PrintExcelFileHelper.SetExcelFile(1233345,123, "גטאו בלאי", "מחלקת פולסר", "2313123131","H2-12J", 12, "njke", DateTime.Now, 122233345);
 
             window.Show();
         }

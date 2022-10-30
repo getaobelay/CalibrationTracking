@@ -8,19 +8,20 @@ using System.Windows.Controls;
 
 public sealed class PrintExcelFileHelper
 {   
-    public static void  SetExcelFile(int calibrationSKU,int employeeId, string employee, string department, string description, string device, int frequency,string from, DateTime createdAt, int orderSku)
+    public static void  SetExcelFile(string calibrationSKU,string employeeId, string employee, string department, string description, string device, string frequency,string from, DateTime createdAt, string orderSku)
     {
         string filePath = Path.Combine(System.IO.Path.GetFullPath(@"..\..\..\"), "Resources\\Print.xlsx");
 
         using var wbook = new XLWorkbook(filePath);
 
-        wbook.Worksheet(1).Cell("B4").SetValue(employee);
-
-        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(description);
-        wbook.Worksheet(1).Range("A8:E8").Merge().SetValue($"*{calibrationSKU}*");
+        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(orderSku);
+        wbook.Worksheet(1).Range("B4:C4").Merge().SetValue(employee);   
+        wbook.Worksheet(1).Range("G4:H4").Merge().SetValue(department);
         wbook.Worksheet(1).Range("B6:C6").Merge().SetValue(description);
-        wbook.Worksheet(1).Range("G4:H4").Merge().SetValue(device);
-        wbook.Worksheet(1).Range("G6:H6").Merge().SetValue(department);
+        wbook.Worksheet(1).Range("G6:H6").Merge().SetValue(device);
+        wbook.Worksheet(1).Range("A8:E8").Merge().SetValue($"*{calibrationSKU}*");
+        wbook.Worksheet(1).Range("A8:E8").Style.Font.FontSize = 30;
+
 
         wbook.Worksheet(1).Cell("G9").SetValue(frequency);
 
@@ -51,10 +52,15 @@ public sealed class PrintExcelFileHelper
     
     }
 
+    internal static void SetExcelFile(string? calibrationSKU, object employeeId)
+    {
+        throw new NotImplementedException();
+    }
 
     private static void CreatePdf(string fileName)
     {
-        Workbook workbook = new Workbook();
+        using Workbook workbook = new Workbook();
+
         workbook.LoadFromFile(fileName);
 
         PrintDialog dialog = new PrintDialog();
@@ -76,6 +82,10 @@ public sealed class PrintExcelFileHelper
             pd.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
 
             pd.Print();
+
+
+            File.Delete(fileName);
+
 
         }
     }

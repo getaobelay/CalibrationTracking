@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalibrationTracking.Desktop.Calibrations.Windows" 
-        xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Calibrations.ViewModels" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Calibrations.ViewModels" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=viewmodels:CalibrationPrintViewModel}"
         mc:Ignorable="d"
         FlowDirection="RightToLeft"
         WindowStyle="None"
         ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
-        Title="CalibrationAddOrEditWindow" Height="450" Width="800">
+        Title="CalibrationAddOrEditWindow" Height="550" Width="800">
     <Border BorderBrush="LightGray" BorderThickness="1" Background="White">
         <Border.Effect>
             <DropShadowEffect ShadowDepth="0" BlurRadius="5" Color="LightGray"/>
@@ -32,7 +32,7 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="Title" Text="הוסף מכשיר" Margin="20 0" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
+                <TextBlock x:Name="Title" Text="הוסף מכשיר" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
 
                 <Button Grid.Column="4"  Width="50" Height="50" Margin="0"  BorderBrush="Transparent"  BorderThickness="100" Click="Button_Click">
                     <materialDesign:PackIcon
@@ -53,6 +53,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -68,36 +69,36 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <Label HorizontalAlignment="Left" Content="שם מקבל המכשיר:" />
-                        <TextBox Margin="2" Padding="5" Text="{Binding SelectedEmployee}" />
+                    <StackPanel Grid.Column="0"  Margin="5">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Content="שם מקבל המכשיר:" />
+                        <TextBox Margin="2" Padding="5" FontSize="14" FontWeight="Bold" Text="{Binding SelectedEmployee, Mode=TwoWay}" />
 
                     </StackPanel>
 
 
-                    <StackPanel Grid.Column="1">
-                        <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="מחלקה:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding SelectedDepartment}" />
+                    <StackPanel Grid.Column="1"  Margin="5">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="מחלקה:" />
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding SelectedDepartment, Mode=TwoWay}" />
                     </StackPanel>
 
                 </Grid>
 
-                <Grid Grid.Row="1" Grid.Column="1">
+                <Grid Grid.Row="1" Grid.Column="1" >
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <Label HorizontalAlignment="Left" Content="שם הצמד:" />
-                        <TextBox Margin="2" Padding="5" Text="{Binding Description}" />
+                    <StackPanel Grid.Column="0"  Margin="5">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Content="שם הצמד:" />
+                        <TextBox Margin="2" Padding="5" FontSize="14" FontWeight="Bold" Text="{Binding Description, Mode=TwoWay}" />
 
                     </StackPanel>
 
 
-                    <StackPanel Grid.Column="1">
-                        <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="דגם:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding SelectedDevice}" />
+                    <StackPanel Grid.Column="1"  Margin="5">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="דגם:" />
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding SelectedDevice, Mode=TwoWay}" />
                     </StackPanel>
 
                 </Grid>
@@ -110,41 +111,62 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <StackPanel Grid.Column="0">
-                        <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="תדירות כיול:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding Frequency}" />
+                    <StackPanel Grid.Column="0"  Margin="5">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="תדירות כיול:" />
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding Frequency, Mode=TwoWay}" />
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1">
-                        <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="שם מוסר המכשיר:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding Frequency}" />
+                    <StackPanel Grid.Column="1" Margin="5">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="שם מוסר המכשיר:" />
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding Reciver, Mode=TwoWay}" />
                     </StackPanel>
 
                 </Grid>
 
-                <Grid Grid.Row="3" Grid.Column="1">
+                <Grid Grid.Row="4" Grid.Column="1">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
 
-                    <StackPanel Grid.Column="0">
-                        <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="הערות:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding Remarks}" />
+                    <StackPanel Grid.Column="0"  Margin="5">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="הערות:" />
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding Remarks}" />
                     </StackPanel>
 
                 </Grid>
 
 
-                <Grid  VerticalAlignment="Center"  Margin="0 20"  Grid.Row="4" Grid.Column="1">
+                <Grid Grid.Row="3" Grid.Column="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackPanel Grid.Column="0">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="מספר עובד:" />
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding EmployeeId}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="תאריך:" />
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding PrintDate}" />
+                    </StackPanel>
+
+                </Grid>
+
+
+                <Grid  VerticalAlignment="Center"  Margin="0 20"  Grid.Row="5" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*" />
                         <ColumnDefinition Width="10*" />
                         <ColumnDefinition Width="40*" />
                     </Grid.ColumnDefinitions>
-                    <Button Content="שמור"  Command="{Binding CalibrationAddOrEditCommand}" Padding="5" Grid.Column="0" />
-                    <Button Content="ביטול" Grid.Column="2" />
+                    <Button Content="הדפס"  Command="{Binding CalibrationPrintCommand}" Padding="5" Grid.Column="0" />
+                    <Button Content="ביטול" Grid.Column="4" />
                 </Grid>
             </Grid>
 

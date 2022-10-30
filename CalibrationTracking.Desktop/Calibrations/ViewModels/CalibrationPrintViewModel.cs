@@ -3,6 +3,7 @@ using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using System;
 
 namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 {
@@ -14,6 +15,8 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
 
             _calibrationPrintWindow = calibrationPrintWindow;
+
+            CalibrationPrintCommand = new CalibrationPrintCommand(calibrationPrintWindow);
 
             Reload(model);
         }
@@ -57,9 +60,51 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
             set
             {
-                if (!string.Equals(_frequency, value))
+                if (!string.IsNullOrWhiteSpace(value) && value != _frequency)
                 {
                     _frequency = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private string? _orderSku;
+
+
+        public string? OrderSku
+        {
+            get
+            {
+
+                return _orderSku;
+            }
+
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value) && value != _orderSku)
+                {
+                    _orderSku = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private string? _employeeId;
+
+
+        public string? EmployeeId
+        {
+            get
+            {
+
+                return _employeeId;
+            }
+
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value) && value != _employeeId)
+                {
+                    _employeeId = value;
                     RaisePropertyChanged();
                 }
             }
@@ -193,6 +238,27 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             }
         }
 
+        private DateTime? _printDate = DateTime.Now;
+
+        public DateTime? PrintDate
+        {
+            get
+            {
+
+               
+                return _printDate;
+            }
+
+            set
+            {
+                if (!_printDate.Equals(value))
+                {
+                    _printDate = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
 
         private string? _reciver;
 
@@ -253,7 +319,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         }
 
 
-        public CalibrationAddOrEditCommand CalibrationAddOrEditCommand { get; protected set; }
+        public CalibrationPrintCommand CalibrationPrintCommand { get; protected set; }
 
 
 

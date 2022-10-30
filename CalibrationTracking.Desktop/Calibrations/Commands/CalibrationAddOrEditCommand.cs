@@ -15,7 +15,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
         private readonly CalibrationTableView _calibrationTableView;
         public CalibrationAddOrEditCommand(CalibrationAddOrEditWindow calibrationAddOrEditWindow, CalibrationTableView calibrationTableView)
         {
-            _calibrationAddOrEditWindow = calibrationAddOrEditWindow ??= new CalibrationAddOrEditWindow(calibrationTableView);
+            _calibrationAddOrEditWindow = calibrationAddOrEditWindow;
             _calibrationTableView = calibrationTableView;
         }
 
