@@ -32,7 +32,6 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
             ((ScanBarcodeViewModel)_scanBarcodeWindow.DataContext).Barcode = null;
 
 
-
         }
     }
 }

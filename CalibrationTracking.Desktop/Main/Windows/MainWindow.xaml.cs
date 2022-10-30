@@ -29,10 +29,10 @@ namespace CalibrationTracking.Desktop.Main.Windows
         {
             DragMove();
         }
-        private void GetDashboardStackPanel_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DashboardTab.Content = new DashboardView();
-        }
+        //private void GetDashboardStackPanel_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    DashboardTab.Content = new DashboardView();
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

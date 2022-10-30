@@ -10,6 +10,7 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
@@ -77,6 +78,9 @@ namespace CalibrationTracking.Desktop
 
             await InitiliazeDataBase();
             var window = _host.Services.GetRequiredService<MainWindow>();
+
+
+            PrintExcelFileHelper.SetExcelFile(1233345,123, "גטאו בלאי", "מחלקת פולסר", "2313123131","H2-12J", 12, "njke", DateTime.Now, 122233345);
 
             window.Show();
         }

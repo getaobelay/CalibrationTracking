@@ -81,7 +81,7 @@
                     <mainviews:CalibrationTableView x:Name="ListOfPlayerViewTab"></mainviews:CalibrationTableView>
                 </TabItem>
 
-                <TabItem  Width="140" Height="140" x:Name="DashboardTab">
+                <!--<TabItem  Width="140" Height="140" x:Name="DashboardTab">
                     <TabItem.Header>
                         <StackPanel Background="WhiteSmoke" MouseLeftButtonDown="GetDashboardStackPanel_MouseRightButtonDown"  Height="140" Width="140" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <materialDesign:PackIcon Kind="ChartBar" Width="30" Height="30" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -89,7 +89,7 @@
                         </StackPanel>
                     </TabItem.Header>
                     <views:DashboardView></views:DashboardView>
-                </TabItem>
+                </TabItem>-->
             </TabControl>
         </Grid>
     </Border>

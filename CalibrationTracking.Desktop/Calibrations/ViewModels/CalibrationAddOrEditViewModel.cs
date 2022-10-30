@@ -228,22 +228,21 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         {
             _selectedDevice = string.Empty;
             _selectedEmployee = string.Empty;
+            _selectedDepartment = string.Empty;
             _remarks = string.Empty;
             _frequency = string.Empty;
             _description = string.Empty;
             _calibrationSKU = string.Empty;
-            _description = string.Empty;
             _reciver = string.Empty;
 
-            RaisePropertyChanged(nameof(CalibrationSKU));
-            RaisePropertyChanged(nameof(Remarks));
-            RaisePropertyChanged(nameof(Frequency));
             RaisePropertyChanged(nameof(SelectedDevice));
             RaisePropertyChanged(nameof(SelectedEmployee));
             RaisePropertyChanged(nameof(SelectedDepartment));
+            RaisePropertyChanged(nameof(Remarks));
+            RaisePropertyChanged(nameof(Frequency));
             RaisePropertyChanged(nameof(Description));
+            RaisePropertyChanged(nameof(CalibrationSKU));
             RaisePropertyChanged(nameof(Reciver));
-            ;
 
             base.Reload(model);
         }
