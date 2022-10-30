@@ -18,6 +18,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             _calibrationAddOrEditView = calibrationAddOrEditView ??= new CalibrationAddOrEditWindow(calibrationTableView);
 
             CalibrationAddOrEditCommand = new CalibrationAddOrEditCommand(calibrationAddOrEditView, calibrationTableView);
+            CalibrationUndoCommand = new CalibrationUndoCommand(calibrationAddOrEditView, calibrationTableView);
 
             Reload(model);
         }
@@ -259,7 +260,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
 
         public CalibrationAddOrEditCommand CalibrationAddOrEditCommand { get; protected set; }
-
+        public CalibrationUndoCommand CalibrationUndoCommand { get; protected set; }
 
 
     }

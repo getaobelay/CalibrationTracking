@@ -143,9 +143,12 @@
                         <ColumnDefinition Width="40*" />
                         <ColumnDefinition Width="10*" />
                         <ColumnDefinition Width="40*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="40*" />
                     </Grid.ColumnDefinitions>
                     <Button Content="שמור"  Command="{Binding CalibrationAddOrEditCommand}" Padding="5" Grid.Column="0" />
-                    <Button Content="ביטול" Grid.Column="2" />
+                    <Button Content="בטל שינויים"  Command="{Binding CalibrationUndoCommand}" Padding="5" Grid.Column="2" />
+                    <Button Content="ביטול" Grid.Column="4" />
                 </Grid>
             </Grid>
 
