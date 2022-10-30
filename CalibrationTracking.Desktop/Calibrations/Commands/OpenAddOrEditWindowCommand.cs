@@ -16,7 +16,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 
         public OpenAddOrEditWindowCommand(Views.CalibrationTableView calibrationTableView, CalibrationAddOrEditWindow calibrationAddOrEditWindow)
         {
-            _calibrationAddOrEditWindow = calibrationAddOrEditWindow ??= new CalibrationAddOrEditWindow();
+            _calibrationAddOrEditWindow = calibrationAddOrEditWindow;
             _calibrationTableView = calibrationTableView;
         }
 
@@ -31,29 +31,12 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
         public override async Task ExecuteAsync()
         {
 
-            var viewModel = ((CalibrationListViewModel)_calibrationTableView.DataContext);
 
-
-            if (viewModel.SelectedCalibration is not null)
-            {
-                var query = new GetSingleCalibrationQuery
-                {
-                    CalibrationId = viewModel.SelectedCalibration.Id,
-                };
-
-                var result = await UserControlHelper.Mediator.Send(query);
-                ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(result);
-
-
-            }
-
-            else
-            {
-                ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(null);
-
-
-            }
             _calibrationAddOrEditWindow.Title.Text = "מכשיר חדש";
+
+            _calibrationAddOrEditWindow.DataContext = new CalibrationAddOrEditViewModel(_calibrationAddOrEditWindow, null, _calibrationTableView);
+
+
             _calibrationAddOrEditWindow.Show();
 
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalibrationTracking.Desktop.Calibrations.Windows" 
         xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Calibrations.ViewModels"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=viewmodels:CalibrationAddOrEditViewModel}"
         mc:Ignorable="d"
         FlowDirection="RightToLeft"
         WindowStyle="None"
@@ -71,14 +71,14 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0">
                         <Label HorizontalAlignment="Left" Content="שם מקבל המכשיר:" />
-                        <TextBox Margin="2" Padding="5" Text="{Binding SelectedEmployee}" />
+                        <TextBox Margin="2" Padding="5" Text="{Binding SelectedEmployee, Mode=TwoWay}" />
 
                     </StackPanel>
 
 
                     <StackPanel Grid.Column="1">
                         <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="מחלקה:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding SelectedDepartment}" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding SelectedDepartment, Mode=TwoWay}" />
                     </StackPanel>
 
                 </Grid>
@@ -91,14 +91,14 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0">
                         <Label HorizontalAlignment="Left" Content="שם הצמד:" />
-                        <TextBox Margin="2" Padding="5" Text="{Binding Description}" />
+                        <TextBox Margin="2" Padding="5" Text="{Binding Description, Mode=TwoWay}" />
 
                     </StackPanel>
 
 
                     <StackPanel Grid.Column="1">
                         <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="דגם:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding SelectedDevice}" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding SelectedDevice, Mode=TwoWay}" />
                     </StackPanel>
 
                 </Grid>
@@ -113,12 +113,12 @@
 
                     <StackPanel Grid.Column="0">
                         <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="תדירות כיול:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding Frequency}" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding Frequency, Mode=TwoWay}" />
                     </StackPanel>
 
                     <StackPanel Grid.Column="1">
                         <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="שם מוסר המכשיר:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding Frequency}" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="5" Text="{Binding Reciver, Mode=TwoWay}" />
                     </StackPanel>
 
                 </Grid>

@@ -79,5 +79,15 @@ namespace CalibrationTracking.Desktop.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Print {
+            get {
+                object obj = ResourceManager.GetObject("Print", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

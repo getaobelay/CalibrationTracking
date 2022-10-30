@@ -108,20 +108,20 @@ Command="{Binding OpenAddOrEditCommand}">
                   Style="{DynamicResource DataGridStyle1}"
                   >
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
+                        <!--<DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
                             <DataGridCheckBoxColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
                                 </DataTemplate>
                             </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
+                        </DataGridCheckBoxColumn>-->
                         <DataGridTextColumn FontWeight="Bold" Header="מקט" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding CalibrationSKU}"/>
                         <DataGridTextColumn FontWeight="Bold" Header="דגם" Binding="{Binding Device}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn FontWeight="Bold" Header="שם הצמד" Binding="{Binding Description}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn FontWeight="Bold" Header="תדירות כיול" Binding="{Binding Frequency}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn FontWeight="Bold" Header="מוסר המכשיר" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Employee}"/>
                         <DataGridTextColumn FontWeight="Bold" Header="מחלקה" Binding="{Binding Department}" IsReadOnly="True" Width="*"/>
-                        <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                        <DataGridTemplateColumn IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">

@@ -53,14 +53,14 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
                         calibrationPrintWindow.DataContext = new CalibrationPrintViewModel(calibrationPrintWindow, result);
 
-                        calibrationPrintWindow.Title.Text = "ערוך מכשיר";
+                        calibrationPrintWindow.Title.Text = "הדפס מכשיר";
                         calibrationPrintWindow.Show();
                     }
 
                     catch (CalibrationNotFoundException ex) 
                     {
 
-                        UserControlHelper.DialogService.ShowMessageBox(ex.Message, "לא ניתן להוסיף מכשיר חדש", MessageBoxButton.OKCancel, MessageBoxIcon.Exclamation);
+                        UserControlHelper.DialogService.ShowMessageBox(ex.Message, "מכשיר זה לא קיים במערכת", MessageBoxButton.OKCancel, MessageBoxIcon.Exclamation);
                     }
 
                 

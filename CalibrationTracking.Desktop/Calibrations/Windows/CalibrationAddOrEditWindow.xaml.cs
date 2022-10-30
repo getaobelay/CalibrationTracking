@@ -22,13 +22,13 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     {
         private bool isDataSaved;
 
-        public CalibrationAddOrEditWindow()
+        public CalibrationAddOrEditWindow(Views.CalibrationTableView calibrationTableView)
         {
             InitializeComponent();
 
             Closing += CalibrationAddOrEditWindow_Closing;
             isDataSaved = true;
-            DataContext = new CalibrationAddOrEditViewModel(this, null);
+            DataContext = new CalibrationAddOrEditViewModel(this, null,calibrationTableView);
 
         }
 

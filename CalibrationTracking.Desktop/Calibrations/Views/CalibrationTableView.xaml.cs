@@ -98,9 +98,9 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
             {
                 var result = await UserControlHelper.Mediator.Send(query);
 
-                var _addOrEditWindow = new CalibrationAddOrEditWindow();
+                var _addOrEditWindow = new CalibrationAddOrEditWindow(this);
 
-                _addOrEditWindow.DataContext = new CalibrationAddOrEditViewModel(_addOrEditWindow, result);
+                _addOrEditWindow.DataContext = new CalibrationAddOrEditViewModel(_addOrEditWindow, result, this);
 
                 _addOrEditWindow.Title.Text = "ערוך מכשיר";
                 _addOrEditWindow.ShowDialog();

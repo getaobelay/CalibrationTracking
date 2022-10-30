@@ -3,15 +3,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using CalibrationTracking.Desktop.Main.Windows;
 using CalibrationTracking.Desktop.Main.ViewModels;
+using CalibrationTracking.Desktop.Calibrations.Views;
 
 namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
     public class OpenPrintWindowCommand : AsyncCommand
     {
         private readonly ScanBarcodeWindow _scanBarcodeWindow;
+        private CalibrationTableView calibrationTableView;
+
         public OpenPrintWindowCommand(ScanBarcodeWindow scanBarcodeWindow)
         {
-            _scanBarcodeWindow = scanBarcodeWindow ??= new ScanBarcodeWindow();
+            _scanBarcodeWindow = scanBarcodeWindow ??= new ScanBarcodeWindow(calibrationTableView);
         }
 
 

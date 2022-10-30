@@ -5,15 +5,18 @@ using System.Threading.Tasks;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Application.Calibrations.Commands.CreateCalibration;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.Calibrations.Views;
 
 namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
     public class CalibrationAddOrEditCommand : AsyncCommand
     {
         private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
-        public CalibrationAddOrEditCommand(CalibrationAddOrEditWindow calibrationAddOrEditWindow)
+        private readonly CalibrationTableView _calibrationTableView;
+        public CalibrationAddOrEditCommand(CalibrationAddOrEditWindow calibrationAddOrEditWindow, CalibrationTableView calibrationTableView)
         {
-            _calibrationAddOrEditWindow = calibrationAddOrEditWindow ??= new CalibrationAddOrEditWindow();
+            _calibrationAddOrEditWindow = calibrationAddOrEditWindow ??= new CalibrationAddOrEditWindow(calibrationTableView);
+            _calibrationTableView = calibrationTableView;
         }
 
 
@@ -52,6 +55,8 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
                 ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(result);
 
                 _calibrationAddOrEditWindow.Close();
+
+                ((CalibrationListViewModel)_calibrationTableView.DataContext).LoadData();
             }
 
         }

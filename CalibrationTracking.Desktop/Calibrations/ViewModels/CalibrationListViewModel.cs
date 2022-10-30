@@ -3,6 +3,7 @@ using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.Main.Windows;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -17,8 +18,8 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
         {
             _calibrationTableView  = calibrationTableView;
 
-            OpenAddOrEditCommand = new OpenAddOrEditWindowCommand(calibrationTableView, new CalibrationAddOrEditWindow());
-            OpenScanBarcodeCommand = new OpenPrintWindowCommand(new Main.Windows.ScanBarcodeWindow());
+            OpenAddOrEditCommand = new OpenAddOrEditWindowCommand(calibrationTableView, new CalibrationAddOrEditWindow(calibrationTableView));
+            OpenScanBarcodeCommand = new OpenPrintWindowCommand(new ScanBarcodeWindow(calibrationTableView));
             LoadData();
 
         }

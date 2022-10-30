@@ -1,4 +1,5 @@
 ﻿using CalibrationTracking.Desktop.Base;
+using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.Main.Commands;
 using CalibrationTracking.Desktop.Main.Windows;
@@ -11,13 +12,15 @@ namespace CalibrationTracking.Desktop.Main.ViewModels
     public class ScanBarcodeViewModel : BaseViewModel
     {
         private readonly ScanBarcodeWindow _mainWindow;
+        private readonly CalibrationTableView _calibrationTableView;
 
         public IAsyncCommand ScanBarcodeCommand { get; protected set; }
 
-        public ScanBarcodeViewModel(ScanBarcodeWindow mainWindow)
+        public ScanBarcodeViewModel(ScanBarcodeWindow mainWindow, CalibrationTableView calibrationTableView)
         {
             _mainWindow = mainWindow ?? throw new ArgumentNullException(nameof(ScanBarcodeWindow));
-            ScanBarcodeCommand = new ScanBarcodeCommand(_mainWindow, new CalibrationAddOrEditWindow());
+            _calibrationTableView = calibrationTableView;
+            ScanBarcodeCommand = new ScanBarcodeCommand(_mainWindow, new CalibrationAddOrEditWindow(calibrationTableView));
         }
 
         private string? _header;

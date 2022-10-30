@@ -16,10 +16,10 @@ namespace CalibrationTracking.Desktop.Main.Windows
     {
         private readonly BarcodeManager _barcodeManager;
 
-        public ScanBarcodeWindow()
+        public ScanBarcodeWindow(Calibrations.Views.CalibrationTableView calibrationTableView)
         {
             InitializeComponent();
-            DataContext = new ScanBarcodeViewModel(this);
+            DataContext = new ScanBarcodeViewModel(this,calibrationTableView);
 
             _barcodeManager = new((DataContext as ScanBarcodeViewModel).BarcodeAction);
             Closing += ScanBarcodeWindow_Closing;

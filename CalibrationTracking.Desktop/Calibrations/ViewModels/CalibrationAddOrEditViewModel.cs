@@ -9,11 +9,15 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
     internal class CalibrationAddOrEditViewModel : BaseViewModel<Calibration>
     {
         private readonly CalibrationAddOrEditWindow _calibrationAddOrEditView;
+        private readonly CalibrationTableView _calibrationTableView;
 
-        public CalibrationAddOrEditViewModel(CalibrationAddOrEditWindow calibrationAddOrEditView, Calibration model) : base(model)
+        public CalibrationAddOrEditViewModel(CalibrationAddOrEditWindow calibrationAddOrEditView, Calibration model, CalibrationTableView calibrationTableView) : base(model)
         {
 
-            _calibrationAddOrEditView = calibrationAddOrEditView;
+            _calibrationTableView = calibrationTableView;
+            _calibrationAddOrEditView = calibrationAddOrEditView ??= new CalibrationAddOrEditWindow(calibrationTableView);
+
+            CalibrationAddOrEditCommand = new CalibrationAddOrEditCommand(calibrationAddOrEditView, calibrationTableView);
 
             Reload(model);
         }
@@ -230,6 +234,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             _description = string.Empty;
             _reciver = string.Empty;
 
+            RaisePropertyChanged(nameof(CalibrationSKU));
             RaisePropertyChanged(nameof(Remarks));
             RaisePropertyChanged(nameof(Frequency));
             RaisePropertyChanged(nameof(SelectedDevice));
