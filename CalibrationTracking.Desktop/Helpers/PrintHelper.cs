@@ -1,14 +1,13 @@
-﻿using CalibrationTracking.CustomeControls.TableControl;
-using ClosedXML.Excel;
+﻿using ClosedXML.Excel;
 using Spire.Xls;
 using System;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Controls;
 
-public sealed class PrintExcelFileHelper
+public sealed class PrintHelper
 {   
-    public static void  SetExcelFile(string calibrationSKU,
+    public static void  PrintCalibration(string calibrationSKU,
                                      string employeeId,
                                      string employee,
                                      string department,
@@ -65,9 +64,8 @@ public sealed class PrintExcelFileHelper
     
     }
 
-  
-
-    private static void CreatePdf(string fileName)
+ 
+    protected static void CreatePdf(string fileName)
     {
         using Workbook workbook = new Workbook();
 
@@ -82,6 +80,11 @@ public sealed class PrintExcelFileHelper
 
         workbook.Worksheets[1].PageSetup.IsFitToPage = true;
 
+        PrintWorkbook(fileName, workbook, dialog);
+    }
+
+    protected static void PrintWorkbook(string fileName, Workbook workbook, PrintDialog dialog)
+    {
         PrintDocument pd = workbook.PrintDocument;
 
         if (dialog.ShowDialog() == true)
@@ -99,5 +102,4 @@ public sealed class PrintExcelFileHelper
 
         }
     }
-
 }

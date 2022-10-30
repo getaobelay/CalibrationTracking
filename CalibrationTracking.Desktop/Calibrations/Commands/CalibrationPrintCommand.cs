@@ -33,7 +33,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
             var viewModel = (CalibrationPrintViewModel)_calibrationPrintWindow.DataContext;
 
 
-            PrintExcelFileHelper.SetExcelFile(viewModel.CalibrationSKU, viewModel.EmployeeId, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
+            PrintHelper.SetExcelFile(viewModel.CalibrationSKU, viewModel.EmployeeId, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
                 viewModel.SelectedDevice,viewModel.Description, viewModel.Frequency, viewModel.Reciver, System.DateTime.Now, viewModel.OrderSku);
         }
     }
