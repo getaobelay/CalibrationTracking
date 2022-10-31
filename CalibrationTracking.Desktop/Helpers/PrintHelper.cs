@@ -1,9 +1,17 @@
 ﻿using ClosedXML.Excel;
+using ControlzEx.Standard;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Spire.Xls;
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Controls;
+using static System.Net.Mime.MediaTypeNames;
+using Color = System.Drawing.Color;
+using Image = System.Drawing.Image;
+using Workbook = Spire.Xls.Workbook;
 
 public sealed class PrintHelper
 {   
@@ -19,16 +27,25 @@ public sealed class PrintHelper
                                      string orderSku)
     {
         string filePath = Path.Combine(System.IO.Path.GetFullPath(@"..\..\..\"), "Resources\\Print.xlsx");
+        var fileName = Path.Combine(System.IO.Path.GetFullPath(@$"..\..\..\"), $"Resources\\{DateTime.Now.Millisecond}.xlsx");
 
         using var wbook = new XLWorkbook(filePath);
 
 
-        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(orderSku);
+        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(createdAt.ToLocalTime().ToString("d"))
+            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
+
+        wbook.Worksheet(1).Range("D2:F2").Merge()
+            .Style.Font.SetFontSize(15);
+
+
+
         wbook.Worksheet(1).Range("B4:C4").Merge().SetValue(employee);   
         wbook.Worksheet(1).Range("G4:H4").Merge().SetValue(department);
         wbook.Worksheet(1).Range("B6:C6").Merge().SetValue(device);
         wbook.Worksheet(1).Range("G6:H6").Merge().SetValue(description);
-        wbook.Worksheet(1).Range("A8:E8").Merge().SetValue($"*{calibrationSKU}*").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); ;
+        wbook.Worksheet(1).Range("A8:E8").Merge()
+                            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); ;
 
         
 
@@ -40,22 +57,19 @@ public sealed class PrintHelper
         wbook.Worksheet(1).Range("B9:C9").Merge().SetValue(calibrationSKU);
 
 
-        wbook.Worksheet(1).Cell("B12").SetValue(DateTime.Now.ToString("d"));
+        wbook.Worksheet(1).Cell("B12").SetValue(createdAt.ToLocalTime());
         wbook.Worksheet(1).Range("B24:C24").Merge().SetValue(from);
         wbook.Worksheet(1).Range("E24:F24").Merge().SetValue(employeeId);
 
+        BarcodeLib.Barcode b = new BarcodeLib.Barcode();
+        Image img = b.Encode(BarcodeLib.TYPE.CODE39, calibrationSKU, Color.Black, Color.White, 330, 50);
 
-        wbook.Worksheet(1).Cell("A28").SetValue(calibrationSKU);
-        wbook.Worksheet(1).Cell("B28").SetValue(description);
-        wbook.Worksheet(1).Cell("C28").SetValue(device);
-        wbook.Worksheet(1).Cell("D28").SetValue(frequency);
-        wbook.Worksheet(1).Cell("E28").SetValue(from);
-        wbook.Worksheet(1).Cell("G28").SetValue(department);
-        wbook.Worksheet(1).Cell("F28").SetValue(orderSku);
-        wbook.Worksheet(1).Cell("H28").SetValue(DateTime.Now.ToString("d"));
+        using var ms = new MemoryStream();
+        img.Save(ms, ImageFormat.Png);
 
-
-        var fileName = Path.Combine(System.IO.Path.GetFullPath(@$"..\..\..\"), $"Resources\\{DateTime.Now.Millisecond}.xlsx");
+        wbook.Worksheet(1).AddPicture(ms)
+         .MoveTo(wbook.Worksheet(1).Cell(8, 7));
+             
 
         wbook.SaveAs(fileName);
 
@@ -67,7 +81,7 @@ public sealed class PrintHelper
  
     protected static void CreatePdf(string fileName)
     {
-        using Workbook workbook = new Workbook();
+        using Workbook workbook = new Spire.Xls.Workbook();
 
         workbook.LoadFromFile(fileName);
 
