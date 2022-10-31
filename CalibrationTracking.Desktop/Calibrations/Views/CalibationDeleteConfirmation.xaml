@@ -28,7 +28,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Content="Feed Rate" HorizontalAlignment="Right" FontWeight="Normal" FontSize="20"/>
+                    <Label Grid.Row="0" Content="דגם" HorizontalAlignment="Right" FontWeight="Normal" FontSize="20"/>
                     <TextBlock Grid.Row="1"  TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top"  FontWeight="Bold" Height="30" TextAlignment="Right" FontSize="25" Padding="0,0,4,0"/>
 
                 </Grid>
@@ -40,7 +40,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Content="Feed Rate" HorizontalAlignment="Right" FontWeight="Normal" FontSize="20"/>
+                    <Label Grid.Row="0" Content="מקט" HorizontalAlignment="Right" FontWeight="Normal" FontSize="20"/>
                     <TextBlock Grid.Row="1"  TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top"  FontWeight="Bold" Height="30" TextAlignment="Right" FontSize="25" Padding="0,0,4,0"/>
 
                 </Grid>

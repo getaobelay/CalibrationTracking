@@ -8,7 +8,7 @@ namespace CalibrationTracking.Desktop.Services.CustomeMessageBox
     public interface IDialogService
     {
         bool OpenFileDialog(bool checkFileExists, string Filter, out string FileName);
-        MessageBoxResult ShowMessageBox(string message, string caption, MessageBoxButton buttons, MessageBoxIcon icon);
+        bool ShowMessageBox(string message, string caption, MessageBoxButton buttons, MessageBoxIcon icon);
     }
 
     public class DialogService : IDialogService
@@ -32,7 +32,7 @@ namespace CalibrationTracking.Desktop.Services.CustomeMessageBox
 
 
 
-        public MessageBoxResult ShowMessageBox(string message, string caption, MessageBoxButton buttons, MessageBoxIcon icon)
+        public bool ShowMessageBox(string message, string caption, MessageBoxButton buttons, MessageBoxIcon icon)
         {
             //return (MessageBoxResult)System.Windows.MessageBox.Show(message, caption,
             //    (System.Windows.MessageBoxButton)buttons,
@@ -42,12 +42,20 @@ namespace CalibrationTracking.Desktop.Services.CustomeMessageBox
             CustomMessageBoxWindow mb = new CustomMessageBoxWindow(caption, message, true)
             {
                 Topmost = true,
-                WindowState = WindowState.Maximized
+                WindowState = WindowState.Maximized,
             };
 
+            mb.btnMessageBoxYes.Content = "המשך";
 
-           if(mb.ShowDialog() == true) return MessageBoxResult.Yes;
-           else return MessageBoxResult.No;
+
+            mb.ShowDialog();
+
+            if (mb.DialogResult == true)
+            {
+                return true;
+            }
+
+            else return false;
 
 
         }

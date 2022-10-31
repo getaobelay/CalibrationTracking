@@ -166,7 +166,7 @@
                         <ColumnDefinition Width="40*" />
                     </Grid.ColumnDefinitions>
                     <Button Content="הדפס"  Command="{Binding CalibrationPrintCommand}" Padding="5" Grid.Column="0" />
-                    <Button Content="ביטול" Grid.Column="4" />
+                    <Button Content="ביטול" Click="Button_Click_1" Grid.Column="4" />
                 </Grid>
             </Grid>
 

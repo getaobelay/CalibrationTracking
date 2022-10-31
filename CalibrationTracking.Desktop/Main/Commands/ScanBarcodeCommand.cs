@@ -54,6 +54,7 @@ namespace CalibrationTracking.Desktop.Main.Commands
                         calibrationPrintWindow.DataContext = new CalibrationPrintViewModel(calibrationPrintWindow, result);
 
                         calibrationPrintWindow.Title.Text = "הדפס מכשיר";
+
                         calibrationPrintWindow.Show();
                     }
 

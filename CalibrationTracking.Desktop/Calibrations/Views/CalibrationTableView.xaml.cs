@@ -1,7 +1,9 @@
-﻿using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
+﻿using CalibrationTracking.Application.Calibrations.Commands.DeleteCalibration;
+using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
 using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.CustomeMessageBox;
 using CalibrationTracking.Desktop.Services.CustomeMessageBox;
 using System;
 using System.Collections;
@@ -109,7 +111,50 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = UserControlHelper.DialogService.ShowMessageBox("האם אתה בטוח שברצנוך למחוק מכשיר זה", "מחק מכשיר", MessageBoxButton.YesNo, MessageBoxIcon.Warning);
+            var row_list = GetDataGridRows(devicesDataGrid);
+            Calibration calibration = null;
+
+            foreach (DataGridRow single_row in row_list)
+            {
+                if (single_row.IsSelected)
+                {
+                    calibration = ((Calibration)single_row.DataContext);
+
+
+                }
+            }
+
+            CustomMessageBoxWindow mb = new CustomMessageBoxWindow($"מחק מכשיר {calibration.CalibrationSKU}", $":האם אתה בטוח שברצנוך למחוק את המכשיר \n מק\"ט {calibration.CalibrationSKU} \n דגם {calibration.Device}", true)
+            {
+                Topmost = true,
+                WindowState = WindowState.Maximized,
+            };
+
+            mb.btnMessageBoxYes.Content = "המשך";
+
+
+            mb.ShowDialog();
+
+
+            if (mb.DialogResult == true)
+            {
+                var command = new DeleteCalibrationCommand
+                {
+                    CalibrationId = calibration.Id,
+                    CalibrationSku = calibration.CalibrationSKU
+                };
+
+
+                Dispatcher.Invoke(async () =>
+                {
+                    var result = await UserControlHelper.Mediator.Send(command);
+
+                    if(result == true)
+                    {
+                        ((CalibrationListViewModel)DataContext).LoadData();
+                    }
+                });
+            }
         }
     }
 }

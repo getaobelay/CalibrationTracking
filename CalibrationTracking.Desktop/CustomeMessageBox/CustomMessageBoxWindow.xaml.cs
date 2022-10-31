@@ -30,8 +30,6 @@ namespace CalibrationTracking.Desktop.CustomeMessageBox
                 btnMessageBoxYes.Visibility = Visibility.Collapsed;
             }
 
-            Closing += CustomMessageBoxWindow_Closing;
-
         }
 
        
@@ -39,6 +37,9 @@ namespace CalibrationTracking.Desktop.CustomeMessageBox
         private void btnMessageBoxNo_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+
+            this.Close();
+
         }
 
         private void imgMessageBoxCancel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -49,6 +50,9 @@ namespace CalibrationTracking.Desktop.CustomeMessageBox
         private void btnMessageBoxYes_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+
+            this.Close();
+
         }
 
         private void btnMessageBoxClose_Click(object sender, RoutedEventArgs e)
@@ -56,19 +60,7 @@ namespace CalibrationTracking.Desktop.CustomeMessageBox
             this.Close();
         }
 
-        private void CustomMessageBoxWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
-        {
-            try
-            {
-                this.Visibility = Visibility.Hidden;
-                e.Cancel = true;
-                this.ShowInTaskbar = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+   
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
