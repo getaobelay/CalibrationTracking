@@ -35,22 +35,30 @@ namespace CalibrationTracking.Application.Calibrations.Commands.CreateCalibratio
 
             public async Task<Calibration> Handle(CreateCalibrationCommand request, CancellationToken cancellationToken)
             {
-                var calibration = new Calibration
+                try
                 {
-                    CalibrationSKU = request.CalibrationSKU,
-                    Device = request.Device,
-                    Employee = request.Employee,
-                    Frequency = request.Frequency,
-                    Remarks = request.Remarks,
-                    Department = request.Department,
-                    Description = request.Description,
-                    CreatedAt = DateTime.Now,
-                };
+                    var calibration = new Calibration
+                    {
+                        CalibrationSKU = request.CalibrationSKU,
+                        Device = request.Device,
+                        Employee = request.Employee,
+                        Frequency = request.Frequency,
+                        Remarks = request.Remarks,
+                        Department = request.Department,
+                        Description = request.Description,
+                        CreatedAt = DateTime.Now,
+                    };
 
-                await _context.AddAsync(calibration);
-                await _context.SaveChangesAsync(cancellationToken);
+                    await _context.AddAsync(calibration);
+                    await _context.SaveChangesAsync(cancellationToken);
 
-                return calibration;
+                    return calibration;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
         }
     }

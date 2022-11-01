@@ -3,6 +3,7 @@ using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.CustomeMessageBox;
 using CalibrationTracking.Desktop.Main.Windows;
 using System;
 using System.Collections.ObjectModel;
@@ -26,7 +27,26 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
 
         public async void LoadData()
         {
-            await GetAllCalibration();
+            _calibrations = null;
+            _selectedCalibration = null;
+
+
+            try
+            {
+                await GetAllCalibration();
+            }
+            catch (Exception ex)
+            {
+
+                bool? Result = new CustomMessageBoxWindow($"{ex.Message}\n{ex.InnerException}", MessageType.Error, MessageButtons.OkCancel).ShowDialog();
+
+                if (Result.Value)
+                {
+                    await GetAllCalibration();
+                }
+
+              
+            }
         }
 
 
@@ -46,9 +66,6 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
 
         private async Task GetAllCalibration()
         {
-            _calibrations = null;
-            _selectedCalibration = null;
-
             var query = new GetAllCalibrationsQuery();
 
             var calibrations = await UserControlHelper.Mediator.Send(query);
