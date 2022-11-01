@@ -19,58 +19,91 @@ namespace CalibrationTracking.Desktop.CustomeMessageBox
     /// </summary>
     public partial class CustomMessageBoxWindow : Window
     {
-        public CustomMessageBoxWindow(string caption, string message, bool dialog)
+        public CustomMessageBoxWindow(string Message, MessageType Type, MessageButtons Buttons)
         {
             InitializeComponent();
-            tbMessageBoxCaption.Text = caption;
-            tbMessageBoxMessage.Text = message;
-            if (!dialog)
+            txtMessage.Text = Message;
+            switch (Type)
             {
-                btnMessageBoxNo.Visibility = Visibility.Collapsed;
-                btnMessageBoxYes.Visibility = Visibility.Collapsed;
+
+                case MessageType.Info:
+                    txtTitle.Text = "מידע";
+                    break;
+                case MessageType.Confirmation:
+                    txtTitle.Text = "אישור";
+                    break;
+                case MessageType.Success:
+                    {
+                        txtTitle.Text = "הצלחה";
+                    }
+                    break;
+                case MessageType.Warning:
+                    txtTitle.Text = "אזהרה";
+                    break;
+                case MessageType.Error:
+                    {
+                        txtTitle.Text = "שגיאה";
+                    }
+                    break;
             }
-
+            switch (Buttons)
+            {
+                case MessageButtons.OkCancel:
+                    btnYes.Visibility = Visibility.Collapsed; btnNo.Visibility = Visibility.Collapsed;
+                    break;
+                case MessageButtons.YesNo:
+                    btnOk.Visibility = Visibility.Collapsed; btnCancel.Visibility = Visibility.Collapsed;
+                    break;
+                case MessageButtons.Ok:
+                    btnOk.Visibility = Visibility.Visible;
+                    btnCancel.Visibility = Visibility.Collapsed;
+                    btnYes.Visibility = Visibility.Collapsed; btnNo.Visibility = Visibility.Collapsed;
+                    break;
+            }
         }
 
-       
-
-        private void btnMessageBoxNo_Click(object sender, RoutedEventArgs e)
+        private void btnYes_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
-
-            this.Close();
-
-        }
-
-        private void imgMessageBoxCancel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnMessageBoxYes_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
-
-            this.Close();
-
-        }
-
-        private void btnMessageBoxClose_Click(object sender, RoutedEventArgs e)
-        {
+            this.DialogResult = true;
             this.Close();
         }
 
-   
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            this.DialogResult = false;
+            this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.DialogResult = true;
+            this.Close();
         }
+
+        private void btnNo_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+            this.Close();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+            this.Close();
+        }
+    }
+    public enum MessageType
+    {
+        Info,
+        Confirmation,
+        Success,
+        Warning,
+        Error,
+    }
+    public enum MessageButtons
+    {
+        OkCancel,
+        YesNo,
+        Ok,
     }
 }

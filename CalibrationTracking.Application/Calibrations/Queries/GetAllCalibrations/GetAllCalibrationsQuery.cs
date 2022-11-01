@@ -26,7 +26,7 @@ namespace CalibrationTracking.Application.Calibrations.Queries.GetAllCalibration
 
             public async Task<List<Calibration>> Handle(GetAllCalibrationsQuery request, CancellationToken cancellationToken)
             {
-                return await _context.Calibrations.ToListAsync();
+                return await _context.Calibrations.OrderBy(x=> x.CalibrationSKU).ToListAsync();
             }
         }
 

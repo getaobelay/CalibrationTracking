@@ -14,8 +14,8 @@ using Image = System.Drawing.Image;
 using Workbook = Spire.Xls.Workbook;
 
 public sealed class PrintHelper
-{   
-    public static void  PrintCalibration(string calibrationSKU,
+{
+    public static void PrintCalibration(string calibrationSKU,
                                      string employeeId,
                                      string employee,
                                      string department,
@@ -26,28 +26,28 @@ public sealed class PrintHelper
                                      DateTime createdAt,
                                      string orderSku)
     {
-        string filePath = Path.Combine(System.IO.Path.GetFullPath(@"..\..\..\"), "Resources\\Print.xlsx");
-        var fileName = Path.Combine(System.IO.Path.GetFullPath(@$"..\..\..\"), $"Resources\\{DateTime.Now.Millisecond}.xlsx");
+        string path = System.IO.Path.GetFullPath(@"..\..\..\");
+        string printfilePath = Path.Combine(path, "Resources\\Print.xlsx");
+        string createdfileName = Path.Combine(path, $"Resources\\{DateTime.Now.Millisecond}.xlsx");
 
-        using var wbook = new XLWorkbook(filePath);
-
-
-        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(createdAt.ToLocalTime().ToString("d"))
-            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
-
-        wbook.Worksheet(1).Range("D2:F2").Merge()
-            .Style.Font.SetFontSize(15);
+        CreateWorksheet(calibrationSKU, employeeId, employee, department, description, device, frequency, from, orderSku, printfilePath, createdfileName);
+        PrintCreatedWorksheet(createdfileName);
 
 
+    }
 
-        wbook.Worksheet(1).Range("B4:C4").Merge().SetValue(employee);   
+    private static void CreateWorksheet(string calibrationSKU, string employeeId, string employee, string department, string description, string device, string frequency, string from, string orderSku, string printfilePath, string createdfileName)
+    {
+        using var wbook = new XLWorkbook(printfilePath);
+
+        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(orderSku);
+        wbook.Worksheet(1).Range("B4:C4").Merge().SetValue(employee);
         wbook.Worksheet(1).Range("G4:H4").Merge().SetValue(department);
         wbook.Worksheet(1).Range("B6:C6").Merge().SetValue(device);
         wbook.Worksheet(1).Range("G6:H6").Merge().SetValue(description);
-        wbook.Worksheet(1).Range("A8:E8").Merge()
-                            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); ;
+        wbook.Worksheet(1).Range("A8:E8").Merge().SetValue($"*{calibrationSKU}*").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); ;
 
-        
+
 
         wbook.Worksheet(1).Range("A8:E8").Style.Font.FontSize = 30;
 
@@ -57,31 +57,26 @@ public sealed class PrintHelper
         wbook.Worksheet(1).Range("B9:C9").Merge().SetValue(calibrationSKU);
 
 
-        wbook.Worksheet(1).Cell("B12").SetValue(createdAt.ToLocalTime());
+        wbook.Worksheet(1).Cell("B12").SetValue(DateTime.Now.ToString("d"));
         wbook.Worksheet(1).Range("B24:C24").Merge().SetValue(from);
         wbook.Worksheet(1).Range("E24:F24").Merge().SetValue(employeeId);
 
-        BarcodeLib.Barcode b = new BarcodeLib.Barcode();
-        Image img = b.Encode(BarcodeLib.TYPE.CODE39, calibrationSKU, Color.Black, Color.White, 330, 50);
 
-        using var ms = new MemoryStream();
-        img.Save(ms, ImageFormat.Png);
+        wbook.Worksheet(1).Cell("A28").SetValue(calibrationSKU);
+        wbook.Worksheet(1).Cell("B28").SetValue(description);
+        wbook.Worksheet(1).Cell("C28").SetValue(device);
+        wbook.Worksheet(1).Cell("D28").SetValue(frequency);
+        wbook.Worksheet(1).Cell("E28").SetValue(from);
+        wbook.Worksheet(1).Cell("G28").SetValue(department);
+        wbook.Worksheet(1).Cell("F28").SetValue(orderSku);
+        wbook.Worksheet(1).Cell("H28").SetValue(DateTime.Now.ToString("d"));
 
-        wbook.Worksheet(1).AddPicture(ms)
-         .MoveTo(wbook.Worksheet(1).Cell(8, 7));
-             
-
-        wbook.SaveAs(fileName);
-
-        CreatePdf(fileName);
-
-    
+        wbook.SaveAs(createdfileName);
     }
 
- 
-    protected static void CreatePdf(string fileName)
+    private static void PrintCreatedWorksheet(string fileName)
     {
-        using Workbook workbook = new Spire.Xls.Workbook();
+        using Workbook workbook = new Workbook();
 
         workbook.LoadFromFile(fileName);
 
@@ -94,10 +89,10 @@ public sealed class PrintHelper
 
         workbook.Worksheets[1].PageSetup.IsFitToPage = true;
 
-        PrintWorkbook(fileName, workbook, dialog);
+        PrintWorksheet(fileName, workbook, dialog);
     }
 
-    protected static void PrintWorkbook(string fileName, Workbook workbook, PrintDialog dialog)
+    private static void PrintWorksheet(string fileName, Workbook workbook, PrintDialog dialog)
     {
         PrintDocument pd = workbook.PrintDocument;
 

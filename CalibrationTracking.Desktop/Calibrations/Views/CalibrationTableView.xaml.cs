@@ -124,19 +124,11 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
                 }
             }
 
-            CustomMessageBoxWindow mb = new CustomMessageBoxWindow($"מחק מכשיר {calibration.CalibrationSKU}", $":האם אתה בטוח שברצנוך למחוק את המכשיר \n מק\"ט {calibration.CalibrationSKU} \n דגם {calibration.Device}", true)
-            {
-                Topmost = true,
-                WindowState = WindowState.Maximized,
-            };
+        
 
-            mb.btnMessageBoxYes.Content = "המשך";
+            bool? Result = new CustomMessageBoxWindow($"האם אתה בטוח שברצנוך למחוק את המכשיר ? ", MessageType.Confirmation, MessageButtons.YesNo).ShowDialog();
 
-
-            mb.ShowDialog();
-
-
-            if (mb.DialogResult == true)
+            if (Result.Value)
             {
                 var command = new DeleteCalibrationCommand
                 {
@@ -149,12 +141,15 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
                 {
                     var result = await UserControlHelper.Mediator.Send(command);
 
-                    if(result == true)
+                    if (result == true)
                     {
                         ((CalibrationListViewModel)DataContext).LoadData();
                     }
                 });
             }
+
+
+         
         }
     }
 }

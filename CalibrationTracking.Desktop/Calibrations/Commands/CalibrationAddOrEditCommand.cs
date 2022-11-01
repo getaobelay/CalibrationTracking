@@ -57,6 +57,8 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
                 _calibrationAddOrEditWindow.Close();
 
                 ((CalibrationListViewModel)_calibrationTableView.DataContext).LoadData();
+
+
             }
 
         }

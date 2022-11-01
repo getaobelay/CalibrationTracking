@@ -39,6 +39,8 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 
             _calibrationAddOrEditWindow.Show();
 
+            await Task.CompletedTask;
+
         }
     }
 }

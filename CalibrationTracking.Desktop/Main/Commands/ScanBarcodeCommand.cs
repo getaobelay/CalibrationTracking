@@ -3,6 +3,7 @@ using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.CustomeMessageBox;
 using CalibrationTracking.Desktop.Main.ViewModels;
 using CalibrationTracking.Desktop.Main.Windows;
 using CalibrationTracking.Desktop.Services.CustomeMessageBox;
@@ -45,6 +46,7 @@ namespace CalibrationTracking.Desktop.Main.Commands
                 await _mainWindow.Dispatcher.Invoke(async () =>
                 {
                     _mainWindow.Hide();
+
                     try
                     {
                         var result = await UserControlHelper.Mediator.Send(query);
@@ -58,13 +60,34 @@ namespace CalibrationTracking.Desktop.Main.Commands
                         calibrationPrintWindow.Show();
                     }
 
-                    catch (CalibrationNotFoundException ex) 
+
+                    catch (CalibrationNotFoundException ex)
                     {
 
-                        UserControlHelper.DialogService.ShowMessageBox(ex.Message, "מכשיר זה לא קיים במערכת", MessageBoxButton.OKCancel, MessageBoxIcon.Exclamation);
+                        bool? Result = new CustomMessageBoxWindow($"מכשיר זה אינו קיים במערכת", MessageType.Error, MessageButtons.OkCancel).ShowDialog();
+
+                        if (Result.Value)
+                        {
+                            await ExecuteAsync();
+                        }
+
+                        else
+                        {
+                            _mainWindow.Close();
+                        }
                     }
 
-                
+                    catch (Exception ex)
+                    {
+                        bool? Result = new CustomMessageBoxWindow(ex.InnerException.Message, MessageType.Error, MessageButtons.OkCancel).ShowDialog();
+
+                        if (Result.Value)
+                        {
+
+                        }
+
+                    }
+
                 });
             }
         }

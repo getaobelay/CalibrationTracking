@@ -7,6 +7,7 @@ using CalibrationTracking.Application.Calibrations.Commands.CreateCalibration;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Shared;
+using CalibrationTracking.Desktop.CustomeMessageBox;
 
 namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
@@ -35,8 +36,15 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 
         public override async Task ExecuteAsync()
         {
-            ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Undo();
 
+            bool? Result = new CustomMessageBoxWindow($"האם אתה בטוח שברצונך למחוק שינויים שביצעת בטופס ?", MessageType.Warning, MessageButtons.OkCancel).ShowDialog();
+
+            if (Result.Value)
+            {
+                ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Undo();
+            }
+
+         
         }
     }
 }

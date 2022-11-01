@@ -39,25 +39,25 @@ namespace CalibrationTracking.Desktop.Services.CustomeMessageBox
             //    (System.Windows.MessageBoxImage)icon,System.Windows.MessageBoxResult.None, System.Windows.MessageBoxOptions.RtlReading);
 
 
-            CustomMessageBoxWindow mb = new CustomMessageBoxWindow(caption, message, true)
-            {
-                Topmost = true,
-                WindowState = WindowState.Maximized,
-            };
+            //CustomMessageBoxWindow mb = new CustomMessageBoxWindow(caption, message, true)
+            //{
+            //    Topmost = true,
+            //    WindowState = WindowState.Maximized,
+            //};
 
-            mb.btnMessageBoxYes.Content = "המשך";
-
-
-            mb.ShowDialog();
-
-            if (mb.DialogResult == true)
-            {
-                return true;
-            }
-
-            else return false;
+            //mb.btnMessageBoxYes.Content = "המשך";
 
 
+            //mb.ShowDialog();
+
+            //if (mb.DialogResult == true)
+            //{
+            //    return true;
+            //}
+
+            //else return false;
+
+            return default;
         }
     }
 }
