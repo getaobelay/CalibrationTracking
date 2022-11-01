@@ -1,14 +1,9 @@
 ﻿using ClosedXML.Excel;
-using ControlzEx.Standard;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Spire.Xls;
 using System;
-using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Controls;
-using static System.Net.Mime.MediaTypeNames;
 using Color = System.Drawing.Color;
 using Image = System.Drawing.Image;
 using Workbook = Spire.Xls.Workbook;
@@ -30,22 +25,31 @@ public sealed class PrintHelper
         string printfilePath = Path.Combine(path, "Resources\\Print.xlsx");
         string createdfileName = Path.Combine(path, $"Resources\\{DateTime.Now.Millisecond}.xlsx");
 
-        CreateWorksheet(calibrationSKU, employeeId, employee, department, description, device, frequency, from, orderSku, printfilePath, createdfileName);
+        CreateWorksheet(calibrationSKU, employeeId, employee, department, description, device, frequency, from, createdAt, printfilePath, createdfileName);
         PrintCreatedWorksheet(createdfileName);
 
 
     }
 
-    private static void CreateWorksheet(string calibrationSKU, string employeeId, string employee, string department, string description, string device, string frequency, string from, string orderSku, string printfilePath, string createdfileName)
+    private static void CreateWorksheet(string calibrationSKU, string employeeId, string employee, string department, string description, string device, string frequency, string from, DateTime createdAt, string printfilePath, string createdfileName)
     {
         using var wbook = new XLWorkbook(printfilePath);
 
-        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(orderSku);
+
+        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(createdAt.ToLocalTime().ToString("d"))
+            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
+
+        wbook.Worksheet(1).Range("D2:F2").Merge()
+            .Style.Font.SetFontSize(15);
+
+
+
         wbook.Worksheet(1).Range("B4:C4").Merge().SetValue(employee);
         wbook.Worksheet(1).Range("G4:H4").Merge().SetValue(department);
         wbook.Worksheet(1).Range("B6:C6").Merge().SetValue(device);
         wbook.Worksheet(1).Range("G6:H6").Merge().SetValue(description);
-        wbook.Worksheet(1).Range("A8:E8").Merge().SetValue($"*{calibrationSKU}*").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); ;
+        wbook.Worksheet(1).Range("A8:E8").Merge()
+                            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); ;
 
 
 
@@ -57,19 +61,19 @@ public sealed class PrintHelper
         wbook.Worksheet(1).Range("B9:C9").Merge().SetValue(calibrationSKU);
 
 
-        wbook.Worksheet(1).Cell("B12").SetValue(DateTime.Now.ToString("d"));
-        wbook.Worksheet(1).Range("B24:C24").Merge().SetValue(from);
+        wbook.Worksheet(1).Cell("B12").SetValue(createdAt.ToString());
+        wbook.Worksheet(1).Range("B24:C24").Merge().SetValue(from).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
         wbook.Worksheet(1).Range("E24:F24").Merge().SetValue(employeeId);
 
+        BarcodeLib.Barcode b = new BarcodeLib.Barcode();
+        Image img = b.Encode(BarcodeLib.TYPE.CODE39, calibrationSKU, Color.Black, Color.White, 350, 50);
 
-        wbook.Worksheet(1).Cell("A28").SetValue(calibrationSKU);
-        wbook.Worksheet(1).Cell("B28").SetValue(description);
-        wbook.Worksheet(1).Cell("C28").SetValue(device);
-        wbook.Worksheet(1).Cell("D28").SetValue(frequency);
-        wbook.Worksheet(1).Cell("E28").SetValue(from);
-        wbook.Worksheet(1).Cell("G28").SetValue(department);
-        wbook.Worksheet(1).Cell("F28").SetValue(orderSku);
-        wbook.Worksheet(1).Cell("H28").SetValue(DateTime.Now.ToString("d"));
+        using var ms = new MemoryStream();
+        img.Save(ms, ImageFormat.Png);
+
+        wbook.Worksheet(1).AddPicture(ms)
+         .MoveTo(wbook.Worksheet(1).Cell(8, 8));
+
 
         wbook.SaveAs(createdfileName);
     }
@@ -82,7 +86,7 @@ public sealed class PrintHelper
 
         PrintDialog dialog = new PrintDialog();
         dialog.UserPageRangeEnabled = true;
-        PageRange rang = new PageRange(1, 3);
+        PageRange rang = new PageRange(1, 1);
         dialog.PageRange = rang;
         PageRangeSelection seletion = PageRangeSelection.UserPages;
         dialog.PageRangeSelection = seletion;
