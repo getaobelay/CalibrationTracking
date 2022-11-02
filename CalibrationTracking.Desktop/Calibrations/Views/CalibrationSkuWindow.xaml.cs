@@ -1,4 +1,6 @@
-﻿using CalibrationTracking.Desktop.Main.ViewModels;
+﻿using CalibrationTracking.Desktop.Calibrations.ViewModels;
+using CalibrationTracking.Desktop.Calibrations.Views;
+using CalibrationTracking.Desktop.Main.ViewModels;
 using CalibrationTracking.Desktop.Main.Windows;
 using CalibrationTracking.Desktop.Services;
 using System;
@@ -14,13 +16,19 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     /// </summary>
     public partial class CalibrationSkuWindow : Window
     {
+        private readonly CalibrationTableView _calibrationTableView;
+        private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
 
-        public CalibrationSkuWindow(Views.CalibrationTableView calibrationTableView)
+        public CalibrationSkuWindow(CalibrationTableView calibrationTableView, CalibrationAddOrEditWindow calibrationAddOrEditWindow)
         {
             InitializeComponent();
 
-            Closing += ScanBarcodeWindow_Closing;
+            DataContext = new CalibrationSkuViewModel(this, calibrationAddOrEditWindow);
 
+            _calibrationTableView = calibrationTableView;
+            _calibrationAddOrEditWindow = calibrationAddOrEditWindow;
+
+            Closing += ScanBarcodeWindow_Closing;
         }
 
         private void ScanBarcodeWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
