@@ -13,15 +13,14 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
     internal class CalibrationListViewModel : BaseViewModel
     {
         private readonly CalibrationTableView _calibrationTableView;
-
+        private readonly ScanBarcodeWindow _scanBarcodeWindow;
         public CalibrationListViewModel(CalibrationTableView calibrationTableView)
         {
-            _calibrationTableView  = calibrationTableView;
-
-            OpenAddOrEditCommand = new OpenAddOrEditWindowCommand(calibrationTableView, new CalibrationAddOrEditWindow(calibrationTableView));
-            OpenScanBarcodeCommand = new OpenPrintWindowCommand(new ScanBarcodeWindow(calibrationTableView));
+            _calibrationTableView = calibrationTableView;
+            _scanBarcodeWindow = new ScanBarcodeWindow(calibrationTableView);
+            OpenAddOrEditCommand = new OpenAddOrEditWindowCommand(calibrationTableView, new CalibrationAddOrEditWindow(calibrationTableView), _scanBarcodeWindow);
+            OpenScanBarcodeCommand = new OpenPrintWindowCommand(_scanBarcodeWindow);
             LoadData();
-
         }
 
         public async void LoadData()

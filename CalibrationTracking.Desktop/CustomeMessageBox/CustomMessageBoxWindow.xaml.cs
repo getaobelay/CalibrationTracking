@@ -92,18 +92,4 @@ namespace CalibrationTracking.Desktop.CustomeMessageBox
             this.Close();
         }
     }
-    public enum MessageType
-    {
-        Info,
-        Confirmation,
-        Success,
-        Warning,
-        Error,
-    }
-    public enum MessageButtons
-    {
-        OkCancel,
-        YesNo,
-        Ok,
-    }
 }

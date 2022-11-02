@@ -27,11 +27,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
         {
             var viewModel = (CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext;
 
-            return  !string.IsNullOrWhiteSpace(viewModel.Frequency) ||
-                    !string.IsNullOrWhiteSpace(viewModel.SelectedDevice) ||
-                    !string.IsNullOrWhiteSpace(viewModel.SelectedEmployee) ||
-                    !string.IsNullOrWhiteSpace(viewModel.Description) 
-                    && RunningTasks.Count() == 0;
+            return  viewModel.IsDirty && RunningTasks.Count() == 0;
         }
 
         public override async Task ExecuteAsync()

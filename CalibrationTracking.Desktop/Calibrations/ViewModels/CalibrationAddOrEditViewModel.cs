@@ -42,7 +42,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (!string.Equals(_remarks, value))
                 {
                     _remarks = value;
-                    RaisePropertyChanged();
+                             IsDirty = true;           RaisePropertyChanged();
                 }
             }
         }
@@ -65,7 +65,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (!string.Equals(_frequency, value))
                 {
                     _frequency = value;
-                    RaisePropertyChanged();
+                             IsDirty = true;           RaisePropertyChanged();
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (!string.Equals(_calibrationSKU, value))
                 {
                     _calibrationSKU = value;
-                    RaisePropertyChanged();
+                             IsDirty = true;           RaisePropertyChanged();
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (!string.IsNullOrWhiteSpace(value) && value != _selectedDevice)
                 {
                     _selectedDevice = value;
-                    RaisePropertyChanged();
+                             IsDirty = true;           RaisePropertyChanged();
                 }
             }
         }
@@ -142,7 +142,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (!string.IsNullOrWhiteSpace(value) && value != _selectedEmployee)
                 {
                     _selectedEmployee = value;
-                    RaisePropertyChanged();
+                             IsDirty = true;           RaisePropertyChanged();
                 }
             }
         }
@@ -168,7 +168,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (!string.IsNullOrWhiteSpace(value) && value != _selectedDepartment)
                 {
                     _selectedDepartment = value;
-                    RaisePropertyChanged();
+                             IsDirty = true;           RaisePropertyChanged();
                 }
             }
         }
@@ -193,7 +193,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (!string.IsNullOrWhiteSpace(value) && value != _description)
                 {
                     _description = value;
-                    RaisePropertyChanged();
+                             IsDirty = true;           RaisePropertyChanged();
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (!string.IsNullOrWhiteSpace(value) && value != _reciver)
                 {
                     _reciver = value;
-                    RaisePropertyChanged();
+                             IsDirty = true;           RaisePropertyChanged();
                 }
             }
         }
