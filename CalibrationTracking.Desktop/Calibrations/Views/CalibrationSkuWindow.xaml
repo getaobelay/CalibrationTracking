@@ -1,0 +1,67 @@
+<Window
+    x:Class="CalibrationTracking.Desktop.Calibrations.Windows.CalibrationSkuWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="clr-namespace:CalibrationTracking.CustomeControls;assembly=CalibrationTracking.CustomeControls"
+    xmlns:keyHelper="clr-namespace:CalibrationTracking.Desktop.Helpers" xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Main.ViewModels" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=viewmodels:ScanBarcodeViewModel}"
+    FontSize="15"
+    mc:Ignorable="d"
+    FontFamily="Segui"
+    FontStyle="Normal"
+    FontWeight="SemiBold"
+    Height="150"
+    WindowStyle="None"
+    ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
+    SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen"
+    FlowDirection="RightToLeft"
+    Title="סריקת ברקוד">
+
+    <Border BorderBrush="LightGray" BorderThickness="1" Background="White">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="5" Color="LightGray"/>
+        </Border.Effect>
+
+        <Grid VerticalAlignment="Stretch">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#320b86">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="0.75*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="הוסף מכשיר חדש" VerticalAlignment="Center"  FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Margin="5" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
+
+                
+                <Button Grid.Column="5" Width="50" Height="50" Margin="0" BorderBrush="Transparent" BorderThickness="100" Click="Button_Click_1">
+                    <materialDesign:PackIcon Width="20" Height="20" Foreground="white" Kind="Shutdown" />
+                </Button>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 20 0 0">
+
+                <TextBox Width="400" Text="{Binding Barcode, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="20 0" Height="70"  FontSize="25"
+                x:Name="NameTextBox" 
+                         keyHelper:EnterKeyCommandHelper.EnterKeyCommand="{Binding ScanBarcodeCommand}"
+                materialDesign:HintAssist.Hint="מקט" VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     >
+              
+                </TextBox>
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+
+</Window>

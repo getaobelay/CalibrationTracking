@@ -35,22 +35,14 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
         public override async Task ExecuteAsync()
         {
 
-            _scanBarcodeWindow.ShowDialog();
+            _calibrationAddOrEditWindow.Title.Text = "מכשיר חדש";
 
-            var sku = ((ScanBarcodeViewModel)_scanBarcodeWindow.DataContext).Barcode;
-
-            if (!string.IsNullOrWhiteSpace(sku))
-            {
-
-                _calibrationAddOrEditWindow.Title.Text = "מכשיר חדש";
-
-                _calibrationAddOrEditWindow.DataContext = new CalibrationAddOrEditViewModel(_calibrationAddOrEditWindow, null, _calibrationTableView);
+            _calibrationAddOrEditWindow.DataContext = new CalibrationAddOrEditViewModel(_calibrationAddOrEditWindow, null, _calibrationTableView);
 
 
-                _calibrationAddOrEditWindow.Show();
+            _calibrationAddOrEditWindow.Show();
 
-                await Task.CompletedTask;
-            }
+            await Task.CompletedTask;
 
 
         }
