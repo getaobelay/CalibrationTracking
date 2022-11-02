@@ -61,7 +61,7 @@ public sealed class PrintHelper
         wbook.Worksheet(1).Range("B9:C9").Merge().SetValue(calibrationSKU);
 
 
-        wbook.Worksheet(1).Cell("B12").SetValue(createdAt.ToString());
+        wbook.Worksheet(1).Range("B12:C12").Merge().SetValue(createdAt.ToString("g")).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
         wbook.Worksheet(1).Range("B24:C24").Merge().SetValue(from).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
         wbook.Worksheet(1).Range("E24:F24").Merge().SetValue(employeeId);
 
