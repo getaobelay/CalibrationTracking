@@ -1,7 +1,6 @@
 ﻿using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
-using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using System;
 
