@@ -34,21 +34,46 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
         public override async Task ExecuteAsync()
         {
-            var barcode = ((CalibrationSkuViewModel)_calibrationSkuWindow.DataContext).CalibrationSku;
+            var calibrationSKU = ((CalibrationSkuViewModel)_calibrationSkuWindow.DataContext).CalibrationSku;
 
-            if (!string.IsNullOrWhiteSpace(barcode))
+            if (!string.IsNullOrWhiteSpace(calibrationSKU))
             {
+                var query = new GetSingleCalibrationBySkuQuery
+                {
+                    CalibrationSKU = calibrationSKU
+                };
 
-                _calibrationAddOrEditWindow.Title.Text = "קליטת מכשיר ";
 
-                ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(null);
-                ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).CalibrationSKU= barcode;
+                var calibration = await UserControlHelper.Mediator.Send(query);
+
+                if(calibration is not null)
+                {
+                    _calibrationSkuWindow.Hide();
+
+                    bool? Result = new CustomMessageBoxWindow($"מכשיר אם המקט {calibrationSKU} כבר קיים במערכת.", MessageType.Error, MessageButtons.OkCancel).ShowDialog();
+
+                    if (Result.Value)
+                    {
+                        _calibrationSkuWindow.Show();
+
+                    }
+                }
+
+                else
+                {
+
+                    _calibrationAddOrEditWindow.Title.Text = "קליטת מכשיר ";
+
+                    ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(null);
+                    ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).CalibrationSKU = calibrationSKU;
 
 
-                _calibrationSkuWindow.Hide();
-                _calibrationAddOrEditWindow.ShowDialog();
+                    _calibrationSkuWindow.Hide();
+                    _calibrationAddOrEditWindow.ShowDialog();
 
-                await Task.CompletedTask;
+                    await Task.CompletedTask;
+                }
+
             }
         }
 
