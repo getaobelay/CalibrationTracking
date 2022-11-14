@@ -43,10 +43,9 @@ namespace CalibrationTracking.Desktop.Main.Commands
                     CalibrationSKU = calibrationSKU
                 };
 
-
                 var calibration = await UserControlHelper.Mediator.Send(query);
 
-                if(calibration is not null)
+                if (calibration is not null)
                 {
                     _calibrationSkuWindow.Hide();
 

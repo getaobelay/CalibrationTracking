@@ -47,20 +47,11 @@ namespace CalibrationTracking.Application.Calibrations.Queries.GetAllCalibration
 
             public async Task<Calibration> Handle(GetSingleCalibrationBySkuQuery request, CancellationToken cancellationToken)
             {
-                try
-                {
-                    var calibration = await _context.Calibrations.SingleOrDefaultAsync(x => x.CalibrationSKU == request.CalibrationSKU);
+                var calibration = await _context.Calibrations.SingleOrDefaultAsync(x => x.CalibrationSKU == request.CalibrationSKU);
 
-                    if (calibration == null) throw new CalibrationNotFoundException(request.CalibrationSKU);
 
-                    return calibration;
-                }
-                catch (Exception)
-                {
+                return calibration;
 
-                    throw;
-                }
-     
             }
         }
 

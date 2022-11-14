@@ -9,13 +9,13 @@ namespace CalibrationTracking.Application.Calibrations.Queries.Exceptions
 
         public CalibrationNotFoundException(string? message) : base(message)
         {
-            Message = $"אנא וודא  שמספר המכשיר ({message}) תקין ";
+            Message = $"לא קיים מכשיר אם המקט {message} במערכת.";
         }
 
 
         public CalibrationNotFoundException(Guid? message)
         {
-            Message = $"אנא וודא  שמספר המכשיר ({message}) תקין ";
+            Message = $"לא קיים מכשיר אם המקט {message} במערכת.";
         }
 
         public string? Message { get; }
