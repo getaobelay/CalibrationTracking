@@ -11,27 +11,25 @@ using Workbook = Spire.Xls.Workbook;
 public sealed class PrintHelper
 {
     public static void PrintCalibration(string calibrationSKU,
-                                     string employeeId,
                                      string employee,
                                      string department,
                                      string description,
                                      string device,
                                      string frequency,
                                      string from,
-                                     DateTime createdAt,
-                                     string orderSku)
+                                     DateTime createdAt)
     {
         string path = System.IO.Path.GetFullPath(@"..\..\..\");
         string printfilePath = Path.Combine(path, "Resources\\Print.xlsx");
         string createdfileName = Path.Combine(path, $"Resources\\{DateTime.Now.Millisecond}.xlsx");
 
-        CreateWorksheet(calibrationSKU, employeeId, employee, department, description, device, frequency, from, createdAt, printfilePath, createdfileName);
+        CreateWorksheet(calibrationSKU, employee, department, description, device, frequency, from, createdAt, printfilePath, createdfileName);
         PrintCreatedWorksheet(createdfileName);
 
 
     }
 
-    private static void CreateWorksheet(string calibrationSKU, string employeeId, string employee, string department, string description, string device, string frequency, string from, DateTime createdAt, string printfilePath, string createdfileName)
+    private static void CreateWorksheet(string calibrationSKU, string employee, string department, string description, string device, string frequency, string from, DateTime createdAt, string printfilePath, string createdfileName)
     {
         using var wbook = new XLWorkbook(printfilePath);
 
@@ -63,7 +61,6 @@ public sealed class PrintHelper
 
         wbook.Worksheet(1).Range("B12:C12").Merge().SetValue(createdAt.ToString("g")).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
         wbook.Worksheet(1).Range("B24:C24").Merge().SetValue(from).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
-        wbook.Worksheet(1).Range("E24:F24").Merge().SetValue(employeeId).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
 
         BarcodeLib.Barcode b = new BarcodeLib.Barcode();
         Image img = b.Encode(BarcodeLib.TYPE.CODE39, calibrationSKU, Color.Black, Color.White, 350, 50);

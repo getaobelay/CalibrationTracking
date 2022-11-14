@@ -30,8 +30,8 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
             var viewModel = (CalibrationPrintViewModel)_calibrationPrintWindow.DataContext;
 
 
-            PrintHelper.PrintCalibration(viewModel.CalibrationSKU, viewModel.EmployeeId, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
-                viewModel.SelectedDevice,viewModel.Description, viewModel.Frequency, viewModel.Reciver, System.DateTime.Now, viewModel.OrderSku);
+            PrintHelper.PrintCalibration(viewModel.CalibrationSKU, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
+                viewModel.SelectedDevice,viewModel.Description, viewModel.Frequency, viewModel.Reciver, System.DateTime.Now);
         }
     }
 }
