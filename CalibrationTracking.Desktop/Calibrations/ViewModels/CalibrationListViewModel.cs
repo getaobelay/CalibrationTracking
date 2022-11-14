@@ -3,6 +3,7 @@ using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.Main.Commands;
 using CalibrationTracking.Desktop.Main.Windows;
 using System;
 using System.Collections.ObjectModel;
@@ -13,13 +14,18 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
     internal class CalibrationListViewModel : BaseViewModel
     {
         private readonly CalibrationTableView _calibrationTableView;
+        private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
         private readonly ScanBarcodeWindow _scanBarcodeWindow;
+        private readonly CalibrationSkuWindow _calibrationSkuWindow;
         public CalibrationListViewModel(CalibrationTableView calibrationTableView)
         {
             _calibrationTableView = calibrationTableView;
+            _calibrationAddOrEditWindow = new CalibrationAddOrEditWindow(calibrationTableView);
+            _calibrationSkuWindow = new CalibrationSkuWindow(calibrationTableView, _calibrationAddOrEditWindow);
             _scanBarcodeWindow = new ScanBarcodeWindow(calibrationTableView);
-            OpenAddOrEditCommand = new OpenAddOrEditWindowCommand(calibrationTableView, new CalibrationAddOrEditWindow(calibrationTableView), _scanBarcodeWindow);
+            OpenAddOrEditCommand = new OpenAddOrEditWindowCommand(calibrationTableView, _calibrationAddOrEditWindow, _scanBarcodeWindow);
             OpenScanBarcodeCommand = new OpenPrintWindowCommand(_scanBarcodeWindow);
+            OpenCalibrationSkuWindowCommand = new OpenCalibrationSkuWindowCommand(_calibrationSkuWindow, _calibrationAddOrEditWindow, _calibrationTableView);
             LoadData();
         }
 
@@ -42,6 +48,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
 
         public AsyncCommand OpenAddOrEditCommand { get; protected set; } 
         public AsyncCommand OpenScanBarcodeCommand { get; protected set; } 
+        public OpenCalibrationSkuWindowCommand OpenCalibrationSkuWindowCommand { get; protected set; } 
 
         private async Task GetAllCalibration()
         {

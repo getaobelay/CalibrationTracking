@@ -27,10 +27,11 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
         public override async Task ExecuteAsync()
         {
 
-
             _scanBarcodeWindow.ShowDialog();
+
             ((ScanBarcodeViewModel)_scanBarcodeWindow.DataContext).Barcode = null;
 
+            await Task.CompletedTask;
 
         }
     }

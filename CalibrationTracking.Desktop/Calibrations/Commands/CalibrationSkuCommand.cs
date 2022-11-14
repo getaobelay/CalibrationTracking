@@ -19,11 +19,11 @@ namespace CalibrationTracking.Desktop.Main.Commands
 {
     public class CalibrationSkuCommand : AsyncCommand
     {
-        private readonly CalibrationSkuWindow _mainWindow;
+        private readonly CalibrationSkuWindow _calibrationSkuWindow;
         private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
-        public CalibrationSkuCommand(CalibrationSkuWindow mainWindow, CalibrationAddOrEditWindow calibrationAddOrEditWindow)
+        public CalibrationSkuCommand(CalibrationSkuWindow calibrationSkuWindow, CalibrationAddOrEditWindow calibrationAddOrEditWindow)
         {
-            _mainWindow = mainWindow ?? throw new ArgumentNullException(nameof(CalibrationSkuWindow));
+            _calibrationSkuWindow = calibrationSkuWindow ?? throw new ArgumentNullException(nameof(CalibrationSkuWindow));
             _calibrationAddOrEditWindow = calibrationAddOrEditWindow ?? throw new ArgumentNullException(nameof(CalibrationAddOrEditWindow));
         }
 
@@ -34,19 +34,19 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
         public override async Task ExecuteAsync()
         {
-            var barcode = ((CalibrationSkuViewModel)_mainWindow.DataContext).CalibrationSku;
+            var barcode = ((CalibrationSkuViewModel)_calibrationSkuWindow.DataContext).CalibrationSku;
 
             if (!string.IsNullOrWhiteSpace(barcode))
             {
-                _mainWindow.Hide();
 
-                _calibrationAddOrEditWindow.Title.Text = "מכשיר חדש";
+                _calibrationAddOrEditWindow.Title.Text = "קליטת מכשיר ";
 
                 ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(null);
+                ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).CalibrationSKU= barcode;
 
-                ((CalibrationSkuViewModel)_mainWindow.DataContext).CalibrationSku = barcode;
 
-                _calibrationAddOrEditWindow.Show();
+                _calibrationSkuWindow.Hide();
+                _calibrationAddOrEditWindow.ShowDialog();
 
                 await Task.CompletedTask;
             }

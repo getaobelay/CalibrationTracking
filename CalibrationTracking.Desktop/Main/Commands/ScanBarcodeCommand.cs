@@ -79,7 +79,7 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
                     catch (Exception ex)
                     {
-                        bool? Result = new CustomMessageBoxWindow(ex.InnerException.Message, MessageType.Error, MessageButtons.OkCancel).ShowDialog();
+                        bool? Result = new CustomMessageBoxWindow(ex.Message, MessageType.Error, MessageButtons.OkCancel).ShowDialog();
 
                         if (Result.Value)
                         {

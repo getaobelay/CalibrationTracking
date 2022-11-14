@@ -5,7 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="clr-namespace:CalibrationTracking.CustomeControls;assembly=CalibrationTracking.CustomeControls"
-    xmlns:keyHelper="clr-namespace:CalibrationTracking.Desktop.Helpers" xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Main.ViewModels" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=viewmodels:ScanBarcodeViewModel}"
+    xmlns:keyHelper="clr-namespace:CalibrationTracking.Desktop.Helpers" 
+    xmlns:viewmodels="clr-namespace:CalibrationTracking.Desktop.Main.ViewModels" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels1="clr-namespace:CalibrationTracking.Desktop.Calibrations.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels1:CalibrationSkuViewModel}"
     FontSize="15"
     mc:Ignorable="d"
     FontFamily="Segui"
@@ -49,10 +51,12 @@
             </Grid>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 20 0 0">
-
-                <TextBox Width="400" Text="{Binding Barcode, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="20 0" Height="70"  FontSize="25"
+                <materialDesign:PackIcon 
+            Kind="Barcode" Width="80" Height="100"
+            Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}"/>
+                <TextBox Width="400" Text="{Binding CalibrationSku, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="20 0" Height="70"  FontSize="25"
                 x:Name="NameTextBox" 
-                         keyHelper:EnterKeyCommandHelper.EnterKeyCommand="{Binding ScanBarcodeCommand}"
+                         keyHelper:EnterKeyCommandHelper.EnterKeyCommand="{Binding CalibrationSkuCommand}"
                 materialDesign:HintAssist.Hint="מקט" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      >

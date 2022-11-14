@@ -53,7 +53,7 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <Button Grid.Column="5" HorizontalAlignment="Right" Margin="5" ToolTip="הוסף מכשיר חדש"  Style="{StaticResource gridEditButton}" Width="40" Height="30" Command="{Binding OpenAddOrEditCommand}" >
+                        <Button Grid.Column="5" HorizontalAlignment="Right" Margin="5" ToolTip="הוסף מכשיר חדש"  Style="{StaticResource gridEditButton}" Width="40" Height="30" Command="{Binding OpenCalibrationSkuWindowCommand}" >
                             <Icon:PackIconMaterial Kind="Pencil" Style="{StaticResource gridButtonIcon}" />
                         </Button>
 

@@ -3,6 +3,7 @@ using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.Main.Commands;
 using System;
 
 namespace CalibrationTracking.Desktop.Calibrations.ViewModels
@@ -17,6 +18,8 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
             _calibrationAddOrEditWindow = calibrationAddOrEditWindow;
             _calibrationSkuWindow = calibrationSkuWindow;
+
+            CalibrationSkuCommand = new CalibrationSkuCommand(_calibrationSkuWindow, _calibrationAddOrEditWindow);
         }
 
     
@@ -42,7 +45,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         }
 
 
-        public CalibrationPrintCommand CalibrationPrintCommand { get; protected set; }
+        public CalibrationSkuCommand CalibrationSkuCommand { get; protected set; }
 
 
 

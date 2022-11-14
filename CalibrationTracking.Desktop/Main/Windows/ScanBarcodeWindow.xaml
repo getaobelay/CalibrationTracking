@@ -61,7 +61,7 @@
                 <TextBox Width="400" Text="{Binding Barcode, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="20 0" Height="70"  FontSize="25"
                 x:Name="NameTextBox" 
                          keyHelper:EnterKeyCommandHelper.EnterKeyCommand="{Binding ScanBarcodeCommand}"
-                materialDesign:HintAssist.Hint="ברקוד" VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="מקט" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      >
               
