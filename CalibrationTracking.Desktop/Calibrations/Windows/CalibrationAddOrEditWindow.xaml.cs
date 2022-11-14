@@ -1,17 +1,6 @@
 ﻿using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CalibrationTracking.Desktop.Calibrations.Windows
 {
@@ -20,14 +9,11 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     /// </summary>
     public partial class CalibrationAddOrEditWindow : Window
     {
-        private bool isDataSaved;
-
         public CalibrationAddOrEditWindow(Views.CalibrationTableView calibrationTableView)
         {
             InitializeComponent();
 
             Closing += CalibrationAddOrEditWindow_Closing;
-            isDataSaved = true;
             DataContext = new CalibrationAddOrEditViewModel(this, null,calibrationTableView);
 
         }
