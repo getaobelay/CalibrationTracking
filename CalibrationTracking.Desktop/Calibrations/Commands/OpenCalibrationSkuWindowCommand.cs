@@ -1,16 +1,9 @@
 ﻿using CalibrationTracking.Desktop.Base;
-using MediatR;
 using System.Linq;
 using System.Threading.Tasks;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
-using CalibrationTracking.Application.Calibrations.Commands.CreateCalibration;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.Calibrations.Views;
-using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
-using System;
-using CalibrationTracking.Core.Calibrations;
-using CalibrationTracking.Desktop.Main.ViewModels;
-using CalibrationTracking.Desktop.Main.Windows;
 
 namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
@@ -39,8 +32,9 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 
         public override async Task ExecuteAsync()
         {
-            _calibrationSkuWindow.ShowDialog();
             ((CalibrationSkuViewModel)_calibrationSkuWindow.DataContext).CalibrationSku = null;
+
+            _calibrationSkuWindow.ShowDialog();
 
             await Task.CompletedTask;
 

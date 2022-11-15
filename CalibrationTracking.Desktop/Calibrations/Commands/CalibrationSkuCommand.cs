@@ -69,7 +69,7 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
                     _calibrationSkuWindow.Hide();
                     _calibrationAddOrEditWindow.ShowDialog();
-
+                    ((CalibrationSkuViewModel)_calibrationSkuWindow.DataContext).CalibrationSku = null;
                     await Task.CompletedTask;
                 }
 

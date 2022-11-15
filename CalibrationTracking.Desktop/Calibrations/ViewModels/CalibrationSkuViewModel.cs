@@ -36,7 +36,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 
             set
             {
-                if (!string.IsNullOrWhiteSpace(value) && value != _calibrationSku)
+                if (value != _calibrationSku)
                 {
                     _calibrationSku = value;
                     RaisePropertyChanged();

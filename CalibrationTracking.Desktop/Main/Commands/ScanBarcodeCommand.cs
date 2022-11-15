@@ -58,6 +58,7 @@ namespace CalibrationTracking.Desktop.Main.Commands
                         calibrationPrintWindow.Title.Text = "הדפס מכשיר";
 
                         calibrationPrintWindow.Show();
+
                     }
 
 

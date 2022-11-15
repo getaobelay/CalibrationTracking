@@ -60,7 +60,6 @@ public sealed class PrintHelper
 
 
         wbook.Worksheet(1).Range("B12:C12").Merge().SetValue(createdAt.ToString("g")).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
-        wbook.Worksheet(1).Range("B24:C24").Merge().SetValue(from).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
 
         BarcodeLib.Barcode b = new BarcodeLib.Barcode();
         Image img = b.Encode(BarcodeLib.TYPE.CODE39, calibrationSKU, Color.Black, Color.White, 350, 50);
