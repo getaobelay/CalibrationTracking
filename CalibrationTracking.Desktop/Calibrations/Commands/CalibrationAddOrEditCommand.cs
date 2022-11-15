@@ -57,7 +57,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
                 _calibrationAddOrEditWindow.Close();
 
                 PrintHelper.PrintCalibration(viewModel.CalibrationSKU, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
-              viewModel.SelectedDevice, viewModel.Description, viewModel.Frequency, viewModel.Reciver, System.DateTime.Now);
+              viewModel.SelectedDevice, viewModel.Description, viewModel.Frequency, System.DateTime.Now);
 
                 ((CalibrationListViewModel)_calibrationTableView.DataContext).LoadData();
 

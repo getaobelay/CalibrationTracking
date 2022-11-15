@@ -31,7 +31,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 
 
             PrintHelper.PrintCalibration(viewModel.CalibrationSKU, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
-                viewModel.SelectedDevice,viewModel.Description, viewModel.Frequency, viewModel.Reciver, System.DateTime.Now);
+                viewModel.SelectedDevice,viewModel.Description, viewModel.Frequency, System.DateTime.Now);
         }
     }
 }

@@ -16,20 +16,19 @@ public sealed class PrintHelper
                                      string description,
                                      string device,
                                      string frequency,
-                                     string from,
                                      DateTime createdAt)
     {
         string path = System.IO.Path.GetFullPath(@"..\..\..\");
         string printfilePath = Path.Combine(path, "Resources\\Print.xlsx");
         string createdfileName = Path.Combine(path, $"Resources\\{DateTime.Now.Millisecond}.xlsx");
 
-        CreateWorksheet(calibrationSKU, employee, department, description, device, frequency, from, createdAt, printfilePath, createdfileName);
+        CreateWorksheet(calibrationSKU, employee, department, description, device, frequency, createdAt, printfilePath, createdfileName);
         PrintCreatedWorksheet(createdfileName);
 
 
     }
 
-    private static void CreateWorksheet(string calibrationSKU, string employee, string department, string description, string device, string frequency, string from, DateTime createdAt, string printfilePath, string createdfileName)
+    private static void CreateWorksheet(string calibrationSKU, string employee, string department, string description, string device, string frequency, DateTime createdAt, string printfilePath, string createdfileName)
     {
         using var wbook = new XLWorkbook(printfilePath);
 

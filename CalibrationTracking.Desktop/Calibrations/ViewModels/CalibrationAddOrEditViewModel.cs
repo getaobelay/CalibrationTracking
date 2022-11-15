@@ -3,6 +3,7 @@ using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using System;
 
 namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 {
@@ -199,30 +200,31 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         }
 
 
-        private string? _reciver;
+        private DateTime? _createdAt = DateTime.Now;
 
-        public string? Reciver
+        public DateTime? CreatedAt
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(_reciver) && Model is not null)
+
+                if (Model is not null)
                 {
-                    _reciver = Model.Employee;
+                    _createdAt = Model.CreatedAt;
                 }
 
-
-                return _reciver;
+                return _createdAt;
             }
 
             set
             {
-                if (!string.IsNullOrWhiteSpace(value) && value != _reciver)
+                if (value != _createdAt)
                 {
-                    _reciver = value;
-                             IsDirty = true;           RaisePropertyChanged();
+                    _createdAt = value;
+                    RaisePropertyChanged();
                 }
             }
         }
+
 
         public override void Reload(Calibration model)
         {
@@ -233,7 +235,6 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             _frequency = string.Empty;
             _description = string.Empty;
             _calibrationSKU = string.Empty;
-            _reciver = string.Empty;
 
             RaisePropertyChanged(nameof(SelectedDevice));
             RaisePropertyChanged(nameof(SelectedEmployee));
@@ -242,7 +243,6 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             RaisePropertyChanged(nameof(Frequency));
             RaisePropertyChanged(nameof(Description));
             RaisePropertyChanged(nameof(CalibrationSKU));
-            RaisePropertyChanged(nameof(Reciver));
 
             base.Reload(model);
         }
