@@ -200,7 +200,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
         }
 
 
-        private DateTime? _createdAt = DateTime.Now;
+        private DateTime? _createdAt;
 
         public DateTime? CreatedAt
         {
@@ -210,6 +210,10 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
                 if (Model is not null)
                 {
                     _createdAt = Model.CreatedAt;
+                }
+                else
+                {
+                    _createdAt = DateTime.Now;
                 }
 
                 return _createdAt;
@@ -243,6 +247,7 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             RaisePropertyChanged(nameof(Frequency));
             RaisePropertyChanged(nameof(Description));
             RaisePropertyChanged(nameof(CalibrationSKU));
+            RaisePropertyChanged(nameof(CreatedAt));
 
             base.Reload(model);
         }
