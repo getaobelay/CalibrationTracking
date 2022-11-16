@@ -25,6 +25,9 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
                 this.Visibility = Visibility.Hidden;
                 e.Cancel = true;
                 this.ShowInTaskbar = false;
+
+                ((CalibrationAddOrEditViewModel)DataContext).Reload(null);
+
             }
             catch (Exception ex)
             {

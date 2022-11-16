@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using ControlzEx.Standard;
 using System;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
@@ -32,6 +33,17 @@ public sealed class PrintHelper
     {
         using var wbook = new XLWorkbook(printfilePath);
 
+        wbook.Worksheet(1).PageSetup.Margins.Top = 1;
+        wbook.Worksheet(1).PageSetup.Margins.Bottom = 1.25;
+        wbook.Worksheet(1).PageSetup.Margins.Left = 0.5;
+        wbook.Worksheet(1).PageSetup.Margins.Right = 0.75;
+        wbook.Worksheet(1).PageSetup.Margins.Footer = 0.15;
+        wbook.Worksheet(1).PageSetup.Margins.Header = 0.30;
+
+        wbook.Worksheet(1).PageSetup.CenterHorizontally = true;
+        wbook.Worksheet(1).PageSetup.CenterVertically = true;
+
+
 
         wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(createdAt.ToLocalTime().ToString("d"))
             .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
@@ -41,12 +53,19 @@ public sealed class PrintHelper
 
 
 
+        wbook.Worksheet(1).Range("E3:F3").Merge().SetValue("41897")
+           .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
+
+        wbook.Worksheet(1).Range("E3:F3").Merge()
+           .Style.Font.SetFontSize(18).Font.SetBold();
+
+
         wbook.Worksheet(1).Range("B4:C4").Merge().SetValue(employee);
         wbook.Worksheet(1).Range("G4:H4").Merge().SetValue(department);
         wbook.Worksheet(1).Range("B6:C6").Merge().SetValue(device);
         wbook.Worksheet(1).Range("G6:H6").Merge().SetValue(description);
         wbook.Worksheet(1).Range("A8:E8").Merge()
-                            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); ;
+                            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
 
 
 
@@ -61,13 +80,15 @@ public sealed class PrintHelper
         wbook.Worksheet(1).Range("B12:C12").Merge().SetValue(createdAt.ToString("g")).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
 
         BarcodeLib.Barcode b = new BarcodeLib.Barcode();
-        Image img = b.Encode(BarcodeLib.TYPE.CODE39, calibrationSKU, Color.Black, Color.White, 350, 50);
+        Image img = b.Encode(BarcodeLib.TYPE.CODE39, calibrationSKU, Color.Black, Color.White, 350, 40);
 
         using var ms = new MemoryStream();
         img.Save(ms, ImageFormat.Png);
 
         wbook.Worksheet(1).AddPicture(ms)
          .MoveTo(wbook.Worksheet(1).Cell(8, 8));
+
+        wbook.Worksheet(1).Cell(8,8).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
 
 
         wbook.SaveAs(createdfileName);
@@ -95,19 +116,30 @@ public sealed class PrintHelper
     {
         PrintDocument pd = workbook.PrintDocument;
 
-        if (dialog.ShowDialog() == true)
-        {
-            pd.DefaultPageSettings.Landscape = true;
-            pd.DefaultPageSettings.PaperSize = new PaperSize("A4Landscape", 827, 1169);
-            pd.DefaultPageSettings.PaperSize.RawKind = (int)PaperKind.A4;
-            pd.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+        //if (dialog.ShowDialog() == true)
+        //{
+        //    pd.DefaultPageSettings.Landscape = true;
+        //    pd.DefaultPageSettings.PaperSize = new PaperSize("A4Landscape", 827, 1169);
+        //    pd.DefaultPageSettings.PaperSize.RawKind = (int)PaperKind.A4;
+        //    pd.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
 
-            pd.Print();
-
-
-            File.Delete(fileName);
+        //    pd.Print();
 
 
-        }
+        //    File.Delete(fileName);
+
+
+        //}
+
+
+        pd.DefaultPageSettings.Landscape = true;
+        pd.DefaultPageSettings.PaperSize = new PaperSize("A4Landscape", 827, 1169);
+        pd.DefaultPageSettings.PaperSize.RawKind = (int)PaperKind.A4;
+        pd.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+
+        pd.Print();
+
+
+        File.Delete(fileName);
     }
 }

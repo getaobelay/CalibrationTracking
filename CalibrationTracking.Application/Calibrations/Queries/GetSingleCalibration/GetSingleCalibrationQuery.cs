@@ -49,6 +49,7 @@ namespace CalibrationTracking.Application.Calibrations.Queries.GetAllCalibration
             {
                 var calibration = await _context.Calibrations.SingleOrDefaultAsync(x => x.CalibrationSKU == request.CalibrationSKU);
 
+                if (calibration == null) throw new CalibrationNotFoundException(request.CalibrationSKU);
 
                 return calibration;
 
