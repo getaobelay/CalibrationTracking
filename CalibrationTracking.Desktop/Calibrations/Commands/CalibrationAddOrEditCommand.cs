@@ -52,10 +52,9 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 
             if (result is not null)
             {
-                ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(result);
-
                 _calibrationAddOrEditWindow.Close();
 
+                ((CalibrationAddOrEditViewModel)_calibrationAddOrEditWindow.DataContext).Reload(null);
 
                 ((CalibrationListViewModel)_calibrationTableView.DataContext).LoadData();
 
