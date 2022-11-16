@@ -1,5 +1,7 @@
 ﻿using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 namespace CalibrationTracking.Desktop.Calibrations.Windows
@@ -15,6 +17,11 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
 
             Closing += CalibrationAddOrEditWindow_Closing;
             DataContext = new CalibrationAddOrEditViewModel(this, null,calibrationTableView);
+
+            CultureInfo ci = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            ci.DateTimeFormat.LongDatePattern = "MMM.yyyy"; //This can be used for one type of DatePicker
+            ci.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy"; //for the second type
+            Thread.CurrentThread.CurrentCulture = ci;
 
         }
 

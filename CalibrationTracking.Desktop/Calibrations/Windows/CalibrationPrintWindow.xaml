@@ -71,14 +71,14 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0"  Margin="5">
                         <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Content="מאת:" />
-                        <TextBox Margin="2" Padding="5" FontSize="14" FontWeight="Bold" Text="{Binding SelectedEmployee, Mode=TwoWay}" />
+                        <TextBox Margin="2" Padding="5" IsEnabled="False" FontSize="14" FontWeight="Bold" Text="{Binding SelectedEmployee, Mode=TwoWay}" />
 
                     </StackPanel>
 
 
                     <StackPanel Grid.Column="1"  Margin="5">
                         <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="מחלקה:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding SelectedDepartment, Mode=TwoWay}" />
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" IsEnabled="False" Text="{Binding SelectedDepartment, Mode=TwoWay}" />
                     </StackPanel>
 
                 </Grid>
@@ -91,14 +91,14 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0"  Margin="5">
                         <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Content="שם הצמד:" />
-                        <TextBox Margin="2" Padding="5" FontSize="14" FontWeight="Bold" Text="{Binding Description, Mode=TwoWay}" />
+                        <TextBox Margin="2" Padding="5" FontSize="14" IsEnabled="False" FontWeight="Bold" Text="{Binding Description, Mode=TwoWay}" />
 
                     </StackPanel>
 
 
                     <StackPanel Grid.Column="1"  Margin="5">
                         <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="דגם:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding SelectedDevice, Mode=TwoWay}" />
+                        <TextBox Grid.Row="0" Grid.Column="1" IsEnabled="False" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding SelectedDevice, Mode=TwoWay}" />
                     </StackPanel>
 
                 </Grid>
@@ -113,13 +113,22 @@
 
                     <StackPanel Grid.Column="0"  Margin="5">
                         <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="תדירות כיול:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding Frequency, Mode=TwoWay}" />
+                        <TextBox Grid.Row="0" Grid.Column="1" IsEnabled="False" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding Frequency, Mode=TwoWay}" />
                     </StackPanel>
 
 
                     <StackPanel Grid.Column="1" Margin="5">
                         <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="תאריך:" />
-                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding PrintDate}" />
+                        <DatePicker Grid.Row="0" Grid.Column="1" IsEnabled="False" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" SelectedDate="{Binding PrintDate}" SelectedDateFormat="Short">
+                            <DatePicker.CalendarStyle>
+                                <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="Red" />
+                                        <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Green" />
+                                    </Style.Resources>
+                                </Style>
+                            </DatePicker.CalendarStyle>
+                        </DatePicker>
                     </StackPanel>
 
                 </Grid>

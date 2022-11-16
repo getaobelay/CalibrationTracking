@@ -35,13 +35,22 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
         public override async Task ExecuteAsync()
         {
 
-            _calibrationAddOrEditWindow.Title.Text = "מכשיר חדש";
+            try
+            {
+                _calibrationAddOrEditWindow.Title.Text = "מכשיר חדש";
 
-            _calibrationAddOrEditWindow.DataContext = new CalibrationAddOrEditViewModel(_calibrationAddOrEditWindow, null, _calibrationTableView);
+                _calibrationAddOrEditWindow.DataContext = new CalibrationAddOrEditViewModel(_calibrationAddOrEditWindow, null, _calibrationTableView);
 
 
-            _calibrationAddOrEditWindow.Show();
+                _calibrationAddOrEditWindow.Show();
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+         
 
 
             await Task.CompletedTask;

@@ -1,5 +1,6 @@
 ﻿using CalibrationTracking.Application.Calibrations.Queries.Exceptions;
 using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
+using CalibrationTracking.Application.Calibrations.Queries.IsCalibrationExists;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Views;
@@ -38,14 +39,14 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
             if (!string.IsNullOrWhiteSpace(calibrationSKU))
             {
-                var query = new GetSingleCalibrationBySkuQuery
+                var query = new IsCalibrationExistsQuery
                 {
-                    CalibrationSKU = calibrationSKU
+                    CalibrationSku = calibrationSKU
                 };
 
                 var calibration = await UserControlHelper.Mediator.Send(query);
 
-                if (calibration is not null)
+                if (calibration)
                 {
                     _calibrationSkuWindow.Hide();
 
