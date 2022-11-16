@@ -71,6 +71,16 @@ namespace CalibrationTracking.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap heblogo_blue__002_ {
+            get {
+                object obj = ResourceManager.GetObject("heblogo_blue__002_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Print {
