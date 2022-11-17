@@ -32,7 +32,7 @@
 
 
 
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
@@ -40,15 +40,15 @@
                     </Grid.ColumnDefinitions>
                     
                     
-                    <TextBlock Text="מכשירים" Grid.Column="0" FontSize="32" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0 20 0 10" Foreground="#121518" HorizontalAlignment="Left"/>
+                    <TextBlock Text="מכשירים" Grid.Column="0" FontSize="32" VerticalAlignment="Bottom" FontWeight="SemiBold" Margin="0 0 0 10" Foreground="#121518" HorizontalAlignment="Left"/>
 
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="2" Margin="0 0 0 10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
 
-                        <Button Grid.Column="6" HorizontalAlignment="Right" Margin="5" ToolTip="הוסף מכשיר חדש"  Style="{StaticResource gridEditButton}" Width="40" Height="30" Command="{Binding OpenCalibrationSkuWindowCommand}" >
+                        <Button  Grid.Column="6" VerticalAlignment="Bottom" HorizontalAlignment="Right"  ToolTip="הוסף מכשיר חדש"  Style="{StaticResource gridEditButton}" Width="40" Height="30" Command="{Binding OpenCalibrationSkuWindowCommand}" >
                             <Icon:PackIconMaterial Kind="Pencil" Style="{StaticResource gridButtonIcon}" />
                         </Button>
 
