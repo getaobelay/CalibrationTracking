@@ -58,6 +58,7 @@
                     Foreground="white"
                     Kind="WindowMinimize" />
                 </Button>
+                
                 <Button Grid.Column="5" Width="50" Height="50" Margin="0" BorderBrush="Transparent" BorderThickness="100" Click="Button_Click_1">
                     <materialDesign:PackIcon Width="20" Height="20" Foreground="white" Kind="Shutdown" />
                 </Button>
