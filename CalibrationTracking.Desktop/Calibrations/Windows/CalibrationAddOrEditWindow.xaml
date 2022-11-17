@@ -113,7 +113,7 @@
 
 
                     <StackPanel Grid.Column="0"  Margin="5">
-                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="תדירות כיול:" />
+                        <Label HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Content="תדירות כיול (חודשים):" />
                         <TextBox Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold" Margin="2" Padding="5" Text="{Binding Frequency, Mode=TwoWay}" />
                     </StackPanel>
 
