@@ -1,6 +1,8 @@
-﻿using ClosedXML.Excel;
+﻿using CalibrationTracking.Desktop.Properties;
+using ClosedXML.Excel;
 using ControlzEx.Standard;
 using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
@@ -89,7 +91,29 @@ public sealed class PrintHelper
         wbook.Worksheet(1).AddPicture(ms)
          .MoveTo(wbook.Worksheet(1).Cell(8, 8));
 
-        wbook.Worksheet(1).Cell(8,8).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
+
+
+
+
+        Image iconImage = (Image)new Bitmap(Resources.heblogo_blue__002_);
+
+
+        using var ms1 = new MemoryStream();
+
+        iconImage.Save(ms1, ImageFormat.Png);
+
+
+        //wbook.Worksheet(1).AddPicture(ms1)
+        // .MoveTo(wbook.Worksheet(1).Cell(8, 8));
+
+         wbook.Worksheet(1).AddPicture(ms1)
+           .MoveTo(wbook.Worksheet(1).Cell(1, 5))
+           .ScaleWidth(.2)
+           .ScaleHeight(.3);
+
+
+
+        wbook.Worksheet(1).Cell(1,1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
 
 
         wbook.SaveAs(createdfileName);
