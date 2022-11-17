@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace CalibrationTracking.Desktop.Main.Windows
 {
@@ -23,6 +24,10 @@ namespace CalibrationTracking.Desktop.Main.Windows
 
             _barcodeManager = new((DataContext as ScanBarcodeViewModel).BarcodeAction);
             Closing += ScanBarcodeWindow_Closing;
+
+       
+            //ToolTipService.SetInitialShowDelay(button, 10);
+            //ToolTipService.SetShowDuration(button, 2000);
 
         }
 

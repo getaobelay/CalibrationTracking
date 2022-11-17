@@ -40,6 +40,13 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
+                <Button Margin="10" Height="50">
+                    <!-- This is the content -->
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                        <materialDesign:PackIcon Kind="Devices"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="רשימת מכשירים"  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
                 <TextBlock Text="סרוק מכשיר" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
 
                 <Button Grid.Column="4"  Width="50" Height="50" Margin="0"  BorderBrush="Transparent"  BorderThickness="100" Click="Button_Click">

@@ -1,20 +1,14 @@
-﻿using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
-using CalibrationTracking.Desktop.Base;
+﻿using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.CustomeMessageBox;
 using CalibrationTracking.Desktop.Main.ViewModels;
 using CalibrationTracking.Desktop.Main.Windows;
-using CalibrationTracking.Desktop.Services.CustomeMessageBox;
-using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CalibrationTracking.Application.Calibrations.Exceptions;
 using CalibrationTracking.Application.Calibrations.Queries.GetSingleCalibration;
-using CalibrationTracking.Shared;
 
 namespace CalibrationTracking.Desktop.Main.Commands
 {
@@ -45,7 +39,6 @@ namespace CalibrationTracking.Desktop.Main.Commands
                 {
                     CalibrationSKU = barcode
                 };
-
 
                 await _scanBarcodeWindow.Dispatcher.Invoke(async () =>
                 {
