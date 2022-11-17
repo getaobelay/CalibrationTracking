@@ -17,14 +17,16 @@
     SizeToContent="WidthAndHeight"
     WindowStartupLocation="CenterScreen"
     FlowDirection="RightToLeft"
-    Title="סריקת ברקוד">
+    Title="סריקת ברקוד"
+    xmlns:Behaviors="clr-namespace:CalibrationTracking.Desktop.Main.Windows"
+    Behaviors:FocusBehavior.FocusFirst="true">
 
     <Border BorderBrush="LightGray" BorderThickness="1" Background="White">
         <Border.Effect>
             <DropShadowEffect ShadowDepth="0" BlurRadius="5" Color="LightGray"/>
         </Border.Effect>
 
-        <Grid VerticalAlignment="Stretch">
+        <Grid VerticalAlignment="Stretch" FocusManager.FocusedElement="{Binding ElementName=NameTextBox}">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
