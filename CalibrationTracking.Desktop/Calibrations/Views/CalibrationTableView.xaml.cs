@@ -24,10 +24,13 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
             InitializeComponent();
 
             DataContext = new CalibrationListViewModel(this);
+
+            ToolTipService.SetInitialShowDelay(addButton, 10);
+            ToolTipService.SetShowDuration(addButton, 2000);
         }
 
 
-  
+
 
         private void devicesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -48,7 +48,7 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <Button  Grid.Column="6" VerticalAlignment="Bottom" HorizontalAlignment="Right"  ToolTip="הוסף מכשיר חדש"  Style="{StaticResource gridEditButton}" Width="40" Height="30" Command="{Binding OpenCalibrationSkuWindowCommand}" >
+                        <Button x:Name="addButton" Grid.Column="6" VerticalAlignment="Bottom" HorizontalAlignment="Right"  ToolTip="הוסף מכשיר חדש"  Style="{StaticResource gridEditButton}" Width="40" Height="30" Command="{Binding OpenCalibrationSkuWindowCommand}" >
                             <Icon:PackIconMaterial Kind="Pencil" Style="{StaticResource gridButtonIcon}" />
                         </Button>
 
@@ -118,11 +118,11 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource gridEditButton}" Click="Button_Click" >
+                                        <Button ToolTipService.ShowDuration="2000" ToolTipService.InitialShowDelay="10" x:Name="edit" Style="{StaticResource gridEditButton}" Click="Button_Click" ToolTip="ערוך" >
                                             <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}" />
                                         </Button>
-                                        <Button x:Name="deleteButton" Click="deleteButton_Click" Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
-                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        <Button ToolTipService.ShowDuration="2000" ToolTipService.InitialShowDelay="10" x:Name="deleteButton" Click="deleteButton_Click" ToolTip="מחק" Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}" />
                                         </Button>
                                     </StackPanel>
                                 </DataTemplate>
