@@ -65,11 +65,11 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 20 0 0">
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
                             <materialDesign:PackIcon VerticalAlignment="Bottom"
             Kind="Search" Width="30" Height="30"
             Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}"/>
-                            <TextBox Width="400" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="20 0" FontSize="16"
+                            <TextBox Width="400" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="20 0" FontWeight="SemiBold" FontSize="16"
                 x:Name="NameTextBox" 
                 materialDesign:HintAssist.Hint="חיפוש לפי מקט או שם הצמד" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
