@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using CalibrationTracking.Infrastructure.Context;
 using CalibrationTracking.Core.Departments;
+using CalibrationTracking.Application.Departments.Commands.CreateDepartment;
 
-namespace CalibrationTracking.Application.Departments.CreateDepartment
+namespace CalibrationTracking.Application.Departments.Commands.CreateDepartment
 {
 	public class CreateDepartmentCommand : IRequest<Department>
 	{

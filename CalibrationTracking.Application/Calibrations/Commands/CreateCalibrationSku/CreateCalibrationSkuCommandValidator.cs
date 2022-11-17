@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using HybridTagCreator.Application.HybridTags.Commands.CreateHybridTagId;
+using CalibrationTracking.Application.Calibrations.Commands.CreateCalibrationSku;
 
 namespace CalibrationTracking.Application.Calibrations.Commands.CreateCalibrationSku
 {

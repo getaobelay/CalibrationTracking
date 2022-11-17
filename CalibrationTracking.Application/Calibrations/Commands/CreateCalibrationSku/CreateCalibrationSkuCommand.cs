@@ -3,8 +3,9 @@ using CalibrationTracking.Infrastructure.Context;
 using CalibrationTracking.Shared;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using CalibrationTracking.Application.Calibrations.Commands.CreateCalibrationSku;
 
-namespace HybridTagCreator.Application.HybridTags.Commands.CreateHybridTagId
+namespace CalibrationTracking.Application.Calibrations.Commands.CreateCalibrationSku
 {
     public class CreateCalibrationSkuCommand : IRequest<Result<string>>
     {

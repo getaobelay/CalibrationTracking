@@ -17,19 +17,20 @@ public sealed class PrintHelper
                                      string description,
                                      string device,
                                      string frequency,
-                                     DateTime createdAt)
+                                     DateTime createdAt, 
+                                     int orderSku)
     {
         string path = System.IO.Path.GetFullPath(@"..\..\..\");
         string printfilePath = Path.Combine(path, "Resources\\Print.xlsx");
         string createdfileName = Path.Combine(path, $"Resources\\{DateTime.Now.Millisecond}.xlsx");
 
-        CreateWorksheet(calibrationSKU, employee, department, description, device, frequency, createdAt, printfilePath, createdfileName);
+        CreateWorksheet(calibrationSKU, employee, department, description, device, frequency, createdAt, printfilePath, createdfileName, orderSku);
         PrintCreatedWorksheet(createdfileName);
 
 
     }
 
-    private static void CreateWorksheet(string calibrationSKU, string employee, string department, string description, string device, string frequency, DateTime createdAt, string printfilePath, string createdfileName)
+    private static void CreateWorksheet(string calibrationSKU, string employee, string department, string description, string device, string frequency, DateTime createdAt, string printfilePath, string createdfileName, int orderSku)
     {
         using var wbook = new XLWorkbook(printfilePath);
 
@@ -53,7 +54,7 @@ public sealed class PrintHelper
 
 
 
-        wbook.Worksheet(1).Range("E3:F3").Merge().SetValue("41897")
+        wbook.Worksheet(1).Range("E3:F3").Merge().SetValue(orderSku.ToString())
            .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
 
         wbook.Worksheet(1).Range("E3:F3").Merge()

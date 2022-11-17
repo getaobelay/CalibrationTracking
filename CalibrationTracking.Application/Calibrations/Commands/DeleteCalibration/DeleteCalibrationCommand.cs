@@ -10,7 +10,7 @@ using CalibrationTracking.Core.Employees;
 using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using CalibrationTracking.Application.Calibrations.Queries.Exceptions;
+using CalibrationTracking.Application.Calibrations.Exceptions;
 
 namespace CalibrationTracking.Application.Calibrations.Commands.DeleteCalibration
 {

@@ -1,5 +1,4 @@
-﻿using CalibrationTracking.Application.Calibrations.Queries.Exceptions;
-using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
+﻿using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
@@ -13,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CalibrationTracking.Application.Calibrations.Exceptions;
+using CalibrationTracking.Application.Calibrations.Queries.GetSingleCalibration;
 
 namespace CalibrationTracking.Desktop.Main.Commands
 {

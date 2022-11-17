@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 using CalibrationTracking.Core.Departments;
 using Microsoft.EntityFrameworkCore;
 using CalibrationTracking.Infrastructure.Context;
+using CalibrationTracking.Application.Departments.Commands.UpdateDepartment;
 
-namespace CalibrationTracking.Application.Departments.UpdateDepartment
+namespace CalibrationTracking.Application.Departments.Commands.UpdateDepartment
 {
 	public class UpdateDepartmentCommand : IRequest<Department>
 	{

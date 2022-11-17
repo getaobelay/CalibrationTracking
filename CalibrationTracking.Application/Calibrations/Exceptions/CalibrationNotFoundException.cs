@@ -1,5 +1,5 @@
 ﻿using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
-namespace CalibrationTracking.Application.Calibrations.Queries.Exceptions
+namespace CalibrationTracking.Application.Calibrations.Exceptions
 {
     public class CalibrationNotFoundException : Exception
     {

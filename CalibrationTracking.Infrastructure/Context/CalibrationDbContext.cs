@@ -1,7 +1,9 @@
-﻿using CalibrationTracking.Core.Calibrations;
+﻿using CalibrationTracking.Core;
+using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Core.Departments;
 using CalibrationTracking.Core.Devices;
 using CalibrationTracking.Core.Employees;
+using CalibrationTracking.OrderSkus.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Reflection;
@@ -23,6 +25,7 @@ namespace CalibrationTracking.Infrastructure.Context
         public virtual DbSet<Department> Departments { get; set; } = null!;
         public virtual DbSet<Device> Devices { get; set; } = null!;
         public virtual DbSet<Calibration> Calibrations { get; set; } = null!;
+        public virtual DbSet<OrderSku> OrderSku { get; set; } = null!;
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

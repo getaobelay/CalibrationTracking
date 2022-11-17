@@ -33,7 +33,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock x:Name="Title" Text="הוסף מכשיר" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
-                <TextBlock x:Name="Title1" Text="{Binding CalibrationSKU, StringFormat=מספר {0} }" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
+                <TextBlock x:Name="Title1" Text="{Binding OrderSku}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
 
                 <Button Grid.Column="4"  Width="50" Height="50" Margin="0"  BorderBrush="Transparent"  BorderThickness="100" Click="Button_Click">
                     <materialDesign:PackIcon

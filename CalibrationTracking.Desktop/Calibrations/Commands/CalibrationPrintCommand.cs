@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Application.OrderSkus.Commands.IncrementOrderSku;
 
 namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
@@ -29,9 +30,31 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
         {
             var viewModel = (CalibrationPrintViewModel)_calibrationPrintWindow.DataContext;
 
+            try
+            {
+                var command = new IncrementOrderSkuCommand();
 
-            PrintHelper.PrintCalibration(viewModel.CalibrationSKU, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
-                viewModel.SelectedDevice,viewModel.Description, viewModel.Frequency, System.DateTime.Now);
+                await UserControlHelper.Mediator.Send(command);
+
+
+                _calibrationPrintWindow.Close();
+
+                PrintHelper.PrintCalibration(viewModel.CalibrationSKU, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
+                    viewModel.SelectedDevice, viewModel.Description, viewModel.Frequency, System.DateTime.Now,viewModel.OrderSku.Value);
+
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+       
+
+
+
+
+
         }
     }
 }

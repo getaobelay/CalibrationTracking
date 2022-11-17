@@ -1,8 +1,11 @@
-﻿using CalibrationTracking.Core.Calibrations;
+﻿using CalibrationTracking.Application.Employees.Queries.GetAllEmployees;
+using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using System;
+using System.Threading.Tasks;
+using CalibrationTracking.Application.OrderSkus.Queries.GetOrderSku;
 
 namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 {
@@ -67,25 +70,39 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
             }
         }
 
-        private string? _orderSku;
+        private int? _orderSku;
 
 
-        public string? OrderSku
+        public int? OrderSku
         {
             get
             {
+                if(_orderSku == null)
+                {
+                    GetOrderSku();
+                }
 
                 return _orderSku;
             }
 
             set
             {
-                if (!string.IsNullOrWhiteSpace(value) && value != _orderSku)
+                if (value != _orderSku)
                 {
                     _orderSku = value;
                     RaisePropertyChanged();
                 }
             }
+        }
+
+        private async void GetOrderSku()
+        {
+            var result = await UserControlHelper.Mediator.Send(new GetOrderSkuQuery());
+
+            _orderSku = result.Counter + 1;
+
+            RaisePropertyChanged(nameof(OrderSku));
+
         }
 
         private string? _employeeId;

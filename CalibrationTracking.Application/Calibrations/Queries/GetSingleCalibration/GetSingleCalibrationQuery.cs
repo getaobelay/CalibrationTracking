@@ -2,9 +2,11 @@
 using CalibrationTracking.Infrastructure.Context;
 using CalibrationTracking.Core.Calibrations;
 using Microsoft.EntityFrameworkCore;
-using CalibrationTracking.Application.Calibrations.Queries.Exceptions;
+using CalibrationTracking.Application.Calibrations.Exceptions;
+using CalibrationTracking.Application.Calibrations.Queries.GetSingleCalibration;
+using CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations;
 
-namespace CalibrationTracking.Application.Calibrations.Queries.GetAllCalibrations
+namespace CalibrationTracking.Application.Calibrations.Queries.GetSingleCalibration
 {
     public class GetSingleCalibrationQuery : IRequest<Calibration>
     {
