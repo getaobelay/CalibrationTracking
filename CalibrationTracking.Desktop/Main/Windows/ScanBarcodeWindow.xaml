@@ -49,7 +49,7 @@
                         <TextBlock Text="רשימת מכשירים"  HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <TextBlock Text="סרוק מכשיר" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
+                <TextBlock Text="הזמנה לטיפול" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" Foreground="White" Grid.Row="0" Grid.Column="1"></TextBlock>
 
                 <Button Grid.Column="4"  Width="50" Height="50" Margin="0"  BorderBrush="Transparent"  BorderThickness="100" Click="Button_Click">
                     <materialDesign:PackIcon
