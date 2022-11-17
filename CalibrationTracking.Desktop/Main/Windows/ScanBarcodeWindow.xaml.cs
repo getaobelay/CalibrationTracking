@@ -138,7 +138,7 @@ namespace CalibrationTracking.Desktop.Main.Windows
  
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Close();    
+            WindowSizeHelper.Exit();
         }
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
@@ -166,6 +166,13 @@ namespace CalibrationTracking.Desktop.Main.Windows
         private void txtBarcode_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            UserControlHelper.MainWindow.Show();
+
+            Hide();
         }
     }
 }

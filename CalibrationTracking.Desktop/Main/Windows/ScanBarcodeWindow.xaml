@@ -40,7 +40,7 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Button Margin="10" Height="50">
+                <Button Margin="10" Height="50" Click="Button_Click_2">
                     <!-- This is the content -->
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
                         <materialDesign:PackIcon Kind="Devices"  VerticalAlignment="Center" HorizontalAlignment="Center"/>

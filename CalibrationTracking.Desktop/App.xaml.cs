@@ -24,6 +24,8 @@ namespace CalibrationTracking.Desktop
         public static IMediator Mediator { get; internal set; }
         public static IMapper Mapper { get; internal set; }
         public static IDialogService? DialogService { get; internal set; }
+        public static MainWindow? MainWindow { get; internal set; }
+        public static ScanBarcodeWindow? ScanBarcodeWindow { get; internal set; }
 
 
       
@@ -85,6 +87,8 @@ namespace CalibrationTracking.Desktop
             UserControlHelper.Mediator = (IMediator?)_host.Services.GetRequiredService<IMediator>();
             UserControlHelper.Mapper = (IMapper?)_host.Services.GetRequiredService<IMapper>();
             UserControlHelper.DialogService = (IDialogService?)_host.Services.GetRequiredService<IDialogService>();
+            UserControlHelper.MainWindow = _host.Services.GetRequiredService<MainWindow>();
+            UserControlHelper.ScanBarcodeWindow = _host.Services.GetRequiredService<ScanBarcodeWindow>();
 
             await InitiliazeDataBase();
             var window = _host.Services.GetRequiredService<ScanBarcodeWindow>();

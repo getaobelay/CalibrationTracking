@@ -50,7 +50,11 @@ namespace CalibrationTracking.Desktop.Main.Windows
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            WindowSizeHelper.Exit();
+            //WindowSizeHelper.Exit();
+
+            Close();
+
+            UserControlHelper.ScanBarcodeWindow.Show();
         }
 
     }
