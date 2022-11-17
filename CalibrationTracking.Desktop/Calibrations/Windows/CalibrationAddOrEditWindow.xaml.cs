@@ -1,4 +1,5 @@
 ﻿using CalibrationTracking.Desktop.Calibrations.ViewModels;
+using CalibrationTracking.Desktop.Calibrations.Views;
 using System;
 using System.Globalization;
 using System.Threading;
@@ -11,6 +12,8 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     /// </summary>
     public partial class CalibrationAddOrEditWindow : Window
     {
+        public CalibrationTableView CalibrationTableView { get; }
+
         public CalibrationAddOrEditWindow(Views.CalibrationTableView calibrationTableView)
         {
             InitializeComponent();
@@ -22,7 +25,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
             ci.DateTimeFormat.LongDatePattern = "MMM.yyyy"; //This can be used for one type of DatePicker
             ci.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy"; //for the second type
             Thread.CurrentThread.CurrentCulture = ci;
-
+            CalibrationTableView = calibrationTableView;
         }
 
         private void CalibrationAddOrEditWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)

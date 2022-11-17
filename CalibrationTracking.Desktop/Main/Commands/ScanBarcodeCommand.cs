@@ -14,16 +14,18 @@ using System.Text;
 using System.Threading.Tasks;
 using CalibrationTracking.Application.Calibrations.Exceptions;
 using CalibrationTracking.Application.Calibrations.Queries.GetSingleCalibration;
+using CalibrationTracking.Shared;
 
 namespace CalibrationTracking.Desktop.Main.Commands
 {
     public class ScanBarcodeCommand : AsyncCommand
     {
-        private readonly ScanBarcodeWindow _mainWindow;
+        private readonly ScanBarcodeWindow _scanBarcodeWindow;
         private readonly CalibrationAddOrEditWindow _calibrationAddOrEditWindow;
-        public ScanBarcodeCommand(ScanBarcodeWindow mainWindow, CalibrationAddOrEditWindow calibrationAddOrEditWindow)
+        
+        public ScanBarcodeCommand(ScanBarcodeWindow scanBarcodeWindow, CalibrationAddOrEditWindow calibrationAddOrEditWindow)
         {
-            _mainWindow = mainWindow ?? throw new ArgumentNullException(nameof(ScanBarcodeWindow));
+            _scanBarcodeWindow = scanBarcodeWindow ?? throw new ArgumentNullException(nameof(ScanBarcodeWindow));
             _calibrationAddOrEditWindow = calibrationAddOrEditWindow ?? throw new ArgumentNullException(nameof(CalibrationAddOrEditWindow));
         }
 
@@ -34,7 +36,8 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
         public override async Task ExecuteAsync()
         {
-            var barcode = ((ScanBarcodeViewModel)_mainWindow.DataContext).Barcode;
+            var barcode = ((ScanBarcodeViewModel)_scanBarcodeWindow.DataContext).Barcode;
+            var calibrationPrintWindow = new CalibrationPrintWindow();
 
             if (!string.IsNullOrWhiteSpace(barcode))
             {
@@ -44,15 +47,13 @@ namespace CalibrationTracking.Desktop.Main.Commands
                 };
 
 
-                await _mainWindow.Dispatcher.Invoke(async () =>
+                await _scanBarcodeWindow.Dispatcher.Invoke(async () =>
                 {
-                    _mainWindow.Hide();
+                    _scanBarcodeWindow.Hide();
 
                     try
                     {
                         var result = await UserControlHelper.Mediator.Send(query);
-
-                        var calibrationPrintWindow = new CalibrationPrintWindow();
 
                         calibrationPrintWindow.DataContext = new CalibrationPrintViewModel(calibrationPrintWindow, result);
 
@@ -68,15 +69,10 @@ namespace CalibrationTracking.Desktop.Main.Commands
 
                         bool? Result = new CustomMessageBoxWindow($"מכשיר זה אינו קיים במערכת", MessageType.Error, MessageButtons.OkCancel).ShowDialog();
 
-                        if (Result.Value)
-                        {
-                            await ExecuteAsync();
-                        }
+                        ((ScanBarcodeViewModel)_scanBarcodeWindow.DataContext).Barcode = null;
 
-                        else
-                        {
-                            _mainWindow.Close();
-                        }
+                        _scanBarcodeWindow.Show();
+
                     }
 
                     catch (Exception ex)

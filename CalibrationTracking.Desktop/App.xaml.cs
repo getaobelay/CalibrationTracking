@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CalibrationTracking.Application;
+using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.CustomeMessageBox;
 using CalibrationTracking.Desktop.Main.Windows;
@@ -53,8 +54,17 @@ namespace CalibrationTracking.Desktop
             services.AddInfrastructure(_configuration);
             services.AddApplication();
             services.AddSingleton<MainWindow>();
-            services.AddSingleton<CalibrationAddOrEditWindow>();
-            services.AddSingleton<ScanBarcodeWindow>();
+            services.AddSingleton<CalibrationAddOrEditWindow>(x=>
+            {
+                return new CalibrationAddOrEditWindow(new CalibrationTableView());
+            });
+            services.AddSingleton<ScanBarcodeWindow>(x=>
+            {
+                var window = x.GetRequiredService<CalibrationAddOrEditWindow>();
+
+                return new ScanBarcodeWindow(window.CalibrationTableView);
+            });
+
             services.AddSingleton<IDialogService, DialogService>();
 
 
@@ -77,7 +87,7 @@ namespace CalibrationTracking.Desktop
             UserControlHelper.DialogService = (IDialogService?)_host.Services.GetRequiredService<IDialogService>();
 
             await InitiliazeDataBase();
-            var window = _host.Services.GetRequiredService<MainWindow>();
+            var window = _host.Services.GetRequiredService<ScanBarcodeWindow>();
 
 
 
