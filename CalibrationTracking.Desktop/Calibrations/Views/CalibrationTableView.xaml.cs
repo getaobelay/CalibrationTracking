@@ -152,5 +152,10 @@ namespace CalibrationTracking.Desktop.Calibrations.Views
 
          
         }
+
+        private void PackIcon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ((CalibrationListViewModel)DataContext).Search = string.Empty;
+        }
     }
 }

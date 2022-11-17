@@ -48,7 +48,7 @@ public sealed class PrintHelper
 
 
 
-        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(createdAt.ToLocalTime().ToString("d"))
+        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(createdAt.ToString("dd/MM/yyyy"))
             .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
 
         wbook.Worksheet(1).Range("D2:F2").Merge()
@@ -80,7 +80,7 @@ public sealed class PrintHelper
         wbook.Worksheet(1).Range("B9:C9").Merge().SetValue(calibrationSKU);
 
 
-        wbook.Worksheet(1).Range("B12:C12").Merge().SetValue(createdAt.ToString("g")).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+        wbook.Worksheet(1).Range("B12:C12").Merge().SetValue(createdAt.ToString("dd/MM/yyyy")).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
 
         BarcodeLib.Barcode b = new BarcodeLib.Barcode();
         Image img = b.Encode(BarcodeLib.TYPE.CODE39, calibrationSKU, Color.Black, Color.White, 350, 40);

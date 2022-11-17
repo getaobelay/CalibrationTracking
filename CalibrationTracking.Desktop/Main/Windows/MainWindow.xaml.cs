@@ -52,7 +52,7 @@ namespace CalibrationTracking.Desktop.Main.Windows
         {
             //WindowSizeHelper.Exit();
 
-            Close();
+            Hide();
 
             UserControlHelper.ScanBarcodeWindow.Show();
         }
