@@ -25,6 +25,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
             ci.DateTimeFormat.LongDatePattern = "MMM.yyyy"; //This can be used for one type of DatePicker
             ci.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy"; //for the second type
             Thread.CurrentThread.CurrentCulture = ci;
+
             CalibrationTableView = calibrationTableView;
         }
 
