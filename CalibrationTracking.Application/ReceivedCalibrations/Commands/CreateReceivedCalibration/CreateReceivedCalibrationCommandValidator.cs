@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CalibrationTracking.Application.ReceivedCalibrations.Commands.CreateReceivedCalibration;
 
-namespace CalibrationTracking.Application.Calibrations.Commands.CreateCalibration
+namespace CalibrationTracking.Application.ReceivedCalibrations.Commands.CreateReceivedCalibration
 {
-    public class CreateCalibrationCommandValidator : AbstractValidator<CreateCalibrationCommand>
+    public class CreateReceivedCalibrationCommandValidator : AbstractValidator<CreateReceivedCalibrationCommand>
     {
-        public CreateCalibrationCommandValidator()
+        public CreateReceivedCalibrationCommandValidator()
         {
         }
     }

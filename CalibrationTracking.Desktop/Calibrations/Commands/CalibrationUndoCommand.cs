@@ -3,7 +3,6 @@ using MediatR;
 using System.Linq;
 using System.Threading.Tasks;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
-using CalibrationTracking.Application.Calibrations.Commands.CreateCalibration;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Shared;

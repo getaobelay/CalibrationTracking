@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Application.OrderSkus.Commands.IncrementOrderSku;
+using CalibrationTracking.Application.ReceivedCalibrations.Commands.CreateReceivedCalibration;
 
 namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
@@ -32,15 +33,21 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
 
             try
             {
-                var command = new IncrementOrderSkuCommand();
+                var command = new IncrementOrderSkuCommand
+                {
+                    CalibrationId = viewModel.Model.Id
+                };
 
                 await UserControlHelper.Mediator.Send(command);
 
 
                 _calibrationPrintWindow.Close();
 
+
                 PrintHelper.PrintCalibration(viewModel.CalibrationSKU, viewModel.SelectedEmployee, viewModel.SelectedDepartment,
-                    viewModel.SelectedDevice, viewModel.Description, viewModel.Frequency, System.DateTime.Now,viewModel.OrderSku.Value);
+                    viewModel.SelectedDevice, viewModel.Description, viewModel.Frequency, System.DateTime.Now, viewModel.OrderSku.Value);
+
+
 
 
             }

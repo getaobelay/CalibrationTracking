@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CalibrationTracking.Application.ReceivedCalibrations.Commands.DeleteReceivedCalibrations;
 
-namespace CalibrationTracking.Application.Calibrations.Commands.DeleteCalibration
+namespace CalibrationTracking.Application.ReceivedCalibrations.Commands.DeleteReceivedCalibrations
 {
-    public class DeleteCalibrationCommandValidator : AbstractValidator<DeleteCalibrationCommand>
+    public class DeleteReceivedCalibrationCommandValidator : AbstractValidator<DeleteReceivedCalibrationCommand>
     {
-        public DeleteCalibrationCommandValidator()
+        public DeleteReceivedCalibrationCommandValidator()
         {
         }
     }

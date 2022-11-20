@@ -1,5 +1,4 @@
-﻿using CalibrationTracking.Application.Calibrations.Commands.DeleteCalibration;
-using CalibrationTracking.Application.Calibrations.Queries.GetSingleCalibration;
+﻿using CalibrationTracking.Application.Calibrations.Queries.GetSingleCalibration;
 using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
@@ -11,6 +10,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using CalibrationTracking.Application.ReceivedCalibrations.Commands.DeleteReceivedCalibrations;
+using CalibrationTracking.Application.Calibrations.Commands.DeleteCalibration;
 
 namespace CalibrationTracking.Desktop.Calibrations.Views
 {

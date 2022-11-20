@@ -13,27 +13,26 @@ using Microsoft.EntityFrameworkCore;
 using CalibrationTracking.Application.Calibrations.Exceptions;
 using CalibrationTracking.Application.ReceivedCalibrations.Commands.DeleteReceivedCalibrations;
 
-namespace CalibrationTracking.Application.Calibrations.Commands.DeleteCalibration
+namespace CalibrationTracking.Application.ReceivedCalibrations.Commands.DeleteReceivedCalibrations
 {
-    public class DeleteCalibrationCommand : IRequest<bool>
+    public class DeleteReceivedCalibrationCommand : IRequest<bool>
     {
-        public Guid CalibrationId { get; set; }
-        public string CalibrationSku { get; set; }
+        public Guid ReceivedCalibrationId { get; set; }
 
-        public class DeleteCalibrationCommandHandler : IRequestHandler<DeleteCalibrationCommand, bool>
+        public class DeleteReceivedCalibrationCommandHandler : IRequestHandler<DeleteReceivedCalibrationCommand, bool>
         {
             private readonly CalibrationDbContext _context;
 
-            public DeleteCalibrationCommandHandler(CalibrationDbContext context)
+            public DeleteReceivedCalibrationCommandHandler(CalibrationDbContext context)
             {
                 _context = context;
             }
 
-            public async Task<bool> Handle(DeleteCalibrationCommand request, CancellationToken cancellationToken)
+            public async Task<bool> Handle(DeleteReceivedCalibrationCommand request, CancellationToken cancellationToken)
             {
-                var calibration = await _context.Calibrations.SingleOrDefaultAsync(x => x.Id == request.CalibrationId);
+                var calibration = await _context.ReceivedCalibrations.SingleOrDefaultAsync(x => x.Id == request.ReceivedCalibrationId);
 
-                if (calibration == null) throw new CalibrationNotFoundException(request.CalibrationSku);
+                if (calibration == null) throw new CalibrationNotFoundException(request.ReceivedCalibrationId);
 
                 _context.Remove(calibration);
 

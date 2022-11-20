@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CalibrationTracking.Infrastructure.Context.Configurations
 {
-    public class CalibrationConfig : IEntityTypeConfiguration<Calibration>
+    public class ReceivedCalibrationConfig : IEntityTypeConfiguration<ReceivedCalibration>
     {
-        public void Configure(EntityTypeBuilder<Calibration> builder)
+        public void Configure(EntityTypeBuilder<ReceivedCalibration> builder)
         {
             builder.HasKey(x => x.Id);
 

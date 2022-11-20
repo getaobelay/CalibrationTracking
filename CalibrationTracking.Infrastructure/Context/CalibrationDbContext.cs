@@ -1,5 +1,4 @@
-﻿using CalibrationTracking.Core;
-using CalibrationTracking.Core.Calibrations;
+﻿using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Core.Departments;
 using CalibrationTracking.Core.Devices;
 using CalibrationTracking.Core.Employees;
@@ -26,6 +25,7 @@ namespace CalibrationTracking.Infrastructure.Context
         public virtual DbSet<Device> Devices { get; set; } = null!;
         public virtual DbSet<Calibration> Calibrations { get; set; } = null!;
         public virtual DbSet<OrderSku> OrderSku { get; set; } = null!;
+        public virtual DbSet<ReceivedCalibration> ReceivedCalibrations { get; set; } = null!;
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

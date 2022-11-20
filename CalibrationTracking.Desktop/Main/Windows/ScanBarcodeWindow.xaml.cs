@@ -171,6 +171,8 @@ namespace CalibrationTracking.Desktop.Main.Windows
         {
             UserControlHelper.MainWindow.Show();
 
+            (DataContext as ScanBarcodeViewModel).Barcode = null;
+
             Hide();
         }
     }
