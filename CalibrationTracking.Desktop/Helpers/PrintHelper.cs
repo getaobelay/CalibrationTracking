@@ -48,10 +48,10 @@ public sealed class PrintHelper
 
 
 
-        wbook.Worksheet(1).Range("D2:F2").Merge().SetValue(createdAt.ToString("dd/MM/yyyy"))
+        wbook.Worksheet(1).Cell("D2").SetValue(createdAt.ToString("dd/MM/yyyy"))
             .Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
 
-        wbook.Worksheet(1).Range("D2:F2").Merge()
+        wbook.Worksheet(1).Cell("D2")
             .Style.Font.SetFontSize(15);
 
 
@@ -107,14 +107,9 @@ public sealed class PrintHelper
         // .MoveTo(wbook.Worksheet(1).Cell(8, 8));
 
          wbook.Worksheet(1).AddPicture(ms1)
-           .MoveTo(wbook.Worksheet(1).Cell(1, 5))
+           .MoveTo(wbook.Worksheet(1).Cell(2, 4))
            .ScaleWidth(.2)
            .ScaleHeight(.3);
-
-
-
-        wbook.Worksheet(1).Cell(1,1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
-
 
         wbook.SaveAs(createdfileName);
     }

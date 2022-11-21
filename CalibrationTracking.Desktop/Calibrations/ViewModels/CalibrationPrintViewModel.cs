@@ -13,12 +13,12 @@ namespace CalibrationTracking.Desktop.Calibrations.ViewModels
     {
         private readonly CalibrationPrintWindow _calibrationPrintWindow;
 
-        public CalibrationPrintViewModel(CalibrationPrintWindow calibrationPrintWindow, Calibration model) : base(model)
+        public CalibrationPrintViewModel(CalibrationPrintWindow calibrationPrintWindow, Calibration model, Main.Windows.ScanBarcodeWindow scanBarcodeWindow) : base(model)
         {
 
             _calibrationPrintWindow = calibrationPrintWindow;
 
-            CalibrationPrintCommand = new CalibrationPrintCommand(calibrationPrintWindow);
+            CalibrationPrintCommand = new CalibrationPrintCommand(calibrationPrintWindow, scanBarcodeWindow);
 
             Reload(model);
         }

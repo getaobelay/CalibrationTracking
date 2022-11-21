@@ -31,7 +31,7 @@ namespace CalibrationTracking.Desktop.Main.Commands
         public override async Task ExecuteAsync()
         {
             var barcode = ((ScanBarcodeViewModel)_scanBarcodeWindow.DataContext).Barcode;
-            var calibrationPrintWindow = new CalibrationPrintWindow();
+            var calibrationPrintWindow = new CalibrationPrintWindow(_scanBarcodeWindow);
 
             if (!string.IsNullOrWhiteSpace(barcode))
             {
@@ -48,7 +48,7 @@ namespace CalibrationTracking.Desktop.Main.Commands
                     {
                         var result = await UserControlHelper.Mediator.Send(query);
 
-                        calibrationPrintWindow.DataContext = new CalibrationPrintViewModel(calibrationPrintWindow, result);
+                        calibrationPrintWindow.DataContext = new CalibrationPrintViewModel(calibrationPrintWindow, result, _scanBarcodeWindow);
 
                         calibrationPrintWindow.Title.Text = "הזמנה לטיפול";
 

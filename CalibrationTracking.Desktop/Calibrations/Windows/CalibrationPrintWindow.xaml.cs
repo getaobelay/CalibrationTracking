@@ -1,4 +1,5 @@
 ﻿using CalibrationTracking.Desktop.Calibrations.ViewModels;
+using CalibrationTracking.Desktop.Main.Windows;
 using System;
 using System.Globalization;
 using System.Threading;
@@ -13,13 +14,13 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     {
         private bool isDataSaved;
 
-        public CalibrationPrintWindow()
+        public CalibrationPrintWindow(ScanBarcodeWindow scanBarcodeWindow)
         {
             InitializeComponent();
 
             Closing += CalibrationAddOrEditWindow_Closing;
             isDataSaved = true;
-            DataContext = new CalibrationPrintViewModel(this, null);
+            DataContext = new CalibrationPrintViewModel(this, null, scanBarcodeWindow);
 
             CultureInfo ci = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
             ci.DateTimeFormat.LongDatePattern = "MMM.yyyy"; //This can be used for one type of DatePicker

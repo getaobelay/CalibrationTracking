@@ -5,16 +5,20 @@ using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Application.OrderSkus.Commands.IncrementOrderSku;
 using CalibrationTracking.Application.ReceivedCalibrations.Commands.CreateReceivedCalibration;
+using CalibrationTracking.Desktop.Main.Windows;
+using CalibrationTracking.Desktop.Main.ViewModels;
 
 namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
     public class CalibrationPrintCommand : AsyncCommand
     {
         private readonly CalibrationPrintWindow _calibrationPrintWindow;
+        private readonly ScanBarcodeWindow _scanBarcodeWindow;
 
-        public CalibrationPrintCommand(CalibrationPrintWindow calibrationPrintWindow)
+        public CalibrationPrintCommand(CalibrationPrintWindow calibrationPrintWindow, ScanBarcodeWindow scanBarcodeWindow)
         {
             _calibrationPrintWindow = calibrationPrintWindow;
+            _scanBarcodeWindow = scanBarcodeWindow;
         }
 
 
@@ -48,7 +52,9 @@ namespace CalibrationTracking.Desktop.Calibrations.Commands
                     viewModel.SelectedDevice, viewModel.Description, viewModel.Frequency, System.DateTime.Now, viewModel.OrderSku.Value);
 
 
+                ((ScanBarcodeViewModel)_scanBarcodeWindow.DataContext).Barcode = null;
 
+                _scanBarcodeWindow.Show();
 
             }
             catch (System.Exception)
