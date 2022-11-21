@@ -3,6 +3,7 @@ using CalibrationTracking.Application;
 using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.CustomeMessageBox;
+using CalibrationTracking.Desktop.Helpers;
 using CalibrationTracking.Desktop.Main.Windows;
 using CalibrationTracking.Desktop.Services.CustomeMessageBox;
 using CalibrationTracking.Infrastructure;
@@ -18,18 +19,6 @@ using System.Windows;
 
 namespace CalibrationTracking.Desktop
 {
-
-    public static class UserControlHelper
-    {
-        public static IMediator Mediator { get; internal set; }
-        public static IMapper Mapper { get; internal set; }
-        public static IDialogService? DialogService { get; internal set; }
-        public static MainWindow? MainWindow { get; internal set; }
-        public static ScanBarcodeWindow? ScanBarcodeWindow { get; internal set; }
-
-
-      
-    }
 
     /// <summary>
     /// Interaction logic for App.xaml

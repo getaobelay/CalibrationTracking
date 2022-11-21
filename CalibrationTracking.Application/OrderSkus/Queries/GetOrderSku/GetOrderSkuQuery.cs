@@ -2,8 +2,8 @@
 using CalibrationTracking.Infrastructure.Context;
 using CalibrationTracking.Application.OrderSkus.Queries.GetOrderSku;
 using CalibrationTracking.Application.Employees.Queries.GetAllEmployees;
-using CalibrationTracking.OrderSkus.Core;
 using Microsoft.EntityFrameworkCore;
+using CalibrationTracking.Core;
 
 namespace CalibrationTracking.Application.OrderSkus.Queries.GetOrderSku
 {

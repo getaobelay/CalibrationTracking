@@ -11,6 +11,7 @@ using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using CalibrationTracking.Application.ReceivedCalibrations.Commands.CreateReceivedCalibration;
+using CalibrationTracking.Core.ReceivedCalibration;
 
 namespace CalibrationTracking.Application.ReceivedCalibrations.Commands.CreateReceivedCalibration
 {

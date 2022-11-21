@@ -1,6 +1,7 @@
 ﻿using CalibrationTracking.Abstractions.Base;
+using CalibrationTracking.Core.Calibrations;
 
-namespace CalibrationTracking.Core.Calibrations
+namespace CalibrationTracking.Core.ReceivedCalibration
 {
     public class ReceivedCalibration : BaseEntity
     {

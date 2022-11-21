@@ -3,6 +3,7 @@ using CalibrationTracking.Core.Calibrations;
 using CalibrationTracking.Desktop.Base;
 using CalibrationTracking.Desktop.Calibrations.Commands;
 using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.Helpers;
 using CalibrationTracking.Desktop.Main.Commands;
 using CalibrationTracking.Desktop.Main.Windows;
 using MaterialDesignColors;
@@ -12,8 +13,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using CalibrationTracking.Desktop.Calibrations.Views;
 
-namespace CalibrationTracking.Desktop.Calibrations.Views
+namespace CalibrationTracking.Desktop.Calibrations.ViewModels
 {
     internal class CalibrationListViewModel : BaseViewModel
     {

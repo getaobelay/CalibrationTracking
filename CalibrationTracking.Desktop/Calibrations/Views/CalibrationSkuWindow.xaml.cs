@@ -8,8 +8,10 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using CalibrationTracking.Desktop.Calibrations.Windows;
+using CalibrationTracking.Desktop.Calibrations.Windows;
 
-namespace CalibrationTracking.Desktop.Calibrations.Windows
+namespace CalibrationTracking.Desktop.Calibrations.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -92,7 +94,7 @@ namespace CalibrationTracking.Desktop.Calibrations.Windows
     }
 }
 
-namespace CalibrationTracking.Desktop.Calibrations.Windows
+namespace CalibrationTracking.Desktop.Calibrations.Views
 {
     public static class FocusBehavior
     {

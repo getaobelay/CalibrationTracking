@@ -5,6 +5,7 @@ using CalibrationTracking.Desktop.Calibrations.ViewModels;
 using CalibrationTracking.Desktop.Calibrations.Views;
 using CalibrationTracking.Desktop.Calibrations.Windows;
 using CalibrationTracking.Desktop.CustomeMessageBox;
+using CalibrationTracking.Desktop.Helpers;
 using CalibrationTracking.Desktop.Main.ViewModels;
 using CalibrationTracking.Desktop.Main.Windows;
 using CalibrationTracking.Desktop.Services.CustomeMessageBox;
@@ -14,8 +15,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CalibrationTracking.Desktop.Main.Commands;
 
-namespace CalibrationTracking.Desktop.Main.Commands
+namespace CalibrationTracking.Desktop.Calibrations.Commands
 {
     public class CalibrationSkuCommand : AsyncCommand
     {

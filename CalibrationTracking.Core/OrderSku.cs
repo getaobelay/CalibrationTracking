@@ -1,6 +1,6 @@
 ﻿using CalibrationTracking.Abstractions.Base;
 
-namespace CalibrationTracking.OrderSkus.Core
+namespace CalibrationTracking.Core
 {
     public class OrderSku : BaseEntity
     {
